@@ -1,0 +1,4 @@
+author = NuovaPrime
+
+version = 0.2.1
+displayName = Dragon Ball Z Mod Beta

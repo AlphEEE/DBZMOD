@@ -1,0 +1,41 @@
+Dragon Ball Z Mod For Terraria!
+
+(SMALL TUTORIAL)
+You Will Start with a Empty scroll on character creation, this scroll will be used to make your first class based beam.
+Your First class based beam will need Ki Gems, Which means you need to go find the new ki crystal ore, you will need a nightmare pickaxe at least to mine it.
+
+Please List any bugs you find on my forum page or on my discord!
+
+This Is A Beta Version And Expect Bugs, Alot of the Sprites and Sounds are placeholder, so deal with it. :P
+
+
+Update 0.2.1
+
+-Updated to tmodloader 0.10
+-Changed how frieza's ship shoots projectiles
+-Added Some Resprites
+-Rebalancing
+
+Update 0.2(Second Half of the 0.2 Update)
+
+
+-More Resprites.
+-Completly Remade the Ki Crystal Ore.
+-Added The Nimbus Cloud Mount.
+-Recipe Revamps.
+-Ki Crystal ore now shows on spelunker.
+-Bug Fixes.
+
+
+
+(Known Bugs)
+Frieza Ship Rarely not Spawning on a multiplayer server.
+
+
+
+(Credit)
+-Credit To JFC_263, Peppermint Bark, Earth and some other amazing spriters for their hard work!
+-Credit To GabeHasWon's, Divermansam and the whole TModLoader Discord For Help with code and such.
+-Credit To Akira Toriyama For Creating Dragon Ball Z!
+-Credit To Bluemagic and everyone else for creating TModloader.
+-Credit To Relogic for making an incredible game.
