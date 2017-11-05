@@ -30,8 +30,7 @@ namespace DBZMOD.Items.Weapons
             item.shoot = mod.ProjectileType("KiBlastProjectile");
             item.shootSpeed = 8f;
             item.useTurn = true;
-			item.noUseGraphic = true;
-			
+            item.noUseGraphic = true;		
         }
 
     public override void SetStaticDefaults()
