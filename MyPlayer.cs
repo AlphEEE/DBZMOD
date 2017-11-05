@@ -12,8 +12,17 @@ namespace DBZMOD
 {
     public class MyPlayer : ModPlayer
     {
-		
-		public bool ZoneCustomBiome = false;
+    	public float KiDamage;
+        public float KiKbAddition;
+        public int KiCrit;
+        public bool ZoneCustomBiome = false;
+        
+        public override void ResetEffects()
+        {
+            KiDamage = 1f;
+            KiKbAddition = 0f;
+            KiCrit = 0;
+	
         public override void SetupStartInventory(IList<Item> items)
         {
             Item item4 = new Item();
