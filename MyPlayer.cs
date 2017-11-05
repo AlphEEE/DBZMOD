@@ -16,6 +16,11 @@ namespace DBZMOD
         public float KiKbAddition;
         public bool ZoneCustomBiome = false;
 
+        public static MyPlayer ModPlayer(Player player)
+        {
+            return player.GetModPlayer<MyPlayer>();
+        }
+
         public override void ResetEffects()
         {
             KiDamage = 1f;

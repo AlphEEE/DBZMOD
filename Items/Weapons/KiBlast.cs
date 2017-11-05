@@ -1,51 +1,41 @@
-using System;
+﻿using System;
+using System.Collections.Generic;
+using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.Graphics.Effects;
-using Terraria.Graphics.Shaders;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace DBZMOD.Items.Weapons
 {
-    public class KiBlast : ModItem
-    {
-        public override void SetDefaults()
-        {
+	public class KiBlast : KiItem
+	{
+		public override void SetDefaults()
+		{
+			item.shoot = mod.ProjectileType("KiBlastProjectile");
+			item.shootSpeed = 25f;
+			item.damage = 15;
+			item.knockBack = 5f;
+			item.useStyle = 1;
+			item.UseSound = SoundID.Item1;
+			item.useAnimation = 25;
+			item.useTime = 13;
+			item.width = 20;
+			item.noUseGraphic = true;
+			item.height = 20;
+			item.autoReuse = false;
+			item.value = Item.sellPrice(0, 0, 5, 0);
+			item.rare = 1;
+	    }
 
-            item.damage = 15;
-            item.thrown = true;
-            item.noMelee = true;
-            item.width = 28;
-            item.height = 32;
-            item.useTime = 9;
-            item.useAnimation = 9;
-            item.useStyle = 1;
-            item.knockBack = 6;
-            item.value = 1000;
-            item.rare = 1;
-            item.reuseDelay = 15;
-            item.UseSound = SoundID.Item1;
-            item.autoReuse = true;
-            item.shoot = mod.ProjectileType("KiBlastProjectile");
-            item.shootSpeed = 8f;
-            item.useTurn = true;
-            item.noUseGraphic = true;		
-        }
-
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Ki Blast");
-      Tooltip.SetDefault("A Basic Ki Attack.");
-    }
-
-        public override void AddRecipes()
-        {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, "UnrefinedKiGem", 10);
-            recipe.AddTile(TileID.WorkBenches);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
-        }
-    }
+		public override void AddRecipes()
+		{
+			ModRecipe recipe = new ModRecipe(mod);
+	        recipe.AddIngredient(3);
+            recipe.AddTile(TileID.LunarCraftingStation);
+			recipe.SetResult(this);
+	        recipe.AddRecipe();
+		}
+	}
 }

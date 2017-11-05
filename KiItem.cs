@@ -7,6 +7,18 @@ using DBZMOD;
 
 namespace DBZMOD
 {
+    public abstract class KiProjectile : ModProjectile
+    {
+        public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+        {
+            Player owner = null;
+            if (projectile.owner != -1)
+                owner = Main.player[projectile.owner];
+            else if (projectile.owner == 255)
+                owner = Main.LocalPlayer;
+        }
+    }
+
     public abstract class KiItem : ModItem
     {
         // make-safe

@@ -1,52 +1,41 @@
-using System;
+﻿using System;
+using System.Collections.Generic;
+using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace DBZMOD.Items.Weapons
 {
-	public class DestructoDisk : ModItem
+	public class DestructoDisk : KiItem
 	{
 		public override void SetDefaults()
 		{
-
+			item.shoot = mod.ProjectileType("DestructoDiskProjectile");
+			item.shootSpeed = 40f;
 			item.damage = 50;
-			item.magic = true;
-			item.width = 28;
-			item.height = 32;
-
-			item.useTime = 60;
-            item.useAnimation = 60;
-            item.useStyle = 5;
-            item.noMelee = true; 
-            item.knockBack = 0;        
-            item.value = 100000;
-            item.rare = 5;
-            item.mana = 30;         
-            item.UseSound = SoundID.Item21;
-            item.autoReuse = true;
-            item.shoot = mod.ProjectileType 
-                ("KienzanProjectile");
-            item.shootSpeed = 5f;
-			
-			
-		}
-
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Kienzan(WIP NOT FINISHED)");
-      Tooltip.SetDefault("Its a Frisbee, I swear.");
-    }
+			item.knockBack = 5f;
+			item.useStyle = 1;
+			item.UseSound = SoundID.Item1;
+			item.useAnimation = 25;
+			item.useTime = 28;
+			item.width = 20;
+			item.noUseGraphic = true;
+			item.height = 20;
+			item.autoReuse = false;
+			item.value = Item.sellPrice(0, 0, 5, 0);
+			item.rare = 1;
+	    }
 
 		public override void AddRecipes()
-        {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(175, 20);
-            recipe.AddIngredient(null,"KiGem", 30);
-            recipe.AddTile(TileID.WorkBenches);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
-        }
+		{
+			ModRecipe recipe = new ModRecipe(mod);
+	        recipe.AddIngredient(3);
+            recipe.AddTile(TileID.LunarCraftingStation);
+			recipe.SetResult(this);
+	        recipe.AddRecipe();
+		}
 	}
 }
