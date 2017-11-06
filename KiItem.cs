@@ -1,8 +1,16 @@
-﻿using System;
-using Microsoft.Xna.Framework;
-using Terraria.ID;
-using Terraria.ModLoader;
+﻿using System.IO;
+using System.Collections.Generic;
+using System.Linq;
 using Terraria;
+using Terraria.ID;
+using Terraria.Localization;
+using Terraria.ModLoader;
+using Terraria.World.Generation;
+using Microsoft.Xna.Framework;
+using Terraria.GameContent.Generation;
+using Terraria.ModLoader.IO;
+using Terraria.DataStructures;
+using Microsoft.Xna.Framework.Graphics;
 using DBZMOD;
 
 namespace DBZMOD
@@ -33,15 +41,33 @@ namespace DBZMOD
 
         public override void GetWeaponKnockback(Player player, ref float knockback)
         {
-            MyPlayer modPlayer = MyPlayer.GetModPlayer(player);
-            knockback += modPlayer.KiKbAddition;
+            knockback = knockback + MyPlayer.ModPlayer(player).KiKbAddition; 
         }
         public override void GetWeaponDamage(Player player, ref int damage)
         {
-            MyPlayer modPlayer = MyPlayer.GetModPlayer(player);
-            // We want to multiply the damage we do by our alchemicalDamage modifier.
-            // todo: ? do we want magic damage to also have effect here?
-            damage = (int)(damage * modPlayer.KiDamage + 5E-06f);
+			damage = (int)(damage * MyPlayer.ModPlayer(player).KiDamage + 5E-06f);
         }
+        public override void ModifyTooltips(List<TooltipLine> tooltips)
+		{
+			TooltipLine tt = tooltips.FirstOrDefault(x => x.Name == "Damage" && x.mod == "Terraria");
+			if (tt != null)
+			{
+				string[] splitText = tt.text.Split(' ');
+				string damageValue = splitText.First();
+				string damageWord = splitText.Last();
+				tt.text = damageValue + " ki " + damageWord;
+			}
+        if (item.damage > 0)
+        {
+            foreach (TooltipLine line in tooltips)
+            {
+            if (line.mod == "Terraria" && line.Name == "Damage")
+                {
+                    line.overrideColor = Color.Cyan;
+                }
+            }
+        }
+
+	    }
     }
 }
