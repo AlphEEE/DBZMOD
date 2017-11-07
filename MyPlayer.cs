@@ -29,7 +29,7 @@ namespace DBZMOD
             return player.GetModPlayer<MyPlayer>();
         }
 
-        public int Powerlevel()
+        public void Powerlevel(int Powerlevel)
         {
            return Powerlevel = (KiControlStat + SpeedStat + FortitudeStat * 15); 
         }
