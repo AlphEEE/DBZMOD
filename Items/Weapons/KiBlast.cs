@@ -20,7 +20,7 @@ namespace DBZMOD.Items.Weapons
 			item.useStyle = 1;
 			item.UseSound = SoundID.Item1;
 			item.useAnimation = 25;
-			item.useTime = 13;
+			item.useTime = 16;
 			item.width = 20;
 			item.noUseGraphic = true;
 			item.height = 20;
