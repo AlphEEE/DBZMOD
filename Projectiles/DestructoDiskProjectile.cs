@@ -1,4 +1,4 @@
-﻿wusing System;
+﻿using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
@@ -19,7 +19,7 @@ namespace DBZMOD.Projectiles
         public override void SetDefaults()
         {
             projectile.width = 28;
-            projectile.height = 108;
+            projectile.height = 102;
 			projectile.aiStyle = 1;
 			projectile.light = 1f;
             projectile.friendly = true;
