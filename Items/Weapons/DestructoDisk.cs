@@ -28,7 +28,10 @@ namespace DBZMOD.Items.Weapons
 			item.value = Item.sellPrice(0, 0, 5, 0);
 			item.rare = 1;
 	    }
-
+		public override bool UseItem(Player player)
+        {
+            MyPlayer.ModPlayer(player).KiControlStat + 0.1;
+        }
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);

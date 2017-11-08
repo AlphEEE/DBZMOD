@@ -14,10 +14,10 @@ namespace DBZMOD
     {
     	public float KiDamage;
         public float KiKbAddition;
-        public int KiControlStat;
-        public int SpeedStat;
-        public int FortitudeStat;
-        public int Powerlevel;
+        public float KiControlStat;
+        public float SpeedStat;
+        public float FortitudeStat;
+        public float Powerlevel;
         public float KiMax;
         public float KiRegen; 
         public bool ZoneCustomBiome = false;
@@ -29,9 +29,9 @@ namespace DBZMOD
             return player.GetModPlayer<MyPlayer>();
         }
 
-        public void Powerlevel(int Powerlevel)
+        public void Powerlevel(float Powerlevel)
         {
-           return Powerlevel = (KiControlStat + SpeedStat + FortitudeStat * 15); 
+           return Powerlevel = (KiControlStat + SpeedStat + FortitudeStat * 50); 
         }
 
         public override void ResetEffects()
@@ -77,9 +77,13 @@ namespace DBZMOD
         
         public override void PostUpdateEquips()
         {
-            player.statLifeMax2 += FortitudeStat * 20;
-            player.statDefense += FortitudeStat * 2;
-            player.moveSpeed *= 1f + Math.Min(1.5f, SpeedStat * 0.03f;
+            player.statLifeMax2 += (FortitudeStat * 20);
+            player.statDefense += (FortitudeStat * 2);
+            player.moveSpeed *= 1f + Math.Min(1.5f, SpeedStat * 0.03f);
+        }
+        public override void PostHurt()
+        {
+            FortitudeStat += 0.1f;
         }
         
         public override void ModifyDrawLayers(List<PlayerLayer> layers)
