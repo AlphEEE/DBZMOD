@@ -1,6 +1,5 @@
 using Terraria;
 using Terraria.ModLoader;
-using DBZMOD.Npcs;
 
 namespace DBZMOD.Buffs
 {
@@ -21,8 +20,6 @@ namespace DBZMOD.Buffs
 			player.magicDamage *= 1.2f;
 			player.minionDamage *= 1.2f;
 			player.thrownDamage *= 1.2f;
-        }
-		
-		
+        }	
 	}
 }
