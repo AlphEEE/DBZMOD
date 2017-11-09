@@ -17,7 +17,6 @@ namespace DBZMOD
         public float KiControlStat;
         public float SpeedStat;
         public float FortitudeStat;
-        public float Powerlevel;
         public float KiMax;
         public float KiRegen; 
         public bool ZoneCustomBiome = false;
