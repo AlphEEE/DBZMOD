@@ -80,9 +80,9 @@ namespace DBZMOD
             player.statDefense += (FortitudeStat * 2);
             player.moveSpeed *= 1f + Math.Min(1.5f, SpeedStat * 0.03f);
         }
-        public override void Hurt()
+        public override void Hurt(int FortitudeStat Player player)
         {
-            FortitudeStat += 0.1f;
+            return MyPlayer.ModPlayer(player).FortitudeStat += 0.1f;
         }
         
         public override void ModifyDrawLayers(List<PlayerLayer> layers)
