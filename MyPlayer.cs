@@ -82,7 +82,7 @@ namespace DBZMOD
         }
         public override void Hurt(int FortitudeStat, Player player)
         {
-            return MyPlayer.ModPlayer(player).FortitudeStat += 0.1f;
+            MyPlayer.ModPlayer(player).FortitudeStat += 0.1f;
         }
         
         public override void ModifyDrawLayers(List<PlayerLayer> layers)
