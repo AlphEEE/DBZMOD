@@ -9,7 +9,7 @@ using Terraria.ModLoader;
 
 namespace DBZMOD.Items.Weapons
 {
-	public class DeathBeam: KiItem
+	public class DeathBeam : KiItem
 	{
 		public override void SetDefaults()
 		{
@@ -43,7 +43,7 @@ namespace DBZMOD.Items.Weapons
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
-	        AddIngredient(ItemID.3);
+	        recipe.AddIngredient(3);
             recipe.AddTile(TileID.LunarCraftingStation);
 			recipe.SetResult(this);
 	        recipe.AddRecipe();
