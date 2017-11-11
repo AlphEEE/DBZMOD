@@ -32,17 +32,6 @@ namespace DBZMOD.Projectiles
             ProjectileID.Sets.TrailingMode[projectile.type] = 0;
         }
    
-        public override void Kill(int timeLeft)
-        {
-            for (int num303 = 0; num303 < 3; num303++)
-			{
-				int num304 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 20, 0f, 0f, 100, default(Color), 0.8f);
-				Main.dust[num304].noGravity = true;
-				Main.dust[num304].velocity *= 1.2f;
-				Main.dust[num304].velocity -= projectile.oldVelocity * 0.3f;
-			}
-		}
-		
 		public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
 		{
 			Vector2 drawOrigin = new Vector2(Main.projectileTexture[projectile.type].Width * 0.5f, projectile.height * 0.5f);
