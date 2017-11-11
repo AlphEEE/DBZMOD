@@ -14,7 +14,7 @@ namespace DBZMOD.Items.Weapons
 		public override void SetDefaults()
 		{
 			item.shoot = mod.ProjectileType("KiBlastProjectile");
-			item.shootSpeed = 19f;
+			item.shootSpeed = 25f;
 			item.damage = 15;
 			item.knockBack = 5f;
 			item.useStyle = 1;
@@ -36,14 +36,15 @@ namespace DBZMOD.Items.Weapons
 			speedY = perturbedSpeed.Y;
 			return true;
 		}
-		public override bool UseItem(Player player)
+        public override bool UseItem(Player player)
         {
-            MyPlayer.ModPlayer(player).KiControlStat + 0.1;
+            MyPlayer.ModPlayer(player).KiControlStat += 1;
+            return true;
         }
-		public override void AddRecipes()
+        public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
-	        AddIngredient(ItemID.3);
+	        recipe.AddIngredient(3);
             recipe.AddTile(TileID.LunarCraftingStation);
 			recipe.SetResult(this);
 	        recipe.AddRecipe();
