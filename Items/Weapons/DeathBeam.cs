@@ -29,8 +29,12 @@ namespace DBZMOD.Items.Weapons
 			item.value = Item.sellPrice(0, 0, 5, 0);
 			item.rare = 1;
 	    }
-
-		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+        public override bool UseItem(Player player)
+        {
+            MyPlayer.ModPlayer(player).KiControlStat += 1;
+            return true;
+        }
+        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
 		{
 			Vector2 muzzleOffset = Vector2.Normalize(new Vector2(speedX, speedY)) * 55f;
 			if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))

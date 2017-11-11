@@ -11,7 +11,9 @@ namespace DBZMOD.Items.Weapons
 {
 	public class DestructoDisk : KiItem
 	{
-		public override void SetDefaults()
+        private Player player;
+
+        public override void SetDefaults()
 		{
 			item.shoot = mod.ProjectileType("DestructoDiskProjectile");
 			item.shootSpeed = 40f;
@@ -30,7 +32,8 @@ namespace DBZMOD.Items.Weapons
 	    }
 		public override bool UseItem(Player player)
         {
-            MyPlayer.ModPlayer(player).KiControlStat + 0.1;
+            MyPlayer.ModPlayer(player).KiControlStat += 1;
+            return true;
         }
 		public override void AddRecipes()
 		{

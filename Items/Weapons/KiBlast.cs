@@ -36,11 +36,12 @@ namespace DBZMOD.Items.Weapons
 			speedY = perturbedSpeed.Y;
 			return true;
 		}
-		public override bool UseItem(Player player)
+        public override bool UseItem(Player player)
         {
-            MyPlayer.ModPlayer(player).KiControlStat + 0.1;
+            MyPlayer.ModPlayer(player).KiControlStat += 1;
+            return true;
         }
-		public override void AddRecipes()
+        public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
 	        recipe.AddIngredient(3);
