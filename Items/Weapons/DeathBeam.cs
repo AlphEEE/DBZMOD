@@ -16,7 +16,7 @@ namespace DBZMOD.Items.Weapons
 			// Alter any of these values as you see fit, but you should probably keep useStyle on 1, as well as the noUseGraphic and noMelee bools
 			item.shoot = mod.ProjectileType("DeathBeamProjectile");
 			item.shootSpeed = 70f;
-			item.damage = 35;
+			item.damage = 25;
 			item.knockBack = 5f;
 			item.useStyle = 5;
 			item.UseSound = SoundID.Item12;
@@ -39,15 +39,11 @@ namespace DBZMOD.Items.Weapons
 			}
 			return true;
 		}
-		public override bool UseItem(Player player)
-        {
-            MyPlayer.ModPlayer(player).KiControlStat + 0.1;
-        }
-		
+
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
-	        recipe.AddIngredient(3);
+	        AddIngredient(ItemID.3);
             recipe.AddTile(TileID.LunarCraftingStation);
 			recipe.SetResult(this);
 	        recipe.AddRecipe();
