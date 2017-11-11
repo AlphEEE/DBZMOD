@@ -18,9 +18,9 @@ namespace DBZMOD
         public int KiControlStat;
         public int SpeedStat;
         public int FortitudeStat;
+        public float powerlevel;
         public float KiMax;
         public float KiRegen;
-        public float Powerlevel;
         public bool ZoneCustomBiome = false;
         public int drawX;
         public int drawY;
@@ -30,7 +30,10 @@ namespace DBZMOD
             return player.GetModPlayer<MyPlayer>();
         }
 
-        private float powerlevel => Powerlevel = (KiControlStat + SpeedStat + FortitudeStat * 50);
+        private float Powerlevel(int powerlevel)
+        {
+            return Powerlevel((KiControlStat + SpeedStat + FortitudeStat * 50));
+        }
 
         public override void ResetEffects()
         {
