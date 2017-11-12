@@ -9,14 +9,14 @@ using Terraria.ModLoader;
 
 namespace DBZMOD.Items.Weapons
 {
-	public class DeathBeam : KiItem
+	public class KiBeam : KiItem
 	{
 		public override void SetDefaults()
 		{
 			// Alter any of these values as you see fit, but you should probably keep useStyle on 1, as well as the noUseGraphic and noMelee bools
-			item.shoot = mod.ProjectileType("DeathBeamProjectile");
+			item.shoot = mod.ProjectileType("KiBeamProjectile");
 			item.shootSpeed = 70f;
-			item.damage = 25;
+			item.damage = 20;
 			item.knockBack = 5f;
 			item.useStyle = 5;
 			item.UseSound = SoundID.Item12;

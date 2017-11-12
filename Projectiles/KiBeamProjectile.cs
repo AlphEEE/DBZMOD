@@ -9,28 +9,31 @@ using Terraria.ModLoader;
 
 namespace DBZMOD.Projectiles
 {
-    public class DeathBeamProjectile : KiProjectile
+    public class KiBeamProjectile : KiProjectile
     {
     	public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("DeathBeamProjectile");
+			DisplayName.SetDefault("KiBeamProjectile");
 		}
     	
         public override void SetDefaults()
         {
-            projectile.width = 24;
-            projectile.height = 204;
-			projectile.aiStyle = 1;
+            projectile.width = 6;
+            projectile.height = 174;
 			projectile.light = 1f;
 			projectile.alpha = 220;
             projectile.friendly = true;
             projectile.ignoreWater = true;
             projectile.penetrate = 2;
             projectile.timeLeft = 120;
+			projectile.aiStyle = 1;
+            aiType = 14;
 			projectile.tileCollide = false;
 			ProjectileID.Sets.TrailCacheLength[projectile.type] = 12;
             ProjectileID.Sets.TrailingMode[projectile.type] = 0;
         }
+		
+		
    
 		public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
 		{
