@@ -16,6 +16,7 @@ namespace DBZMOD
     	public float KiDamage;
         public float KiKbAddition;
         public int KiControlStat;
+        public int KiPowerStat;
         public int SpeedStat;
         public int FortitudeStat;
         public float powerlevel;
@@ -32,14 +33,21 @@ namespace DBZMOD
 
         private float Powerlevel(int powerlevel)
         {
-            return Powerlevel((KiControlStat + SpeedStat + FortitudeStat * 50));
+            return Powerlevel((KiControlStat + SpeedStat + KiPowerStat + FortitudeStat * 50));
         }
-
+		public MyPlayer() : base()
+		{
+			KiPowerStat = 1;
+			KiControlStat = 1;
+			SpeedStat = 1;
+			FortitudeStat = 1;
+		}
         public override void ResetEffects()
         {
             KiDamage = 1f;
             KiKbAddition = 0f;
             KiControlStat = 1;
+            KiPowerStat = 1;
             SpeedStat = 1;
             FortitudeStat = 1;
             KiMax = 50f;
