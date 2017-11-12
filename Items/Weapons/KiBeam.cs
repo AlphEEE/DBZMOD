@@ -29,6 +29,11 @@ namespace DBZMOD.Items.Weapons
 			item.value = Item.sellPrice(0, 0, 5, 0);
 			item.rare = 1;
 	    }
+	    public override void SetStaticDefaults()
+		{
+		Tooltip.SetDefault("-Tier 1-");
+		DisplayName.SetDefault("Ki Beam");
+		}
         public override bool UseItem(Player player)
         {
             MyPlayer.ModPlayer(player).KiControlStat += 1;
