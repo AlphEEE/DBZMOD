@@ -28,6 +28,11 @@ namespace DBZMOD.Items.Weapons
 			item.value = Item.sellPrice(0, 0, 5, 0);
 			item.rare = 4;
 	    }
+	    public override void SetStaticDefaults()
+		{
+		Tooltip.SetDefault("-Tier 4-");
+		DisplayName.SetDefault("Hellzone Grenade");
+		}
         public override bool UseItem(Player player)
         {
             MyPlayer.ModPlayer(player).KiControlStat += 1;

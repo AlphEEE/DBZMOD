@@ -27,7 +27,12 @@ namespace DBZMOD.Items.Weapons
 			item.autoReuse = false;
 			item.value = Item.sellPrice(0, 0, 5, 0);
 			item.rare = 3;
-	    }
+	    	}
+		public override void SetStaticDefaults()
+		{
+		Tooltip.SetDefault("-Tier 3-");
+		DisplayName.SetDefault("Big Bang Attack");
+		}
         public override bool UseItem(Player player)
         {
             MyPlayer.ModPlayer(player).KiControlStat += 1;

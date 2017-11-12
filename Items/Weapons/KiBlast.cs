@@ -28,6 +28,11 @@ namespace DBZMOD.Items.Weapons
 			item.value = Item.sellPrice(0, 0, 5, 0);
 			item.rare = 1;
 	    }
+	    public override void SetStaticDefaults()
+		{
+		Tooltip.SetDefault("-Tier 1-");
+		DisplayName.SetDefault("Ki Blast");
+		}
 
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
 		{
