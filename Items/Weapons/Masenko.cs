@@ -49,6 +49,13 @@ namespace DBZMOD.Items.Weapons
 			return true;
 		}
 
+		public override void AI()
+        {
+            int dust = Dust.NewDust(player.position, item.width, item.height, new Color(211, 214, 0), 1.5f);
+            Main.dust[dust].velocity *= 0.1f;
+            Main.dust[dust].noGravity = true;
+        }
+
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
