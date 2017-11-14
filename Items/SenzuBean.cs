@@ -12,8 +12,8 @@ namespace DBZMOD.Items
 		{
 
 
-			item.width = 24;
-			item.height = 24;
+			item.width = 40;
+			item.height = 40;
 			item.healLife = 9001;
 			item.consumable = true;
 			item.maxStack = 99;
