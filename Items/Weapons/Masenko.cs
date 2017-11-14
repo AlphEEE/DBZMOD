@@ -41,20 +41,13 @@ namespace DBZMOD.Items.Weapons
         }
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
 		{
-			Vector2 muzzleOffset = Vector2.Normalize(new Vector2(speedX, speedY)) * 55f;
+			Vector2 muzzleOffset = Vector2.Normalize(new Vector2(speedX, speedY)) * 40f;
 			if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
 			{
 				position += muzzleOffset;
 			}
 			return true;
 		}
-
-		public override void AI()
-        {
-            int dust = Dust.NewDust(player.position, item.width, item.height, new Color(211, 214, 0), 1.5f);
-            Main.dust[dust].velocity *= 0.1f;
-            Main.dust[dust].noGravity = true;
-        }
 
 		public override void AddRecipes()
 		{
