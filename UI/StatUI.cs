@@ -15,6 +15,7 @@ namespace DBZMOD
             private DBZMOD dbzmod; 
             private Item item;
             public Vector2 position;
+            public bool GuiOpen = false;
 
             private Vector2 GuiPosition
             {
@@ -59,12 +60,19 @@ namespace DBZMOD
             dbzmod = (DBZMOD)mod;
         }
             public override void PostDraw(SpriteBatch spriteBatch, Player player)
-        {
-            spriteBatch.Draw(GFX.StatGUI, new Vector2(GuiPosition.X , GuiPosition.Y ), Color.White);
-            spriteBatch.Draw(GFX.KiPower, KiPowerPos + new Vector2(9f, 10f), Color.White);
-            spriteBatch.DrawString(Main.fontMouseText, "Ki Power. " + (character.KiPowerStat == 1 ? "1." : character.KiPowerStat + " ."), KiPowerPos , Color.White);
-            spriteBatch.Draw(GFX.KiControl, KiControlPos + new Vector2(9f, 10f), Color.White);
-            spriteBatch.DrawString(Main.fontMouseText, character.KiControlStat == 1 ? "1." : character.KiControlStat + " .", KiControlPos, Color.White);
-        }
+            {
+            if (GuiOpen = true)
+                {
+                    spriteBatch.Draw(GFX.StatGUI, new Vector2(GuiPosition.X , GuiPosition.Y ), Color.White);
+                    spriteBatch.Draw(GFX.KiPower, KiPowerPos + new Vector2(9f, 10f), Color.White);
+                    spriteBatch.DrawString(Main.fontMouseText, "Ki Power. " + (character.KiPowerStat == 1 ? "1." : character.KiPowerStat + " ."), KiPowerPos , Color.White);
+                    spriteBatch.Draw(GFX.KiControl, KiControlPos + new Vector2(9f, 10f), Color.White);
+                    spriteBatch.DrawString(Main.fontMouseText, character.KiControlStat == 1 ? "1." : character.KiControlStat + " .", KiControlPos, Color.White);
+                }
+                else
+                {
+                    GuiOpen = false;
+                }
+            }
         }
     }

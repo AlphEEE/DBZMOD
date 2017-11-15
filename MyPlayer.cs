@@ -8,6 +8,7 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Graphics;
+using DBZMOD;
 
 namespace DBZMOD
 {
@@ -34,6 +35,17 @@ namespace DBZMOD
         private float Powerlevel(int powerlevel)
         {
             return Powerlevel((KiControlStat + SpeedStat + KiPowerStat + FortitudeStat * 50));
+        }
+        public override void ProcessTriggers(TriggersSet triggersSet)
+        {
+            if (DBZMOD.StatGUIOn.JustPressed && !StatUI.GuiOpen)
+            {
+                StatUI.GuiOpen = true;
+            }
+            else (DBZMOD.StatGUIOn.JustPressed)
+            {
+                StatUI.GuiOpen = false;
+            }
         }
 		public MyPlayer() : base()
 		{

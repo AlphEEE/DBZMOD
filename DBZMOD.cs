@@ -20,6 +20,10 @@ namespace DBZMOD
                 AutoloadSounds = true
             };
         }
+        public override void Load()
+        {
+            StatGUIOn = RegisterHotKey("Stat Gui", "N");
+        }
     }
 }
 
