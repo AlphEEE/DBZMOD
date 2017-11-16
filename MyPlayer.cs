@@ -26,6 +26,8 @@ namespace DBZMOD
         public bool ZoneCustomBiome = false;
         public int drawX;
         public int drawY;
+        public static ModHotkey StatGUIOn;
+        public static ModHotkey KaiokenKey;
 
         public static MyPlayer ModPlayer(Player player)
         {
@@ -38,22 +40,22 @@ namespace DBZMOD
         }
         public override void ProcessTriggers(TriggersSet triggersSet)
         {
-            if (DBZMOD.StatGUIOn.JustPressed && !StatUI.GuiOpen)
+            if (StatGUIOn.JustPressed && !StatUI.GuiOpen)
             {
-                StatUI.GuiOpen = true;
+                DBZMOD.StatUI.GuiOpen = true;
             }
-            if (DBZMOD.StatGUIOn.JustPressed && StatUi.GuiOpen)
+            if (StatGUIOn.JustPressed && StatUi.GuiOpen)
             {
-                StatUI.GuiOpen = false;
+                DBZMOD.StatUI.GuiOpen = false;
             }
             
-            if (DBZMOD.KaiokenKey.JustPressed && (Powerlevel == 10000) && (player.FindBuffIndex(mod.BuffType("KaiokenBuff")) != 1))
+            if (KaiokenKey.JustPressed && (Powerlevel == 10000) && (player.FindBuffIndex(mod.BuffType("KaiokenBuff")) != 1))
             {
-                player.addBuff(mod.BuffType("KaiokenBuff"),15000);
+                player.AddBuff(mod.BuffType("KaiokenBuff"), 15000);
             }
-            if (DBZMOD.KaiokenKey.JustPressed && (player.FindBuffIndex(mod.BuffType("KaiokenBuff")) = 1))
+            if (KaiokenKey.JustPressed && (player.FindBuffIndex(mod.BuffType("KaiokenBuff")) = 1))
             {
-                player.addBuff(mod.BuffType("KaiokenBuff"),0);
+                player.AddBuff(mod.BuffType("KaiokenBuff"), 0);
             }
         }
 		public MyPlayer() : base()
