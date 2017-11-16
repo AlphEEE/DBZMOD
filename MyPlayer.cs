@@ -32,7 +32,7 @@ namespace DBZMOD
             return player.GetModPlayer<MyPlayer>();
         }
 
-        private float Powerlevel()
+        private float Powerlevel(int KiControlStat, int SpeedStat, int KiPowerStat, int FortitudeStat)
         {
             return Powerlevel((KiControlStat + SpeedStat + KiPowerStat + FortitudeStat * 50));
         }
@@ -49,11 +49,11 @@ namespace DBZMOD
             
             if (DBZMOD.KaiokenKey.JustPressed && (Powerlevel == 10000) && (player.FindBuffIndex(mod.BuffType("KaiokenBuff")) != 1))
             {
-                player.addBuff(mod.BuffType("KaiokenBuff"),15000)
+                player.addBuff(mod.BuffType("KaiokenBuff"),15000);
             }
             if (DBZMOD.KaiokenKey.JustPressed && (player.FindBuffIndex(mod.BuffType("KaiokenBuff")) = 1))
             {
-                player.addBuff(mod.BuffType("KaiokenBuff"),0)
+                player.addBuff(mod.BuffType("KaiokenBuff"),0);
             }
         }
 		public MyPlayer() : base()
@@ -62,7 +62,6 @@ namespace DBZMOD
 			KiControlStat = 1;
 			SpeedStat = 1;
 			FortitudeStat = 1;
-            Powerlevel = 1;
 		}
         public override void ResetEffects()
         {
@@ -71,7 +70,6 @@ namespace DBZMOD
             KiControlStat = 1;
             KiPowerStat = 1;
             SpeedStat = 1;
-            Powerlevel = 1;
             FortitudeStat = 1;
             KiMax = 50f;
             KiRegen = 2f;

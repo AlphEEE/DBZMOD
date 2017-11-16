@@ -23,7 +23,7 @@ namespace DBZMOD
         public override void Load()
         {
             StatGUIOn = RegisterHotKey("Stat Gui", "N");
-            KaiokenKey = RegisterHotKey("Kaioken", "J")
+            KaiokenKey = RegisterHotKey("Kaioken", "J");
         }
     }
 }
