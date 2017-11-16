@@ -9,7 +9,11 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Graphics;
 using Terraria.GameInput;
+using Terraria.Localization;
+using System.IO;
 using DBZMOD;
+using Terraria.UI;
+using Terraria.DataStructures;
 
 namespace DBZMOD
 {
