@@ -42,16 +42,16 @@ namespace DBZMOD
         }
         public override void ProcessTriggers(TriggersSet triggersSet)
         {
-            if (StatGUIOn.JustPressed && !StatUI.GuiOpen)
+            if (StatGUIOn.JustPressed && !StatGUI.GuiOpen)
             {
-                DBZMOD.StatUI.GuiOpen = true;
+                StatGUI.GuiOpen = true;
             }
-            if (StatGUIOn.JustPressed && StatUi.GuiOpen)
+            if (StatGUIOn.JustPressed && StatGUI.GuiOpen)
             {
-                DBZMOD.StatUI.GuiOpen = false;
+                StatGUI.GuiOpen = false;
             }
             
-            if (KaiokenKey.JustPressed && (Powerlevel == 10000) && (player.FindBuffIndex(mod.BuffType("KaiokenBuff")) != 1))
+            if (KaiokenKey.JustPressed && Powerlevel == 10000 && player.FindBuffIndex(mod.BuffType("KaiokenBuff") != 1))
             {
                 player.AddBuff(mod.BuffType("KaiokenBuff"), 15000);
             }
