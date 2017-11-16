@@ -8,7 +8,7 @@ namespace DBZMOD.Buffs
 		public override void SetDefaults()
 		{
 			DisplayName.SetDefault("Kaioken");
-			Description.SetDefault("1.2x Damage, 1.2x Speed, Loosing Life.");
+			Description.SetDefault("1.2x Damage, 1.2x Speed, Drains Life.");
 			Main.buffNoTimeDisplay[Type] = true;
 		}
         public override void Update(Player player, ref int buffIndex)
@@ -20,6 +20,7 @@ namespace DBZMOD.Buffs
 			player.magicDamage *= 1.2f;
 			player.minionDamage *= 1.2f;
 			player.thrownDamage *= 1.2f;
+			MyPlayer.ModPlayer(player).KiDamage *= 1.2f;
         }	
 	}
 }

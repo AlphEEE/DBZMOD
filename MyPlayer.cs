@@ -20,7 +20,6 @@ namespace DBZMOD
         public int KiPowerStat;
         public int SpeedStat;
         public int FortitudeStat;
-        public float powerlevel;
         public float KiMax;
         public float KiRegen;
         public bool ZoneCustomBiome = false;
@@ -32,7 +31,7 @@ namespace DBZMOD
             return player.GetModPlayer<MyPlayer>();
         }
 
-        private float Powerlevel(int powerlevel)
+        private float Powerlevel()
         {
             return Powerlevel((KiControlStat + SpeedStat + KiPowerStat + FortitudeStat * 50));
         }
@@ -42,9 +41,18 @@ namespace DBZMOD
             {
                 StatUI.GuiOpen = true;
             }
-            else (DBZMOD.StatGUIOn.JustPressed)
+            if (DBZMOD.StatGUIOn.JustPressed && StatUi.GuiOpen)
             {
                 StatUI.GuiOpen = false;
+            }
+            
+            if (DBZMOD.KaiokenKey.JustPressed && (Powerlevel == 10000) && (player.FindBuffIndex(mod.BuffType("KaiokenBuff")) != 1))
+            {
+                player.addBuff(mod.BuffType("KaiokenBuff"),15000)
+            }
+            if (DBZMOD.KaiokenKey.JustPressed && (player.FindBuffIndex(mod.BuffType("KaiokenBuff")) = 1))
+            {
+                player.addBuff(mod.BuffType("KaiokenBuff"),0)
             }
         }
 		public MyPlayer() : base()
@@ -53,6 +61,7 @@ namespace DBZMOD
 			KiControlStat = 1;
 			SpeedStat = 1;
 			FortitudeStat = 1;
+            Powerlevel = 1;
 		}
         public override void ResetEffects()
         {
@@ -61,6 +70,7 @@ namespace DBZMOD
             KiControlStat = 1;
             KiPowerStat = 1;
             SpeedStat = 1;
+            Powerlevel = 1;
             FortitudeStat = 1;
             KiMax = 50f;
             KiRegen = 2f;
@@ -101,7 +111,7 @@ namespace DBZMOD
 
         public override void PostUpdateEquips()
         {
-            player.statLifeMax2 += (FortitudeStat * 20);
+            player.statLifeMax2 = 100 + (FortitudeStat * 20);
             player.statDefense += (FortitudeStat * 2);
             player.moveSpeed *= 1f + Math.Min(1.5f, SpeedStat * 0.03f);
         }
