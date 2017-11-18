@@ -1,5 +1,6 @@
 using System;
 using Microsoft.Xna.Framework;
+using System.IO;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -12,6 +13,7 @@ using Terraria.Localization;
 using System.IO;
 using DBZMOD;
 using Terraria.UI;
+using Terraria.DataStructures;
 
 namespace DBZMOD
 {
@@ -28,8 +30,8 @@ namespace DBZMOD
         public bool ZoneCustomBiome = false;
         public int drawX;
         public int drawY;
-        public static ModHotKey StatGUIOn;
-        public static ModHotKey KaiokenKey;
+        public static ModHotkey StatGUIOn;
+        public static ModHotkey KaiokenKey;
 
         public static MyPlayer ModPlayer(Player player)
         {
