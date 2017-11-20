@@ -7,15 +7,15 @@ using Terraria.ID;
 using DBZMOD.Items;
 
 namespace DBZMOD.Ui
+{
+    public class StatUi : BaseGUI 
     {
-        public class StatUi : BaseGUI 
-        {
-            private MyPlayer character;
-            private Mod mod;
-            private DBZMOD dbzmod; 
-            private Item item;
-            public Vector2 position;
-            public bool GuiOpen = false;
+        private MyPlayer character;
+        private Mod mod;
+        private DBZMOD dbzmod; 
+        private Item item;
+        public Vector2 position;
+        public bool GuiOpen = false;
 
             private Vector2 GuiPosition
             {
@@ -53,13 +53,7 @@ namespace DBZMOD.Ui
                     return new Vector2(GuiPosition.X - 36f, GuiPosition.Y - 160f);
                 }
             }
-			public StatGUI(Mod mod, MyPlayer character) : base()
-        {
-            this.character = character;
-            this.mod = mod;
-            dbzmod = (DBZMOD)mod;
-        }
-            public override void PostDraw(SpriteBatch spriteBatch, Player player)
+            public override void PostDraw(SpriteBatch spriteBatch)
             {
             if (GuiOpen)
                 {
@@ -74,5 +68,5 @@ namespace DBZMOD.Ui
                     GuiOpen = false;
                 }
             }
-        }
     }
+}

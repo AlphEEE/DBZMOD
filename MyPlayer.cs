@@ -109,11 +109,16 @@ namespace DBZMOD
       //  private static Vector2 value4;
       //  private PlayerLayer MiscEffectsBack;
 
-        public static override UpdateEquips()
+        public override void UpdateEquips()
         {
             player.statLifeMax2 = 100 + (FortitudeStat * 20);
             player.statDefense += (FortitudeStat * 2);
             player.moveSpeed *= 1f + Math.Min(1.5f, SpeedStat * 0.03f);
+            
+            if (player.FindBuffIndex("KaiokenBuff") = 1)
+            {
+                KiDamage *= 1.25f;
+            } 
         }
         public override void Hurt(bool pvp, bool quiet, double damage, int hitDirection, bool crit)
         {
