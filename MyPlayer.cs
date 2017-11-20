@@ -29,7 +29,7 @@ namespace DBZMOD
         public int drawY;
         public static ModHotKey KaiokenKey;
         public static ModHotKey StatGUIOn;
-        StatUI ui = new StatUI();
+        StatUi ui = new StatUi();
 
         public static MyPlayer ModPlayer(Player player)
         {
