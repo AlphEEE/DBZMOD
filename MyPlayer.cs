@@ -29,28 +29,32 @@ namespace DBZMOD
         public int drawY;
         public static ModHotKey KaiokenKey;
         public static ModHotKey StatGUIOn;
+        StatUI ui = new StatUI();
 
         public static MyPlayer ModPlayer(Player player)
         {
             return player.GetModPlayer<MyPlayer>();
         }
 
-		public float Powerlevel(Player player)
+		public float Powerlevel
         {
-            return Powerlevel((MyPlayer.ModPlayer(player).KiControlStat + MyPlayer.ModPlayer(player).SpeedStat + MyPlayer.ModPlayer(player).FortitudeStat * 50));
+            get
+            {
+                return KiControlStat + SpeedStat + FortitudeStat * 50;
+            }
         }
-        public static override ProcessTriggers(TriggersSet triggersSet)
+        public override void ProcessTriggers(TriggersSet triggersSet)
         {
-            if (StatGUIOn.JustPressed && !StatUi.GuiOpen)
+            if (ui.StatGUIOn.JustPressed && !StatUi.GuiOpen)
             {
                 StatUi.GuiOpen = true;
             }
-            if (StatGUIOn.JustPressed && StatUi.GuiOpen)
+            if (ui.StatGUIOn.JustPressed && StatUi.GuiOpen)
             {
                 StatUi.GuiOpen = false;
             }
             
-            if (KaiokenKey.JustPressed && (MyPlayer.ModPlayer(player).Powerlevel > 10000) && player.FindBuffIndex(mod.BuffType("KaiokenBuff") = 0))
+            if (.KaiokenKey.JustPressed && (MyPlayer.ModPlayer(player).Powerlevel > 10000) && player.FindBuffIndex(mod.BuffType("KaiokenBuff") = 0))
             {
                 player.addBuff(mod.BuffType("KaiokenBuff"),15000);
             }
