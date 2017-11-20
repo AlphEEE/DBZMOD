@@ -1,5 +1,6 @@
 using System;
 using Microsoft.Xna.Framework;
+using System.IO;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -8,8 +9,6 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Graphics;
 using Terraria.GameInput;
-using Terraria.Localization;
-using System.IO;
 using DBZMOD;
 using DBZMOD.Ui.StatUi;
 using Terraria.UI;
@@ -29,8 +28,6 @@ namespace DBZMOD
         public bool ZoneCustomBiome = false;
         public int drawX;
         public int drawY;
-        public static ModHotKey StatGUIOn;
-        public static ModHotKey KaiokenKey;
 
         public static MyPlayer ModPlayer(Player player)
         {
@@ -54,11 +51,11 @@ namespace DBZMOD
             
             if (KaiokenKey.JustPressed && (MyPlayer.ModPlayer(player).Powerlevel > 10000) && player.FindBuffIndex(mod.BuffType("KaiokenBuff") = 0))
             {
-                player.AddBuff(mod.BuffType("KaiokenBuff"), 15000);
+                player.addBuff(mod.BuffType("KaiokenBuff"),15000);
             }
-            if (KaiokenKey.JustPressed && (player.FindBuffIndex(mod.BuffType("KaiokenBuff")) = 1))
+            if (DBZMOD.KaiokenKey.JustPressed && (player.FindBuffIndex(mod.BuffType("KaiokenBuff")) = 1))
             {
-                player.AddBuff(mod.BuffType("KaiokenBuff"), 0);
+                player.addBuff(mod.BuffType("KaiokenBuff"),0);
             }
         }
 		public MyPlayer() : base()

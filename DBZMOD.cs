@@ -22,8 +22,8 @@ namespace DBZMOD
         }
         public override void Load()
         {
-            MyPlayer.ModPlayer(player).StatGUIOn = RegisterHotKey("Stat Gui", "N");
-            MyPlayer.ModPlayer(player).KaiokenKey = RegisterHotKey("Kaioken", "J");
+            StatGUIOn = RegisterHotKey("Stat Gui", "N");
+            KaiokenKey = RegisterHotKey("Kaioken", "J");
         }
     }
 }
