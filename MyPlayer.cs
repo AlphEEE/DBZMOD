@@ -11,6 +11,7 @@ using Terraria.GameInput;
 using Terraria.Localization;
 using System.IO;
 using DBZMOD;
+using DBZMOD.Ui.StatUi;
 using Terraria.UI;
 
 namespace DBZMOD
@@ -36,22 +37,22 @@ namespace DBZMOD
             return player.GetModPlayer<MyPlayer>();
         }
 
-        private float Powerlevel(int KiControlStat, int SpeedStat, int KiPowerStat, int FortitudeStat)
+		public float Powerlevel(Player player)
         {
-            return Powerlevel((KiControlStat + SpeedStat + KiPowerStat + FortitudeStat * 50));
+            return Powerlevel((MyPlayer.ModPlayer(player).KiControlStat + MyPlayer.ModPlayer(player).SpeedStat + MyPlayer.ModPlayer(player).KiPowerStat + MyPlayer.ModPlayer(player).FortitudeStat * 50));
         }
-        public override void ProcessTriggers(TriggersSet triggersSet)
+        public static override ProcessTriggers(TriggersSet triggersSet)
         {
-            if (StatGUIOn.JustPressed && !StatGUI.GuiOpen)
+            if (StatGUIOn.JustPressed && !StatUi.GuiOpen)
             {
-                StatGUI.GuiOpen = true;
+                StatUi.GuiOpen = true;
             }
-            if (StatGUIOn.JustPressed && StatGUI.GuiOpen)
+            if (StatGUIOn.JustPressed && StatUi.GuiOpen)
             {
-                StatGUI.GuiOpen = false;
+                StatUi.GuiOpen = false;
             }
             
-            if (KaiokenKey.JustPressed && Powerlevel == 10000 && player.FindBuffIndex(mod.BuffType("KaiokenBuff") != 1))
+            if (KaiokenKey.JustPressed && (MyPlayer.ModPlayer(player).Powerlevel > 10000) && player.FindBuffIndex(mod.BuffType("KaiokenBuff") = 0))
             {
                 player.AddBuff(mod.BuffType("KaiokenBuff"), 15000);
             }
@@ -112,7 +113,7 @@ namespace DBZMOD
       //  private static Vector2 value4;
       //  private PlayerLayer MiscEffectsBack;
 
-        public override void PostUpdateEquips()
+        public static override UpdateEquips()
         {
             player.statLifeMax2 = 100 + (FortitudeStat * 20);
             player.statDefense += (FortitudeStat * 2);

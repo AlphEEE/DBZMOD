@@ -6,9 +6,9 @@ using ReLogic.Graphics;
 using Terraria.ID;
 using DBZMOD.Items;
 
-namespace DBZMOD
+namespace DBZMOD.Ui
     {
-        public class StatGUI : BaseGUI 
+        public class StatUi : BaseGUI 
         {
             private MyPlayer character;
             private Mod mod;
