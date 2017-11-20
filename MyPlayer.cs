@@ -54,7 +54,7 @@ namespace DBZMOD
                 StatUi.GuiOpen = false;
             }
             
-            if (.KaiokenKey.JustPressed && (MyPlayer.ModPlayer(player).Powerlevel > 10000) && player.FindBuffIndex(mod.BuffType("KaiokenBuff") = 0))
+            if (KaiokenKey.JustPressed && (MyPlayer.ModPlayer(player).Powerlevel > 10000) && player.FindBuffIndex(mod.BuffType("KaiokenBuff") = 0))
             {
                 player.addBuff(mod.BuffType("KaiokenBuff"),15000);
             }
