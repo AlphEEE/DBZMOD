@@ -20,7 +20,6 @@ namespace DBZMOD
     	public float KiDamage;
         public float KiKbAddition;
         public int KiControlStat;
-        public int KiPowerStat;
         public int SpeedStat;
         public int FortitudeStat;
         public float KiMax;
@@ -28,6 +27,8 @@ namespace DBZMOD
         public bool ZoneCustomBiome = false;
         public int drawX;
         public int drawY;
+        public static ModHotKey KaiokenKey;
+        public static ModHotKey StatGUIOn;
 
         public static MyPlayer ModPlayer(Player player)
         {
@@ -36,7 +37,7 @@ namespace DBZMOD
 
 		public float Powerlevel(Player player)
         {
-            return Powerlevel((MyPlayer.ModPlayer(player).KiControlStat + MyPlayer.ModPlayer(player).SpeedStat + MyPlayer.ModPlayer(player).KiPowerStat + MyPlayer.ModPlayer(player).FortitudeStat * 50));
+            return Powerlevel((MyPlayer.ModPlayer(player).KiControlStat + MyPlayer.ModPlayer(player).SpeedStat + MyPlayer.ModPlayer(player).FortitudeStat * 50));
         }
         public static override ProcessTriggers(TriggersSet triggersSet)
         {
@@ -53,14 +54,13 @@ namespace DBZMOD
             {
                 player.addBuff(mod.BuffType("KaiokenBuff"),15000);
             }
-            if (DBZMOD.KaiokenKey.JustPressed && (player.FindBuffIndex(mod.BuffType("KaiokenBuff")) = 1))
+            if (KaiokenKey.JustPressed && (player.FindBuffIndex(mod.BuffType("KaiokenBuff")) = 1))
             {
                 player.addBuff(mod.BuffType("KaiokenBuff"),0);
             }
         }
 		public MyPlayer() : base()
 		{
-			KiPowerStat = 1;
 			KiControlStat = 1;
 			SpeedStat = 1;
 			FortitudeStat = 1;
@@ -70,7 +70,6 @@ namespace DBZMOD
             KiDamage = 1f;
             KiKbAddition = 0f;
             KiControlStat = 1;
-            KiPowerStat = 1;
             SpeedStat = 1;
             FortitudeStat = 1;
             KiMax = 50f;
