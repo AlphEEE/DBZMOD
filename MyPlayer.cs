@@ -82,10 +82,10 @@ namespace DBZMOD
 	
         public override void SetupStartInventory(IList<Item> items)
         {
-            Item item4 = new Item();
-            item4.SetDefaults(mod.ItemType("EmptyScroll"));   
-            item4.stack = 1;         
-            items.Add(item4);
+            Item item1 = new Item();
+            item1.SetDefaults(mod.ItemType("KiFist1"));   
+            item1.stack = 1;
+            items.Add(item1);
         }
         //public override void UpdateBiomes()
 
