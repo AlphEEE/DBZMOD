@@ -10,7 +10,7 @@ using Terraria.ModLoader;
 using Terraria.Graphics;
 using Terraria.GameInput;
 using DBZMOD;
-using DBZMOD.Ui.StatUi;
+using DBZMOD.Ui;
 using Terraria.UI;
 
 namespace DBZMOD
@@ -118,11 +118,6 @@ namespace DBZMOD
             player.statLifeMax2 = 100 + (FortitudeStat * 20);
             player.statDefense += (FortitudeStat * 2);
             player.moveSpeed *= 1f + Math.Min(1.5f, SpeedStat * 0.03f);
-            
-            if (player.FindBuffIndex("KaiokenBuff") = 1)
-            {
-                KiDamage *= 1.25f;
-            } 
         }
         public override void Hurt(bool pvp, bool quiet, double damage, int hitDirection, bool crit)
         {

@@ -31,7 +31,7 @@ namespace DBZMOD.Items.Weapons
 	    }
 	    public override void SetStaticDefaults()
 		{
-		Tooltip.SetDefault("-Tier 1-");
+		Tooltip.SetDefault("-Tier 2-");
 		DisplayName.SetDefault("Ki Beam");
 		}
         public override bool UseItem(Player player)

@@ -31,7 +31,7 @@ namespace DBZMOD.Items.Weapons
 	    }
 	    public override void SetStaticDefaults()
 		{
-		Tooltip.SetDefault("-Tier 2-");
+		Tooltip.SetDefault("-Tier 3-");
 		DisplayName.SetDefault("Masenko");
 		}
         public override bool UseItem(Player player)
