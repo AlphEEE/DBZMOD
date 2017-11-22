@@ -33,8 +33,6 @@ namespace DBZMOD.Items
 		public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, "KatchinBar" , 10);
-            recipe.AddIngredient(null, "KiGem" , 15);
             recipe.AddIngredient(ItemID.Cloud , 20);
             recipe.AddTile(TileID.Furnaces);
             recipe.SetResult(this);
