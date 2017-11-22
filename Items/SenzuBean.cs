@@ -12,25 +12,25 @@ namespace DBZMOD.Items
 		{
 
 
-			item.width = 40;
-			item.height = 40;
+			item.width = 24;
+			item.height = 24;
 			item.healLife = 9001;
 			item.consumable = true;
-			item.maxStack = 99;
+			item.maxStack = 3;
 			item.UseSound = SoundID.Item3;
 			item.useStyle = 2;
 			item.useTurn = true;
 			item.useAnimation = 17;
 			item.useTime = 17;
 			item.value = 10000;
-			item.rare = 3;
+			item.rare = 5;
 			item.potion = true;
 		}
 
     public override void SetStaticDefaults()
     {
       DisplayName.SetDefault("Senzu Bean");
-      Tooltip.SetDefault("Fully Heals Health.");
+      Tooltip.SetDefault("Restores your body!");
     }
 
 	}
