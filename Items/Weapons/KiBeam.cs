@@ -16,12 +16,12 @@ namespace DBZMOD.Items.Weapons
 			// Alter any of these values as you see fit, but you should probably keep useStyle on 1, as well as the noUseGraphic and noMelee bools
 			item.shoot = mod.ProjectileType("KiBeamProjectile");
 			item.shootSpeed = 70f;
-			item.damage = 20;
+			item.damage = 18;
 			item.knockBack = 5f;
 			item.useStyle = 5;
 			item.UseSound = SoundID.Item12;
 			item.useAnimation = 25;
-			item.useTime = 14;
+			item.useTime = 18;
 			item.width = 40;
 			item.noUseGraphic = true;
 			item.height = 40;
