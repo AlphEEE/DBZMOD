@@ -22,6 +22,7 @@ namespace DBZMOD.Projectiles
 			projectile.aiStyle = 1;
 			projectile.light = 1f;
 			projectile.timeLeft = 250;
+			projectile.damage = 32;
 			aiType = 14;
             projectile.ignoreWater = true;
 			projectile.penetrate = -1;
@@ -49,9 +50,9 @@ namespace DBZMOD.Projectiles
         public override void AI()
         {
 			 projectile.ai[1]++;
-            if(projectile.ai[1] == 2)
+            if(projectile.ai[1] == 3)
             {
-                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y - 0, 0, 0, mod.ProjectileType("MasenkoTrail"), projectile.damage, 4f, projectile.owner, 0, projectile.rotation);
+                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y - 0, 0, 50, mod.ProjectileType("MasenkoTrail"), projectile.damage, 4f, projectile.owner, 0, projectile.rotation);
                 projectile.ai[1] = 0;
             }
         }
