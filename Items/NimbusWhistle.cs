@@ -11,8 +11,8 @@ namespace DBZMOD.Items
 		public override void SetDefaults()
 		{
 
-			item.width = 36;
-			item.height = 36;
+			item.width = 24;
+			item.height = 30;
 
 			item.useTime = 20;
 			item.useAnimation = 20;
