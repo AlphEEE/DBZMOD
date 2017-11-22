@@ -37,10 +37,12 @@ namespace DBZMOD
         }
         public override void ProcessTriggers(TriggersSet triggersSet)
         {
-            if (StatGUIOn == null)
-            ErrorLogger.Log("StatGUIOn is null");
-            if (ui == null)
-                ErrorLogger.Log("ui is null");
+            //if (StatGUIOn == null)
+            //ErrorLogger.Log("StatGUIOn is null");
+            //if (ui == null)
+              //  ErrorLogger.Log("ui is null");
+            //if (ui.GuiOpen = true)
+              //  Main.NewText("Gui is active");
 
             if (StatGUIOn.JustPressed)
             {
@@ -51,11 +53,11 @@ namespace DBZMOD
                 ui.GuiOpen = false;
             }
             
-            if (KaiokenKey.JustPressed && (MyPlayer.ModPlayer(player).Powerlevel > 10000) && player.FindBuffIndex(mod.BuffType("KaiokenBuff")) == 0)
+            if (KaiokenKey.JustPressed && (MyPlayer.ModPlayer(player).Powerlevel > 10000) && player.FindBuffIndex(mod.BuffType("KaiokenBuff")) < 0)
             {
                 player.AddBuff(mod.BuffType("KaiokenBuff"),15000);
             }
-            if (KaiokenKey.JustPressed && player.FindBuffIndex(mod.BuffType("KaiokenBuff")) == 1)
+            if (KaiokenKey.JustPressed && player.FindBuffIndex(mod.BuffType("KaiokenBuff")) >= 0)
             {
                 player.AddBuff(mod.BuffType("KaiokenBuff"),0);
             }
