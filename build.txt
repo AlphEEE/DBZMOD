@@ -1,4 +1,6 @@
 author = NuovaPrime/Earth
 
-version = 0.2.1
-displayName = Dragon Ball Z Mod Beta
+version = 1.0.0
+displayName = Dragon Ball T
+buildIgnore = *.csproj, *.user, obj\*, bin\*, .vs\*, .git\*
+includePDB = true

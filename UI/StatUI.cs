@@ -3,8 +3,6 @@ using Terraria.ModLoader;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using ReLogic.Graphics;
-using Terraria.ID;
-using DBZMOD.Items;
 
 namespace DBZMOD.Ui
 {
@@ -53,19 +51,15 @@ namespace DBZMOD.Ui
                     return new Vector2(GuiPosition.X - 36f, GuiPosition.Y - 160f);
                 }
             }
-            public override void PostDraw(SpriteBatch spriteBatch)
+            public override void PostDraw(SpriteBatch spriteBatch, Player player)
             {
-            if (GuiOpen)
+            if (GuiOpen == true)
                 {
                     spriteBatch.Draw(GFX.StatGUI, new Vector2(GuiPosition.X , GuiPosition.Y ), Color.White);
                     spriteBatch.Draw(GFX.KiPower, KiPowerPos + new Vector2(9f, 10f), Color.White);
-                    spriteBatch.DrawString(Main.fontMouseText, "Ki Power. " + (character.KiPowerStat == 1 ? "1." : character.KiPowerStat + " ."), KiPowerPos , Color.White);
+                    spriteBatch.DrawString(Main.fontMouseText, "Speed. " + (character.SpeedStat == 1 ? "1." : character.SpeedStat + " ."), KiPowerPos , Color.White);
                     spriteBatch.Draw(GFX.KiControl, KiControlPos + new Vector2(9f, 10f), Color.White);
                     spriteBatch.DrawString(Main.fontMouseText, character.KiControlStat == 1 ? "1." : character.KiControlStat + " .", KiControlPos, Color.White);
-                }
-                else
-                {
-                    GuiOpen = false;
                 }
             }
     }

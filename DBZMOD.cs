@@ -1,11 +1,4 @@
-using System;
-using Microsoft.Xna.Framework;
-using Terraria;
-using Terraria.Graphics.Effects;
-using Terraria.Graphics.Shaders;
-using Terraria.ID;
 using Terraria.ModLoader;
-using DBZMOD.Items;
 
 namespace DBZMOD
 {
@@ -22,8 +15,8 @@ namespace DBZMOD
         }
         public override void Load()
         {
-            StatGUIOn = RegisterHotKey("Stat Gui", "N");
-            KaiokenKey = RegisterHotKey("Kaioken", "J");
+            MyPlayer.StatGUIOn = RegisterHotKey("Stat Gui", "N");
+            MyPlayer.KaiokenKey = RegisterHotKey("Kaioken", "J");
         }
     }
 }
