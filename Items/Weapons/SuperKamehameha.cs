@@ -31,7 +31,7 @@ namespace DBZMOD.Items.Weapons
 	    }
 	    public override void SetStaticDefaults()
 		{
-		Tooltip.SetDefault("-Tier -");
+		Tooltip.SetDefault("-Tier -3");
 		DisplayName.SetDefault("Super Kamehameha");
 		}
 		public override bool UseItem(Player player)

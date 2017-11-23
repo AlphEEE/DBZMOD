@@ -34,11 +34,6 @@ namespace DBZMOD.Items.Weapons
 		DisplayName.SetDefault("Ki Fist");
 		}
 
-		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
-        {
-            Projectile.NewProjectile(position.X + 5, position.Y, speedX, speedY, mod.ProjectileType("KiFistProj"), damage, knockBack, player.whoAmI);
-            return false;
-        }
         public override bool UseItem(Player player)
         {
             MyPlayer.ModPlayer(player).KiControlStat += 1;
