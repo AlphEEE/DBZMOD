@@ -31,7 +31,7 @@ namespace DBZMOD.Items.Weapons
 	    }
 	    public override void SetStaticDefaults()
 		{
-		Tooltip.SetDefault("-Tier 2-");
+		Tooltip.SetDefault("-Tier 1-");
 		DisplayName.SetDefault("Ki Beam");
 		}
         public override bool UseItem(Player player)
@@ -52,8 +52,8 @@ namespace DBZMOD.Items.Weapons
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
-	        recipe.AddIngredient(3);
-            recipe.AddTile(TileID.LunarCraftingStation);
+	        recipe.AddIngredient(null, "StableKiCrystal", 30);
+            recipe.AddTile(TileID.Anvils);
 			recipe.SetResult(this);
 	        recipe.AddRecipe();
 		}
