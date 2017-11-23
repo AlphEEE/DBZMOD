@@ -15,7 +15,7 @@ namespace DBZMOD.Items.Weapons
 		{
 			item.shoot = mod.ProjectileType("BigBangAttackProjectile");
 			item.shootSpeed = 25f;
-			item.damage = 95;
+			item.damage = 55;
 			item.knockBack = 5f;
 			item.useStyle = 1;
 			item.UseSound = SoundID.Item1;
