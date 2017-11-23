@@ -53,7 +53,7 @@ namespace DBZMOD.Ui
             }
             public override void PostDraw(SpriteBatch spriteBatch, Player player)
             {
-            if (GuiOpen == true)
+            if (MyPlayer.StatGUIOn.JustPressed && GuiOpen == true)
                 {
                     spriteBatch.Draw(GFX.StatGUI, new Vector2(GuiPosition.X , GuiPosition.Y ), Color.White);
                     spriteBatch.Draw(GFX.KiPower, KiPowerPos + new Vector2(9f, 10f), Color.White);
