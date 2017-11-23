@@ -2,7 +2,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Slimymod.Items
+namespace DBZMOD.Items
 {
     public class StableKiCrystal : ModItem
     {
