@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace Slimymod.Items
 {
-    public class CalmCrystal : ModItem
+    public class CalmKiCrystal : ModItem
     {
         public override void SetStaticDefaults()
         {

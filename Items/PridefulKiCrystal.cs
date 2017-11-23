@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace Slimymod.Items
 {
-    public class PrideCrystal : ModItem
+    public class PrideKiCrystal : ModItem
     {
         public override void SetStaticDefaults()
         {

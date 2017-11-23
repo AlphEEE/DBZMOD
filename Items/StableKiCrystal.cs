@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace Slimymod.Items
 {
-    public class StableCrystal : ModItem
+    public class StableKiCrystal : ModItem
     {
         public override void SetStaticDefaults()
         {

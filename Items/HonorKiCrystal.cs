@@ -4,32 +4,21 @@ using Terraria.ModLoader;
 
 namespace Slimymod.Items
 {
-	public class Gelikite : ModItem
+	public class HonorKiCrystal : ModItem
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Gelikite");
-			Tooltip.SetDefault("This gel is rock hard!");
+			DisplayName.SetDefault("Honour Ki Crystal");
+			Tooltip.SetDefault("-Tier 2 Material-");
 		}
 
 		public override void SetDefaults()
 		{
-			item.width = 20;
-			item.height = 20;
-			item.maxStack = 999;
-			item.value = 100;
-			item.rare = 4;
-		}
-
-		public override void AddRecipes()
-		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(null,"GelikiteChunk", 4);
-			recipe.AddIngredient(ItemID.HellstoneBar, 2);
-			recipe.AddIngredient(ItemID.SoulofLight, 1);
-			recipe.AddTile(TileID.Hellforge);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
+			item.width = 22;
+			item.height = 22;
+			item.maxStack = 9999;
+			item.value = 400;
+			item.rare = 3;
 		}
 	}
 }
