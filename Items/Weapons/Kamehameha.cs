@@ -52,8 +52,8 @@ namespace DBZMOD.Items.Weapons
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
-	        recipe.AddIngredient(3);
-            recipe.AddTile(TileID.LunarCraftingStation);
+	        recipe.AddIngredient(null, "PridefulKiCrystal", 40);
+            recipe.AddTile(TileID.MythrilAnvil);
 			recipe.SetResult(this);
 	        recipe.AddRecipe();
 		}
