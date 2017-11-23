@@ -16,7 +16,7 @@ namespace DBZMOD.Projectiles
             projectile.CloneDefaults(ProjectileID.SwordBeam);
             projectile.hostile = false;
             projectile.friendly = true;
-			projectile.tileCollide = true;
+			projectile.tileCollide = false;
             projectile.width = 68;
             projectile.height = 92;
 			projectile.aiStyle = 1;
