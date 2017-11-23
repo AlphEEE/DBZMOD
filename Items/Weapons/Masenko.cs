@@ -54,7 +54,7 @@ namespace DBZMOD.Items.Weapons
 			ModRecipe recipe = new ModRecipe(mod);
 	        recipe.AddIngredient(null, "HonorKiCrystal", 30);
             recipe.AddIngredient(null, "CalmKiCrystal", 30);
-            recipe.AddIngredient(null, "KiBeam");
+            recipe.AddIngredient(null, "EnergyWave");
             recipe.AddTile(TileID.Anvils);
 			recipe.SetResult(this);
 	        recipe.AddRecipe();
