@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace DBZMOD.Items
 {
-    public class PrideKiCrystal : ModItem
+    public class PridefulKiCrystal : ModItem
     {
         public override void SetStaticDefaults()
         {
