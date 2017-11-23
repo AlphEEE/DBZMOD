@@ -31,7 +31,7 @@ namespace DBZMOD.Items.Weapons
 	    }
 	    public override void SetStaticDefaults()
 		{
-		Tooltip.SetDefault("-Tier 3-");
+		Tooltip.SetDefault("-Tier 2-");
 		DisplayName.SetDefault("Masenko");
 		}
         public override bool UseItem(Player player)
@@ -52,8 +52,10 @@ namespace DBZMOD.Items.Weapons
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
-	        recipe.AddIngredient(3);
-            recipe.AddTile(TileID.LunarCraftingStation);
+	        recipe.AddIngredient(null, "HonorKiCrystal", 30);
+            recipe.AddIngredient(null, "CalmKiCrystal", 30);
+            recipe.AddIngredient(null, "KiBeam");
+            recipe.AddTile(TileID.Anvils);
 			recipe.SetResult(this);
 	        recipe.AddRecipe();
 		}

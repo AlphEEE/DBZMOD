@@ -44,8 +44,8 @@ namespace DBZMOD.Items.Weapons
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
-	        recipe.AddIngredient(3);
-            recipe.AddTile(TileID.LunarCraftingStation);
+	        recipe.AddIngredient(null, "HonorKiCrystal", 40);
+            recipe.AddTile(TileID.Anvils);
 			recipe.SetResult(this);
 	        recipe.AddRecipe();
 		}
