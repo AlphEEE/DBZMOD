@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
@@ -14,45 +14,36 @@ namespace DBZMOD.Items.Weapons
 		public override void SetDefaults()
 		{
 			item.shoot = mod.ProjectileType("BigBangAttackProjectile");
+			item.damage = 90;
 			item.shootSpeed = 25f;
-			item.damage = 55;
 			item.knockBack = 5f;
-			item.useStyle = 1;
+			item.useStyle = 3;
 			item.UseSound = SoundID.Item1;
-			item.useAnimation = 25;
-			item.useTime = 30;
+			item.useAnimation = 5;
+			item.useTime = 100;
 			item.width = 40;
 			item.noUseGraphic = true;
 			item.height = 40;
 			item.autoReuse = false;
 			item.value = Item.sellPrice(0, 0, 5, 0);
 			item.rare = 3;
-	    	}
-		public override void SetStaticDefaults()
+	    }
+	    public override void SetStaticDefaults()
 		{
 		Tooltip.SetDefault("-Tier 3-");
 		DisplayName.SetDefault("Big Bang Attack");
 		}
+
         public override bool UseItem(Player player)
         {
             MyPlayer.ModPlayer(player).KiControlStat += 1;
             return true;
         }
-        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
-		{
-			Vector2 muzzleOffset = Vector2.Normalize(new Vector2(speedX, speedY)) * 58f;
-			if (Collision.CanHit(position, 1, 1, position + muzzleOffset, 1, 1))
-			{
-				position += muzzleOffset;
-			}
-			return true;
-		}
-		
-		public override void AddRecipes()
+        public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
-	        recipe.AddIngredient(3);
-            recipe.AddTile(TileID.LunarCraftingStation);
+	        recipe.AddIngredient(null, "StableKiCrystal", 20);
+            recipe.AddTile(TileID.Anvils);
 			recipe.SetResult(this);
 	        recipe.AddRecipe();
 		}

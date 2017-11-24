@@ -10,7 +10,6 @@ namespace DBZMOD.Mounts
     {
         public override void SetDefaults()
         {
-            mountData.spawnDust = 10;
             mountData.buff = mod.BuffType("NimbusBuff");
             mountData.heightBoost = 10;          //how high is the mount from the ground
             mountData.fallDamage = 0f;
@@ -19,10 +18,10 @@ namespace DBZMOD.Mounts
             mountData.flightTimeMax = 100000;
             mountData.fatigueMax = 0;
             mountData.jumpHeight = 7;
-            mountData.acceleration = 0.30f;
+            mountData.acceleration = 0.35f;
             mountData.jumpSpeed = 7f;
             mountData.blockExtraJumps = false;
-            mountData.totalFrames = 12;            //mount frame/animation
+            mountData.totalFrames = 1;            //mount frame/animation
             mountData.constantJump = true;
             int[] array = new int[mountData.totalFrames];
             for (int l = 0; l < array.Length; l++)
@@ -31,23 +30,23 @@ namespace DBZMOD.Mounts
             }
             mountData.playerYOffsets = array;
             mountData.xOffset = -10;                    
-            mountData.yOffset = 50;          //how high is the mount from the player
+            mountData.yOffset = 40;          //how high is the mount from the player
             mountData.bodyFrame = 3;          //player frame when it's on the mount
             mountData.playerHeadOffset = 10;        
-            mountData.standingFrameCount = 12;
-            mountData.standingFrameDelay = 12;
+            mountData.standingFrameCount = 1;
+            mountData.standingFrameDelay = 1;
             mountData.standingFrameStart = 0;
-            mountData.runningFrameCount = 12;
-            mountData.runningFrameDelay = 12;
+            mountData.runningFrameCount = 1;
+            mountData.runningFrameDelay = 1;
             mountData.runningFrameStart = 0;
-            mountData.flyingFrameCount = 12;
-            mountData.flyingFrameDelay = 12;
+            mountData.flyingFrameCount = 1;
+            mountData.flyingFrameDelay = 1;
             mountData.flyingFrameStart = 0;
-            mountData.inAirFrameCount = 12;
-            mountData.inAirFrameDelay = 12;
+            mountData.inAirFrameCount = 1;
+            mountData.inAirFrameDelay = 1;
             mountData.inAirFrameStart = 0;
-            mountData.idleFrameCount = 12;
-            mountData.idleFrameDelay = 12;
+            mountData.idleFrameCount = 1;
+            mountData.idleFrameDelay = 1;
             mountData.idleFrameStart = 0;
             mountData.idleFrameLoop = true;
             mountData.swimFrameCount = mountData.inAirFrameCount;

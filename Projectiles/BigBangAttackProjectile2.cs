@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
@@ -9,28 +9,24 @@ using Terraria.ModLoader;
 
 namespace DBZMOD.Projectiles
 {
-    public class BigBangAttackTrail : KiProjectile
-    {
-    	public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("BigBangAttackTrail");
-		}
-    	
-        public override void SetDefaults()
+	public class BigBangAttackProjectile2 : KiProjectile
+	{
+		public override void SetDefaults()
         {
-            projectile.width = 100;
-            projectile.height = 100;
-			projectile.aiStyle = 17;
-			projectile.light = 1f;
+            projectile.hostile = false;
             projectile.friendly = true;
-            projectile.ignoreWater = true;
 			projectile.tileCollide = false;
-            projectile.penetrate = 1;
-            projectile.timeLeft = 5;
+            projectile.width = 40;
+			projectile.damage = 80;
+            projectile.height = 40;
 			projectile.aiStyle = 1;
-            aiType = 14;
-			ProjectileID.Sets.TrailCacheLength[projectile.type] = 8;
-            ProjectileID.Sets.TrailingMode[projectile.type] = 0;
+			projectile.light = 1f;
+			projectile.timeLeft = 2;
+            projectile.ignoreWater = true;
+			projectile.penetrate = 1;
+			aiType = 14;
+			ProjectileID.Sets.TrailCacheLength[projectile.type] = 3;
+			ProjectileID.Sets.TrailingMode[projectile.type] = 0;
         }
 		
 		public override void Kill(int timeLeft)
@@ -45,8 +41,8 @@ namespace DBZMOD.Projectiles
 
             projectile.position.X = projectile.position.X + (float)(projectile.width / 2);
             projectile.position.Y = projectile.position.Y + (float)(projectile.height / 2);
-            projectile.width = 22;
-            projectile.height = 22;
+            projectile.width = 100;
+            projectile.height = 100;
             projectile.position.X = projectile.position.X - (float)(projectile.width / 2);
             projectile.position.Y = projectile.position.Y - (float)(projectile.height / 2);
             projectile.knockBack = 8f;
@@ -60,29 +56,29 @@ namespace DBZMOD.Projectiles
 
             projectile.position.X = projectile.position.X + (float)(projectile.width / 2);
             projectile.position.Y = projectile.position.Y + (float)(projectile.height / 2);
-            projectile.width = 22;
-            projectile.height = 22;
+            projectile.width = 88;
+            projectile.height = 88;
             projectile.position.X = projectile.position.X - (float)(projectile.width / 2);
             projectile.position.Y = projectile.position.Y - (float)(projectile.height / 2);
             for (int num615 = 0; num615 < 30; num615++)
             {
-                int num616 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 31, 0f, 0f, 100, new Color(141, 214, 253), 1.5f);
+                int num616 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 31, 0f, 0f, 100, default(Color), 1.5f);
                 Main.dust[num616].velocity *= 1.4f;
             }
             for (int num617 = 0; num617 < 20; num617++)
             {
-                int num618 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 6, 0f, 0f, 100, new Color(141, 214, 253), 1.5f);
+                int num618 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 6, 0f, 0f, 100, default(Color), 3.5f);
                 Main.dust[num618].noGravity = true;
                 Main.dust[num618].velocity *= 7f;
-                num618 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 6, 0f, 0f, 100, new Color(141, 214, 253), 1.5f);
+                num618 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 6, 0f, 0f, 100, default(Color), 1.5f);
                 Main.dust[num618].velocity *= 3f;
             }
             for (int num619 = 0; num619 < 2; num619++)
             {
-                float scaleFactor9 = 0.9f;
+                float scaleFactor9 = 3f;
                 if (num619 == 1)
                 {
-                    scaleFactor9 = 0.9f;
+                    scaleFactor9 = 3f;
                 }
                 int num620 = Gore.NewGore(new Vector2(projectile.position.X, projectile.position.Y), default(Vector2), Main.rand.Next(61, 64), 1f);
                 Main.gore[num620].velocity *= scaleFactor9;
@@ -122,6 +118,11 @@ namespace DBZMOD.Projectiles
 				spriteBatch.Draw(Main.projectileTexture[projectile.type], drawPos, null, color, projectile.rotation, drawOrigin, projectile.scale, SpriteEffects.None, 0f);
 			}
 			return true;
-		}
+			}
+		
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("BigBangAttackProjectile2");
+        }
 	}
 }

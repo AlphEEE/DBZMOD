@@ -13,58 +13,40 @@ namespace DBZMOD.Projectiles
 	{
 		public override void SetDefaults()
         {
-            projectile.CloneDefaults(ProjectileID.SwordBeam);
             projectile.hostile = false;
             projectile.friendly = true;
 			projectile.tileCollide = false;
-            projectile.width = 68;
-            projectile.height = 92;
+            projectile.width = 120;
+			projectile.damage = 100;
+            projectile.height = 120;
 			projectile.aiStyle = 1;
 			projectile.light = 1f;
-			aiType = 14;
+			projectile.timeLeft = 170;
             projectile.ignoreWater = true;
-			projectile.penetrate = 1;
-			ProjectileID.Sets.TrailCacheLength[projectile.type] = 5;
-            ProjectileID.Sets.TrailingMode[projectile.type] = 0;
-        }
-
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("BigBangAttackProjectile");
+            aiType = 14;
+			projectile.penetrate = 2;
+			ProjectileID.Sets.TrailCacheLength[projectile.type] = 4;
+			ProjectileID.Sets.TrailingMode[projectile.type] = 0;
         }
 		
-        public override bool PreAI()
-        {
-            if (projectile.owner == Main.myPlayer && projectile.timeLeft <= 3)
-            {
-                projectile.tileCollide = false;
-                projectile.ai[1] = 0f;
-                projectile.alpha = 255;
-
-                projectile.position.X = projectile.position.X + (float)(projectile.width / 2);
-                projectile.position.Y = projectile.position.Y + (float)(projectile.height / 2);
-                projectile.width = 22;
-                projectile.height = 22;
-                projectile.position.X = projectile.position.X - (float)(projectile.width / 2);
-                projectile.position.Y = projectile.position.Y - (float)(projectile.height / 2);
-                projectile.knockBack = 8f;
-            }
-            return true;
-        }
-
 		public override void Kill(int timeLeft)
         {
             for (int i = 2; i < 3; i++) //Makes it so that 3 projectiles split from this projectile
             {
                 int velo = Main.rand.Next(1, 1); //determines the X velocity
                 int velo1 = Main.rand.Next(4, 4); //determines the Y velocity //determines the Y velocity
-				Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, velo, velo1, mod.ProjectileType("BigBangAttackTrail"), projectile.damage, 12, projectile.owner, 0f, 1f); 
-				Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, velo, velo1, mod.ProjectileType("BigBangAttackTrail"), projectile.damage, 13, projectile.owner, 0f, 1f);
-				Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, velo, velo1, mod.ProjectileType("BigBangAttackTrail"), projectile.damage, 14, projectile.owner, 0f, 1f); 
-				Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, velo, velo1, mod.ProjectileType("BigBangAttackTrail"), projectile.damage, 16, projectile.owner, 0f, 1f);
-				Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, velo, velo1, mod.ProjectileType("BigBangAttackTrail"), projectile.damage, 18, projectile.owner, 0f, 1f); 
-				Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, velo, velo1, mod.ProjectileType("BigBangAttackTrail"), projectile.damage, 20, projectile.owner, 0f, 1f);
-				Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, velo, velo1, mod.ProjectileType("BigBangAttackTrail"), projectile.damage, 11, projectile.owner, 0f, 1f); 
+				Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, velo, velo1, mod.ProjectileType("BigBangAttackProjectile2"), projectile.damage, 70, projectile.owner, 0f, 1f); 
+				Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, velo, velo1, mod.ProjectileType("BigBangAttackProjectile2"), projectile.damage, 70, projectile.owner, 0f, 1f);
+				Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, velo, velo1, mod.ProjectileType("BigBangAttackProjectile2"), projectile.damage, 70, projectile.owner, 0f, 1f); 
+				Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, velo, velo1, mod.ProjectileType("BigBangAttackProjectile2"), projectile.damage, 70, projectile.owner, 0f, 1f);
+				Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, velo, velo1, mod.ProjectileType("BigBangAttackProjectile2"), projectile.damage, 70, projectile.owner, 0f, 1f); 
+				Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, velo, velo1, mod.ProjectileType("BigBangAttackProjectile2"), projectile.damage, 70, projectile.owner, 0f, 1f);
+				Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, velo, velo1, mod.ProjectileType("BigBangAttackProjectile2"), projectile.damage, 70, projectile.owner, 0f, 1f); 
+				Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, velo, velo1, mod.ProjectileType("BigBangAttackProjectile2"), projectile.damage, 70, projectile.owner, 0f, 1f);
+				Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, velo, velo1, mod.ProjectileType("BigBangAttackProjectile2"), projectile.damage, 70, projectile.owner, 0f, 1f); 
+				Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, velo, velo1, mod.ProjectileType("BigBangAttackProjectile2"), projectile.damage, 70, projectile.owner, 0f, 1f);
+				Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, velo, velo1, mod.ProjectileType("BigBangAttackProjectile2"), projectile.damage, 70, projectile.owner, 0f, 1f); 
+				Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, velo, velo1, mod.ProjectileType("BigBangAttackProjectile2"), projectile.damage, 70, projectile.owner, 0f, 1f);
             }
         }
 		
@@ -77,7 +59,12 @@ namespace DBZMOD.Projectiles
 				Color color = projectile.GetAlpha(lightColor) * ((float)(projectile.oldPos.Length - k) / (float)projectile.oldPos.Length);
 				spriteBatch.Draw(Main.projectileTexture[projectile.type], drawPos, null, color, projectile.rotation, drawOrigin, projectile.scale, SpriteEffects.None, 0f);
 			}
-		    return true;
+			return true;
+			}
+		
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("BigBangAttackProjectile");
         }
 	}
 }
