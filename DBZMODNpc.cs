@@ -10,6 +10,13 @@ namespace DBZMOD
 {
     class DBZMODNPC : GlobalNPC
     {
+        public override bool InstancePerEntity
+        {
+            get
+            {
+                return true;
+            }
+        }
         MyPlayer player = new MyPlayer();
         public override void PostAI(NPC npc)
         {
