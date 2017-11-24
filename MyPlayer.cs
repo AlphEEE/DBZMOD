@@ -14,13 +14,14 @@ namespace DBZMOD
         public int KiControlStat;
         public int SpeedStat;
         public int FortitudeStat;
-        public float KiMax;
+        public int KiMax;
         public float KiRegen;
         public bool ZoneCustomBiome = false;
         public int drawX;
         public int drawY;
         public static ModHotKey KaiokenKey;
         public static ModHotKey StatGUIOn;
+        public static ModHotKey EnergyCharge;
         StatUi ui = new StatUi();
 
         public static MyPlayer ModPlayer(Player player)
@@ -61,6 +62,10 @@ namespace DBZMOD
             {
                 player.AddBuff(mod.BuffType("KaiokenBuff"),0);
             }
+            if (EnergyCharge.Current && KiMax > 50)
+            {
+                KiMax++;
+            }
 
         }
 		public MyPlayer() : base()
@@ -76,7 +81,7 @@ namespace DBZMOD
             KiControlStat = 1;
             SpeedStat = 1;
             FortitudeStat = 1;
-            KiMax = 50f;
+            KiMax = 100;
             KiRegen = 2f;
         }
 	
@@ -119,7 +124,7 @@ namespace DBZMOD
             player.statDefense += (MyPlayer.ModPlayer(player).FortitudeStat * 2);
             player.moveSpeed *= 1f + Math.Min(1.5f, MyPlayer.ModPlayer(player).SpeedStat * 0.03f);
         }
-        public override void Hurt(bool pvp, bool quiet, double damage, int hitDirection, bool crit)
+        public override void PostHurt(bool pvp, bool quiet, double damage, int hitDirection, bool crit)
         {
             MyPlayer.ModPlayer(player).FortitudeStat += 1;
         }

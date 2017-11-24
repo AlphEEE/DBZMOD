@@ -17,6 +17,7 @@ namespace DBZMOD
         {
             MyPlayer.StatGUIOn = RegisterHotKey("Stat Gui", "N");
             MyPlayer.KaiokenKey = RegisterHotKey("Kaioken", "J");
+            MyPlayer.EnergyCharge = RegisterHotKey("Energy Charge", "C");
         }
     }
 }
