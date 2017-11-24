@@ -9,7 +9,7 @@ namespace DBZMOD.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Honour Ki Crystal");
-			Tooltip.SetDefault("-Tier 2 Material-");
+			Tooltip.SetDefault("-Tier 2.5 Material-");
 		}
 
 		public override void SetDefaults()

@@ -30,7 +30,7 @@ namespace DBZMOD.Items.Weapons
 	    }
 		public override void SetStaticDefaults()
 		{
-		Tooltip.SetDefault("-Tier 2-");
+		Tooltip.SetDefault("-Tier 2.5-");
 		DisplayName.SetDefault("Energy Blast Barrage");
 		}
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)

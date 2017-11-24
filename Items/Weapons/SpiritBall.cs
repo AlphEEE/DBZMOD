@@ -34,7 +34,7 @@ namespace DBZMOD.Items.Weapons
 	    public override void SetStaticDefaults()
 		{
 		Tooltip.SetDefault("Yamcha!." 
-		+ "\n-Tier 2-");
+		+ "\n-Tier 2.5-");
 		DisplayName.SetDefault("Spirit Ball");
 		}
 		public override bool UseItem(Player player)
