@@ -26,11 +26,11 @@ namespace DBZMOD.Items.Weapons
 			item.height = 40;
 			item.autoReuse = false;
 			item.value = Item.sellPrice(0, 0, 5, 0);
-			item.rare = 3;
+			item.rare = 4;
 	    }
 	    public override void SetStaticDefaults()
 		{
-		Tooltip.SetDefault("-Tier 3-");
+		Tooltip.SetDefault("-Tier 4-");
 		DisplayName.SetDefault("Big Bang Attack");
 		}
 
