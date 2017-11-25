@@ -42,7 +42,8 @@ namespace DBZMOD.Items.Weapons
         public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
-	        recipe.AddIngredient(null, "PridefulKiCrystal", 20);
+	        recipe.AddIngredient(null, "PridefulKiCrystal", 40);
+		    recipe.AddIngredient(null, "AngerKiCrystal", 40);
             recipe.AddTile(TileID.Anvils);
 			recipe.SetResult(this);
 	        recipe.AddRecipe();

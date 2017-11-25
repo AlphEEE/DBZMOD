@@ -103,6 +103,16 @@ namespace DBZMOD
                     }
                 }
             }
+			 if (Main.hardMode)
+            {
+                if (Main.player[Main.myPlayer].ZoneUnderworldHeight && Main.player[Main.myPlayer].ZoneCrimson)
+                {
+                    if (Main.rand.Next(4) == 0)
+                    {
+                        Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("AngerfulKiCrystal"), Main.rand.Next(1, 3));
+                    }
+                }
+            }
             //THIS IS AN EXAMPLE HOW TO ADD A SECOND DORP
             //if (Main.rand.Next(2) == 0) //this is the item rarity, so 2 is 1 in 3 chance that the npc will drop the item.
             //{

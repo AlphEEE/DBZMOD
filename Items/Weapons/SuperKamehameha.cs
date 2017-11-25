@@ -53,7 +53,10 @@ namespace DBZMOD.Items.Weapons
 		{
 			ModRecipe recipe = new ModRecipe(mod);
 	        recipe.AddIngredient(3);
-            recipe.AddTile(TileID.LunarCraftingStation);
+		    recipe.AddIngredient(null, "Kamehameha", 1);
+			recipe.AddIngredient(null, "PridefulKiCrystal", 40);
+		    recipe.AddIngredient(null, "AngerKiCrystal", 40);
+            recipe.AddTile(TileID.Anvils);
 			recipe.SetResult(this);
 	        recipe.AddRecipe();
 		}
