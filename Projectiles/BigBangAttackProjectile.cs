@@ -9,8 +9,10 @@ using Terraria.ModLoader;
 
 namespace DBZMOD.Projectiles
 {
+	
 	public class BigBangAttackProjectile : KiProjectile
 	{
+		
 		public override void SetDefaults()
         {
             projectile.hostile = false;
@@ -24,7 +26,7 @@ namespace DBZMOD.Projectiles
 			projectile.timeLeft = 170;
             projectile.ignoreWater = true;
             aiType = 14;
-			projectile.penetrate = 2;
+			projectile.penetrate = 1;
 			ProjectileID.Sets.TrailCacheLength[projectile.type] = 4;
 			ProjectileID.Sets.TrailingMode[projectile.type] = 0;
         }
@@ -35,18 +37,18 @@ namespace DBZMOD.Projectiles
             {
                 int velo = Main.rand.Next(1, 1); //determines the X velocity
                 int velo1 = Main.rand.Next(4, 4); //determines the Y velocity //determines the Y velocity
-				Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, velo, velo1, mod.ProjectileType("BigBangAttackProjectile2"), projectile.damage, 70, projectile.owner, 0f, 1f); 
-				Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, velo, velo1, mod.ProjectileType("BigBangAttackProjectile2"), projectile.damage, 70, projectile.owner, 0f, 1f);
-				Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, velo, velo1, mod.ProjectileType("BigBangAttackProjectile2"), projectile.damage, 70, projectile.owner, 0f, 1f); 
-				Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, velo, velo1, mod.ProjectileType("BigBangAttackProjectile2"), projectile.damage, 70, projectile.owner, 0f, 1f);
-				Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, velo, velo1, mod.ProjectileType("BigBangAttackProjectile2"), projectile.damage, 70, projectile.owner, 0f, 1f); 
-				Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, velo, velo1, mod.ProjectileType("BigBangAttackProjectile2"), projectile.damage, 70, projectile.owner, 0f, 1f);
-				Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, velo, velo1, mod.ProjectileType("BigBangAttackProjectile2"), projectile.damage, 70, projectile.owner, 0f, 1f); 
-				Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, velo, velo1, mod.ProjectileType("BigBangAttackProjectile2"), projectile.damage, 70, projectile.owner, 0f, 1f);
-				Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, velo, velo1, mod.ProjectileType("BigBangAttackProjectile2"), projectile.damage, 70, projectile.owner, 0f, 1f); 
-				Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, velo, velo1, mod.ProjectileType("BigBangAttackProjectile2"), projectile.damage, 70, projectile.owner, 0f, 1f);
-				Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, velo, velo1, mod.ProjectileType("BigBangAttackProjectile2"), projectile.damage, 70, projectile.owner, 0f, 1f); 
-				Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, velo, velo1, mod.ProjectileType("BigBangAttackProjectile2"), projectile.damage, 70, projectile.owner, 0f, 1f);
+				Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, velo, velo1, mod.ProjectileType("BigBangAttackProjectile2"), projectile.damage, 30, projectile.owner, 0f, 1f); 
+				Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, velo, velo1, mod.ProjectileType("BigBangAttackProjectile2"), projectile.damage, 30, projectile.owner, 0f, 1f);
+				Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, velo, velo1, mod.ProjectileType("BigBangAttackProjectile2"), projectile.damage, 30, projectile.owner, 0f, 1f); 
+				Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, velo, velo1, mod.ProjectileType("BigBangAttackProjectile2"), projectile.damage, 20, projectile.owner, 0f, 1f);
+				Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, velo, velo1, mod.ProjectileType("BigBangAttackProjectile2"), projectile.damage, 20, projectile.owner, 0f, 1f); 
+				Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, velo, velo1, mod.ProjectileType("BigBangAttackProjectile2"), projectile.damage, 10, projectile.owner, 0f, 1f);
+				Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, velo, velo1, mod.ProjectileType("BigBangAttackProjectile2"), projectile.damage, 10, projectile.owner, 0f, 1f); 
+				Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, velo, velo1, mod.ProjectileType("BigBangAttackProjectile2"), projectile.damage, 10, projectile.owner, 0f, 1f);
+				Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, velo, velo1, mod.ProjectileType("BigBangAttackProjectile2"), projectile.damage, 10, projectile.owner, 0f, 1f); 
+				Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, velo, velo1, mod.ProjectileType("BigBangAttackProjectile2"), projectile.damage, 10, projectile.owner, 0f, 1f);
+				Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, velo, velo1, mod.ProjectileType("BigBangAttackProjectile2"), projectile.damage, 10, projectile.owner, 0f, 1f); 
+				Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, velo, velo1, mod.ProjectileType("BigBangAttackProjectile2"), projectile.damage, 10, projectile.owner, 0f, 1f);
             }
         }
 		

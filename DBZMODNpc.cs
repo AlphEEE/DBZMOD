@@ -20,12 +20,12 @@ namespace DBZMOD
         MyPlayer player = new MyPlayer();
         public override void PostAI(NPC npc)
         {
-            npc.lifeMax = ((int)Math.Round(npc.lifeMax * player.Powerlevel * 0.15));
-            npc.life = ((int)Math.Round(npc.life * player.Powerlevel * 0.15));
-            npc.defense = ((int)Math.Round(npc.life * player.Powerlevel * 0.10));
-            if (npc.damage > 0 && !npc.boss)
+            // npc.lifeMax = ((int)Math.Round(npc.lifeMax * player.Powerlevel * 0.15));
+            //npc.life = ((int)Math.Round(npc.life * player.Powerlevel * 0.15));
+            //npc.defense = ((int)Math.Round(npc.life * player.Powerlevel * 0.10));
+            //if (npc.damage > 0 && !npc.boss)
             {
-                npc.damage = ((int)Math.Round(npc.life * player.Powerlevel * 0.20));
+                //npc.damage = ((int)Math.Round(npc.life * player.Powerlevel * 0.20));
             }
         }
         public override void NPCLoot(NPC npc)

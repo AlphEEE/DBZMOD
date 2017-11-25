@@ -1,4 +1,4 @@
-using System;
+ using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
@@ -14,7 +14,7 @@ namespace DBZMOD.Items.Weapons
 		public override void SetDefaults()
 		{
 			item.shoot = mod.ProjectileType("BigBangAttackProjectile");
-			item.damage = 90;
+			item.damage = 32;
 			item.shootSpeed = 25f;
 			item.knockBack = 5f;
 			item.useStyle = 3;
@@ -42,7 +42,7 @@ namespace DBZMOD.Items.Weapons
         public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
-	        recipe.AddIngredient(null, "StableKiCrystal", 20);
+	        recipe.AddIngredient(null, "PridefulKiCrystal", 20);
             recipe.AddTile(TileID.Anvils);
 			recipe.SetResult(this);
 	        recipe.AddRecipe();

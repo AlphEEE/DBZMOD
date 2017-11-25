@@ -16,12 +16,13 @@ namespace DBZMOD.Projectiles
             projectile.hostile = false;
             projectile.friendly = true;
 			projectile.tileCollide = false;
-            projectile.width = 40;
-			projectile.damage = 80;
-            projectile.height = 40;
+			projectile.hide = true;
+            projectile.width = 400;
+			projectile.damage = 40;
+            projectile.height = 400;
 			projectile.aiStyle = 1;
 			projectile.light = 1f;
-			projectile.timeLeft = 2;
+			projectile.timeLeft = 6;
             projectile.ignoreWater = true;
 			projectile.penetrate = 1;
 			aiType = 14;
@@ -41,8 +42,8 @@ namespace DBZMOD.Projectiles
 
             projectile.position.X = projectile.position.X + (float)(projectile.width / 2);
             projectile.position.Y = projectile.position.Y + (float)(projectile.height / 2);
-            projectile.width = 100;
-            projectile.height = 100;
+            projectile.width = 120;
+            projectile.height = 120;
             projectile.position.X = projectile.position.X - (float)(projectile.width / 2);
             projectile.position.Y = projectile.position.Y - (float)(projectile.height / 2);
             projectile.knockBack = 8f;
