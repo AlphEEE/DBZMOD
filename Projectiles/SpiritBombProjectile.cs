@@ -13,7 +13,7 @@ namespace DBZMOD.Projectiles
     {
         public override Color? GetAlpha(Color lightColor)
         {
-    return Color.White;
+    return Color.AliceBlue;
         }
 		
 		public int localtimer = 0;
@@ -35,7 +35,7 @@ namespace DBZMOD.Projectiles
             projectile.width = 400;
             projectile.height = 400;
 			projectile.aiStyle = 1;
-			projectile.light = 0.8f;
+			projectile.light = 20f;
             projectile.friendly = true;
             projectile.ignoreWater = true;
             projectile.penetrate = 40;
@@ -61,7 +61,7 @@ namespace DBZMOD.Projectiles
                 sinDelta = 0.5f;
             }
             projectile.scale = sinDelta;
-            delta += 2;
+            delta += 1;
             for (int i = (int)projectile.position.X; i < projectile.width; i++)
             {
             {
