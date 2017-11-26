@@ -16,6 +16,15 @@ namespace DBZMOD.Projectiles
     return Color.White;
         }
 		
+		public int localtimer = 0;
+        public bool velocitySet = true;
+        public bool init = true;
+        public float angle = 0;
+        public float angleIncrease = 0;
+        public float delta = 0;
+		public float width = 0;
+		public float height = 0;
+		
     	public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Spirit Bomb Projectile");
@@ -29,8 +38,8 @@ namespace DBZMOD.Projectiles
 			projectile.light = 0.8f;
             projectile.friendly = true;
             projectile.ignoreWater = true;
-            projectile.penetrate = -1;
-            projectile.timeLeft = 400;
+            projectile.penetrate = 40;
+            projectile.timeLeft = 500;
 			aiType = 14;
 			projectile.aiStyle = 1;
 			projectile.tileCollide = false;
@@ -40,71 +49,54 @@ namespace DBZMOD.Projectiles
 
 		public override void AI()
         {
-			if (Vector2.Distance(projectile.position, Main.MouseWorld) > 0.1)
-            projectile.velocity = Vector2.Normalize(Main.MouseWorld - projectile.position) * 13;
-        	projectile.ai[0] += 1f;
-			if (projectile.ai[0] >= 240f)
-			{
-				projectile.alpha += 3;
-				projectile.damage = (int)((double)projectile.damage * 0.95);
-				projectile.knockBack = (float)((int)((double)projectile.knockBack * 0.95));
-			}
-			if (projectile.ai[0] < 240f)
-			{
-				projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 1.57f;
-			}
-			if (projectile.velocity.Y > 16f)
-			{
-				projectile.velocity.Y = 16f;
-			}
-        	float num472 = projectile.Center.X;
-			float num473 = projectile.Center.Y;
-			float num474 = 800f;
-			bool flag17 = false;
-			for (int num475 = 0; num475 < 200; num475++)
-			{
-				if (Main.npc[num475].CanBeChasedBy(projectile, false) && Collision.CanHit(projectile.Center, 1, 1, Main.npc[num475].Center, 1, 1))
-				{
-					float num476 = Main.npc[num475].position.X + (float)(Main.npc[num475].width / 2);
-					float num477 = Main.npc[num475].position.Y + (float)(Main.npc[num475].height / 2);
-					float num478 = Math.Abs(projectile.position.X + (float)(projectile.width / 2) - num476) + Math.Abs(projectile.position.Y + (float)(projectile.height / 2) - num477);
-					if (num478 < num474)
-					{
-						num474 = num478;
-						num472 = num476;
-						num473 = num477;
-						flag17 = true;
-					}
-				}
-			}
-			if (flag17)
-			{
-				float num483 = 18f;
-				Vector2 vector35 = new Vector2(projectile.position.X + (float)projectile.width * 0.5f, projectile.position.Y + (float)projectile.height * 0.5f);
-				float num484 = num472 - vector35.X;
-				float num485 = num473 - vector35.Y;
-				float num486 = (float)Math.Sqrt((double)(num484 * num484 + num485 * num485));
-				num486 = num483 / num486;
-				num484 *= num486;
-				num485 *= num486;
-				projectile.velocity.X = (projectile.velocity.X * 20f + num484) / 21f;
-				projectile.velocity.Y = (projectile.velocity.Y * 20f + num485) / 21f;
-				return;
-			}
-            if (Main.rand.Next(6) == 0)
-            {
-		}
-	}
 			
+			projectile.ai[1]++;
+            if(projectile.ai[1] % 7 == 0)		   
+            Projectile.NewProjectile(projectile.Center.X + Main.rand.NextFloat(-500, 600), projectile.Center.Y + 1000, 0, -10, mod.ProjectileType("StoneBlockDestruction"), projectile.damage, 0f, projectile.owner);
+            Projectile.NewProjectile(projectile.Center.X + Main.rand.NextFloat(-500, 600), projectile.Center.Y + 1000, 0, -10, mod.ProjectileType("DirtBlockDestruction"), projectile.damage, 0f, projectile.owner);
+            float sinDelta = MathHelper.ToRadians(delta);
+            sinDelta = (0.25f * (float)Math.Sin(sinDelta)) + 0.75f;
+            if (sinDelta < 0.5f)
+            {
+                sinDelta = 0.5f;
+            }
+            projectile.scale = sinDelta;
+            delta += 2;
+            for (int i = (int)projectile.position.X; i < projectile.width; i++)
+            {
+            {
+                for (int j = (int)projectile.position.Y; j < projectile.height; j++)
+                {
+                    WorldGen.KillTile(i / 16, j / 16, false, false, true);
+                }
+            }
+               int maxdusts = 20;
+               for (int k = 0; k < maxdusts; k++)
+            {
+		     float dustDistance = 150 + Main.rand.Next(30);
+             float dustSpeed = 10;
+             Vector2 offset = Vector2.UnitX.RotateRandom(MathHelper.Pi) * dustDistance;
+             Vector2 velocity = -offset.SafeNormalize(-Vector2.UnitY) * dustSpeed;
+             Dust dust = Dust.NewDustPerfect(projectile.Center + offset, 87, velocity, 0, default(Color), 1.5f);
+		    }
+        }
+	}
+   
         public override void Kill(int timeLeft)
         {
-            for (int num303 = 0; num303 < 3; num303++)
+              int maxdusts = 20;
+              for (int i = 0; i < maxdusts; i++)
 			{
 				int num304 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 20, 0f, 0f, 100, default(Color), 0.8f);
 				Main.dust[num304].noGravity = true;
 				Main.dust[num304].velocity *= 1.2f;
 				Main.dust[num304].velocity -= projectile.oldVelocity * 0.3f;
 			}
+        }
+		
+		 public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        {
+            target.AddBuff(BuffID.Frostburn, 500);
         }
 		
 		public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
