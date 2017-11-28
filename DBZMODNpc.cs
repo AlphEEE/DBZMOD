@@ -64,7 +64,7 @@ namespace DBZMOD
             //THIS IS AN EXAMPLE OF HOW TO MAKE ITEMS DROP FROM ALL NPCs IN A SPECIFIC BIOME
             if (!Main.hardMode)     //this make the item drop only in hardmode
             {
-                if (!Main.player[Main.myPlayer].ZoneBeach && !Main.player[Main.myPlayer].ZoneCorrupt && !Main.player[Main.myPlayer].ZoneCrimson && !Main.player[Main.myPlayer].ZoneDesert && !Main.player[Main.myPlayer].ZoneDungeon && !Main.player[Main.myPlayer].ZoneGlowshroom && !Main.player[Main.myPlayer].ZoneHoly && !Main.player[Main.myPlayer].ZoneJungle && !Main.player[Main.myPlayer].ZoneMeteor && !Main.player[Main.myPlayer].ZoneOldOneArmy && !Main.player[Main.myPlayer].ZoneSandstorm && !Main.player[Main.myPlayer].ZoneSnow && !Main.player[Main.myPlayer].ZoneTowerNebula && !Main.player[Main.myPlayer].ZoneTowerSolar && !Main.player[Main.myPlayer].ZoneTowerStardust && !Main.player[Main.myPlayer].ZoneTowerVortex && !Main.player[Main.myPlayer].ZoneUndergroundDesert)        //this is where you choose what biome you whant the item to drop. ZoneCorrupt is in Corruption
+                if (!Main.player[(int)Player.FindClosest(npc.position, npc.width, npc.height)].ZoneBeach && !Main.player[(int)Player.FindClosest(npc.position, npc.width, npc.height)].ZoneCorrupt && !Main.player[(int)Player.FindClosest(npc.position, npc.width, npc.height)].ZoneCrimson && !Main.player[(int)Player.FindClosest(npc.position, npc.width, npc.height)].ZoneDesert && !Main.player[(int)Player.FindClosest(npc.position, npc.width, npc.height)].ZoneDungeon && !Main.player[(int)Player.FindClosest(npc.position, npc.width, npc.height)].ZoneGlowshroom && !Main.player[(int)Player.FindClosest(npc.position, npc.width, npc.height)].ZoneHoly && !Main.player[(int)Player.FindClosest(npc.position, npc.width, npc.height)].ZoneJungle && !Main.player[(int)Player.FindClosest(npc.position, npc.width, npc.height)].ZoneMeteor && !Main.player[(int)Player.FindClosest(npc.position, npc.width, npc.height)].ZoneOldOneArmy && !Main.player[(int)Player.FindClosest(npc.position, npc.width, npc.height)].ZoneSandstorm && !Main.player[(int)Player.FindClosest(npc.position, npc.width, npc.height)].ZoneSnow && !Main.player[(int)Player.FindClosest(npc.position, npc.width, npc.height)].ZoneTowerNebula && !Main.player[(int)Player.FindClosest(npc.position, npc.width, npc.height)].ZoneTowerSolar && !Main.player[(int)Player.FindClosest(npc.position, npc.width, npc.height)].ZoneTowerStardust && !Main.player[(int)Player.FindClosest(npc.position, npc.width, npc.height)].ZoneTowerVortex && !Main.player[(int)Player.FindClosest(npc.position, npc.width, npc.height)].ZoneUndergroundDesert && !Main.player[(int)Player.FindClosest(npc.position, npc.width, npc.height)].ZoneUnderworldHeight)        //this is where you choose what biome you whant the item to drop. ZoneCorrupt is in Corruption
                 {
                     if (Main.rand.Next(4) == 0)      //this is the item rarity, so 9 = 1 in 10 chance that the npc will drop the item.
                     {
@@ -75,7 +75,7 @@ namespace DBZMOD
             }
             if (!Main.hardMode)
             {
-                if (Main.player[Main.myPlayer].ZoneJungle)
+                if (Main.player[(int)Player.FindClosest(npc.position, npc.width, npc.height)].ZoneJungle)
                 {
                     if (Main.rand.Next(4) == 0)
                     {
@@ -85,7 +85,7 @@ namespace DBZMOD
             }
             if (!Main.hardMode)
             {
-                if (Main.player[Main.myPlayer].ZoneUnderworldHeight)
+                if (Main.player[(int)Player.FindClosest(npc.position, npc.width, npc.height)].ZoneUnderworldHeight)
                 {
                     if (Main.rand.Next(4) == 0)
                     {
@@ -95,7 +95,7 @@ namespace DBZMOD
             }
             if (Main.hardMode)
             {
-                if (Main.player[Main.myPlayer].ZoneHoly)
+                if (Main.player[(int)Player.FindClosest(npc.position, npc.width, npc.height)].ZoneHoly)
                 {
                     if (Main.rand.Next(4) == 0)
                     {
@@ -105,7 +105,7 @@ namespace DBZMOD
             }
             if (Main.hardMode)
             {
-                if (Main.player[Main.myPlayer].ZoneCrimson)
+                if (Main.player[(int)Player.FindClosest(npc.position, npc.width, npc.height)].ZoneCrimson)
                 {
                     if (Main.rand.Next(4) == 0)
                     {
@@ -115,7 +115,7 @@ namespace DBZMOD
             }
             if (Main.hardMode)
             {
-                if (Main.player[Main.myPlayer].ZoneCorrupt)
+                if (Main.player[(int)Player.FindClosest(npc.position, npc.width, npc.height)].ZoneCorrupt)
                 {
                     if (Main.rand.Next(4) == 0)
                     {

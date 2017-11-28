@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.GameInput;
-using DBZMOD.Ui;
+using DBZMOD.UI;
 
 namespace DBZMOD
 {
