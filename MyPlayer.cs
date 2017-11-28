@@ -18,8 +18,6 @@ namespace DBZMOD
         public int drawY;
         public static ModHotKey KaiokenKey;
         public static ModHotKey EnergyCharge;
-        public bool GuiOpen = false;
-        StatUi ui = new StatUi();
 
         public static MyPlayer ModPlayer(Player player)
         {
