@@ -37,11 +37,7 @@ namespace DBZMOD.Items.Weapons
 		+ "\n-Tier 2.5-");
 		DisplayName.SetDefault("Spirit Ball");
 		}
-		public override bool UseItem(Player player)
-        {
-            MyPlayer.ModPlayer(player).KiControlStat += 1;
-            return true;
-        }
+
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);

@@ -45,7 +45,7 @@ namespace DBZMOD
         }
         public override void GetWeaponDamage(Player player, ref int damage)
         {
-			damage = (int)(damage * MyPlayer.ModPlayer(player).KiDamage + MyPlayer.ModPlayer(player).KiControlStat * 1.5f);
+			damage = (int)(damage * MyPlayer.ModPlayer(player).KiDamage);
         }
         public override void ModifyTooltips(List<TooltipLine> tooltips)
 		{

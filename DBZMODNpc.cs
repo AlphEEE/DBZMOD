@@ -95,7 +95,7 @@ namespace DBZMOD
             }
             if (Main.hardMode)
             {
-                if (Main.player[Main.myPlayer].ZoneCorrupt && Main.player[Main.myPlayer].ZoneCrimson)
+                if (Main.player[Main.myPlayer].ZoneHoly)
                 {
                     if (Main.rand.Next(4) == 0)
                     {
@@ -103,9 +103,19 @@ namespace DBZMOD
                     }
                 }
             }
-			 if (Main.hardMode)
+            if (Main.hardMode)
             {
-                if (Main.player[Main.myPlayer].ZoneUnderworldHeight && Main.player[Main.myPlayer].ZoneCrimson)
+                if (Main.player[Main.myPlayer].ZoneCrimson)
+                {
+                    if (Main.rand.Next(4) == 0)
+                    {
+                        Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("AngerfulKiCrystal"), Main.rand.Next(1, 3));
+                    }
+                }
+            }
+            if (Main.hardMode)
+            {
+                if (Main.player[Main.myPlayer].ZoneCorrupt)
                 {
                     if (Main.rand.Next(4) == 0)
                     {

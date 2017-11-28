@@ -58,11 +58,6 @@ namespace DBZMOD.Items.Weapons
 		Tooltip.SetDefault("-Tier 4-");
 		DisplayName.SetDefault("Spirit Bomb");
 		}
-        public override bool UseItem(Player player)
-        {
-            MyPlayer.ModPlayer(player).KiControlStat += 1;
-            return true;
-        }
 
 		public override void AddRecipes()
 		{

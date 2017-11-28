@@ -34,11 +34,7 @@ namespace DBZMOD.Items.Weapons
 		Tooltip.SetDefault("-Tier 2.5-");
 		DisplayName.SetDefault("Double Sunday");
 		}
-		public override bool UseItem(Player player)
-        {
-            MyPlayer.ModPlayer(player).KiControlStat += 1;
-            return true;
-        }
+
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
 		{
 			float numberProjectiles = 2 + Main.rand.Next(1); // 3, 4, or 5 shots

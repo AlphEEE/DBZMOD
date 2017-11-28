@@ -11,17 +11,14 @@ namespace DBZMOD
     {
         public float KiDamage;
         public float KiKbAddition;
-        public int KiControlStat;
-        public int SpeedStat;
-        public int FortitudeStat;
         public int KiMax;
         public float KiRegen;
         public bool ZoneCustomBiome = false;
         public int drawX;
         public int drawY;
         public static ModHotKey KaiokenKey;
-        public static ModHotKey StatGUIOn;
         public static ModHotKey EnergyCharge;
+        public bool GuiOpen = false;
         StatUi ui = new StatUi();
 
         public static MyPlayer ModPlayer(Player player)
@@ -33,7 +30,7 @@ namespace DBZMOD
         {
             get
             {
-                return KiControlStat + SpeedStat + FortitudeStat * 50;
+                return player.statLifeMax2 + player.moveSpeed + player.statDefense + player.statManaMax2 + player.maxMinions * 50;
             }
         }
         public override void ProcessTriggers(TriggersSet triggersSet)
@@ -44,15 +41,6 @@ namespace DBZMOD
               //  ErrorLogger.Log("ui is null");
             //if (ui.GuiOpen = true)
               //  Main.NewText("Gui is active");
-
-            if (StatGUIOn.JustPressed)
-            {
-                ui.GuiOpen = true;
-            }
-            if (StatGUIOn.JustPressed && (ui.GuiOpen = true))
-            {
-                ui.GuiOpen = false;
-            }
             
             if (KaiokenKey.JustPressed && (MyPlayer.ModPlayer(player).Powerlevel > 10000) && player.FindBuffIndex(mod.BuffType("KaiokenBuff")) < 0)
             {
@@ -70,17 +58,12 @@ namespace DBZMOD
         }
 		public MyPlayer() : base()
 		{
-			KiControlStat = 1;
-			SpeedStat = 1;
-			FortitudeStat = 1;
+
 		}
         public override void ResetEffects()
         {
             KiDamage = 1f;
             KiKbAddition = 0f;
-            KiControlStat = 1;
-            SpeedStat = 1;
-            FortitudeStat = 1;
             KiMax = 100;
             KiRegen = 2f;
         }
@@ -117,17 +100,6 @@ namespace DBZMOD
       //  private static double num91;
       //  private static Vector2 value4;
       //  private PlayerLayer MiscEffectsBack;
-
-        public static void UpdateEquips(Player player)
-        {
-            player.statLifeMax2 = 100 + (MyPlayer.ModPlayer(player).FortitudeStat * 20);
-            player.statDefense += (MyPlayer.ModPlayer(player).FortitudeStat * 2);
-            player.moveSpeed *= 1f + Math.Min(1.5f, MyPlayer.ModPlayer(player).SpeedStat * 0.03f);
-        }
-        public override void PostHurt(bool pvp, bool quiet, double damage, int hitDirection, bool crit)
-        {
-            MyPlayer.ModPlayer(player).FortitudeStat += 1;
-        }
         
       //  public override void ModifyDrawLayers(List<PlayerLayer> layers)
           //  {

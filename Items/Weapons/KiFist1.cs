@@ -34,11 +34,7 @@ namespace DBZMOD.Items.Weapons
 		DisplayName.SetDefault("Ki Fist");
 		}
 
-        public override bool UseItem(Player player)
-        {
-            MyPlayer.ModPlayer(player).KiControlStat += 1;
-            return true;
-        }
+
         public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
