@@ -20,7 +20,7 @@ namespace DBZMOD.Items.Weapons
 			item.useStyle = 1;
 			item.UseSound = SoundID.Item1;
 			item.useAnimation = 25;
-			item.useTime = 550;
+			item.useTime =  550;
 			item.width = 40;
 			item.channel = true;
 			item.noUseGraphic = true;
@@ -58,6 +58,14 @@ namespace DBZMOD.Items.Weapons
 		Tooltip.SetDefault("-Tier 4-");
 		DisplayName.SetDefault("Spirit Bomb");
 		}
+        public override bool CanUseItem(Player player)
+        {
+            if (player.FindBuffIndex(mod.BuffType("StressedDebuff")) < 0)
+            {
+                return true;
+            }
+            
+        }
 
 		public override void AddRecipes()
 		{

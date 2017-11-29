@@ -19,7 +19,7 @@ namespace DBZMOD.Items.Weapons
 			item.knockBack = 5f;
 			item.useStyle = 3;
 			item.UseSound = SoundID.Item1;
-			item.useAnimation = 5;
+			item.useAnimation = 30;
 			item.useTime = 1;
 			item.width = 12;
 			item.noUseGraphic = true;
@@ -31,7 +31,7 @@ namespace DBZMOD.Items.Weapons
 	    public override void SetStaticDefaults()
 		{
 		Tooltip.SetDefault("-Tier 1-");
-		DisplayName.SetDefault("Ki Fist");
+		DisplayName.SetDefault("Basic Fist");
 		}
 
 
