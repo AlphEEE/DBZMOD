@@ -1,10 +1,5 @@
 ﻿using Terraria;
 using Terraria.ModLoader;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework;
-using ReLogic.Graphics;
-using System;
-using DBZMOD;
 
 namespace DBZMOD
 {
@@ -17,7 +12,6 @@ namespace DBZMOD
                 return true;
             }
         }
-        MyPlayer player = new MyPlayer();
         public override void PostAI(NPC npc)
         {
             // npc.lifeMax = ((int)Math.Round(npc.lifeMax * player.Powerlevel * 0.15));
@@ -59,7 +53,6 @@ namespace DBZMOD
             //  }
             //SlimymodWorld.spawnOreGelphyx = true;   //so the message and the ore spawn does not proc(show) when you kill EoC/npc again
             //}
-
 
             //THIS IS AN EXAMPLE OF HOW TO MAKE ITEMS DROP FROM ALL NPCs IN A SPECIFIC BIOME
             if (!Main.hardMode)     //this make the item drop only in hardmode

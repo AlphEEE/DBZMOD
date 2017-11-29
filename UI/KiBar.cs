@@ -29,7 +29,14 @@ namespace DBZMOD.UI
         }
         public override void OnInitialize()
         {
-            visible = true;
+            UIPanel parent = new UIPanel();
+            parent.Height.Set(100f, 0f);
+            parent.Width.Set(300, 0f);
+            parent.Left.Set(Main.screenWidth - parent.Width.Pixels, 0f);
+            parent.Top.Set(0f, 0f);
+            parent.BackgroundColor = new Color(255, 255, 255, 255);
+
+            base.Append(parent);
         }
 
     }

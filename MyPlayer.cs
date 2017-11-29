@@ -36,19 +36,19 @@ namespace DBZMOD
             //if (StatGUIOn == null)
             //ErrorLogger.Log("StatGUIOn is null");
             //if (ui == null)
-              //  ErrorLogger.Log("ui is null");
+            //  ErrorLogger.Log("ui is null");
             //if (ui.GuiOpen = true)
-              //  Main.NewText("Gui is active");
-            
+            //  Main.NewText("Gui is active");
+
             if (KaiokenKey.JustPressed && (MyPlayer.ModPlayer(player).Powerlevel > 10000) && player.FindBuffIndex(mod.BuffType("KaiokenBuff")) < 0)
             {
-                player.AddBuff(mod.BuffType("KaiokenBuff"),15000);
+                player.AddBuff(mod.BuffType("KaiokenBuff"), 15000);
             }
-            if (KaiokenKey.JustPressed && player.FindBuffIndex(mod.BuffType("KaiokenBuff")) >= 0)
+            else
             {
-                player.AddBuff(mod.BuffType("KaiokenBuff"),0);
+                player.ClearBuff(mod.BuffType("KaiokenBuff"));
             }
-            if (EnergyCharge.Current && KiMax > 50)
+            if (EnergyCharge.Current && KiMax < 100)
             {
                 KiMax++;
             }
