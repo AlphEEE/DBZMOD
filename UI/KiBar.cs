@@ -10,33 +10,35 @@ namespace DBZMOD.UI
 {
     internal class KiBar: UIState
     {
+        public UIPanel Kibar;
         public static bool visible = false;
 
+        public override void OnInitialize()
+        {
+            Kibar = new UIPanel();
+            Kibar.SetPadding(0);
+            Kibar.Left.Set(400f, 0f);
+            Kibar.Top.Set(100f, 0f);
+            Kibar.Width.Set(170f, 0f);
+            Kibar.Height.Set(70f, 0f);
+            Kibar.BackgroundColor = new Color(0, 94, 171);
+
+            base.Append(Kibar);
+        }
         private Vector2 KiBarPosition
         {
             get
             {
-                return new Vector2((float)Main.screenWidth / 2f - 128f, Main.screenHeight / 0f);
+                return new Vector2((float)Main.screenWidth / 2f - 128f, Main.screenHeight);
             }
         }
 
-        public virtual void PostDraw(SpriteBatch spriteBatch, Player player)
+        protected override void DrawSelf(SpriteBatch spriteBatch)
         {
-            if (visible == true)
+            if (visible)
             {
                 spriteBatch.Draw(GFX.KiBar, new Vector2(KiBarPosition.X, KiBarPosition.Y), Color.White);
             }
-        }
-        public override void OnInitialize()
-        {
-            UIPanel parent = new UIPanel();
-            parent.Height.Set(100f, 0f);
-            parent.Width.Set(300, 0f);
-            parent.Left.Set(Main.screenWidth - parent.Width.Pixels, 0f);
-            parent.Top.Set(0f, 0f);
-            parent.BackgroundColor = new Color(255, 255, 255, 255);
-
-            base.Append(parent);
         }
 
     }

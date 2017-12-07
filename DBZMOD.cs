@@ -9,7 +9,7 @@ namespace DBZMOD
     public class DBZMOD : Mod
     {
         private UserInterface KiBarInterface;
-        internal KiBar kibar;
+        private KiBar kibar;
         public DBZMOD()
         {
             Properties = new ModProperties()
@@ -19,42 +19,46 @@ namespace DBZMOD
                 AutoloadSounds = true
             };
         }
-
+        public override void Unload()
+        {
+            GFX.UnloadGFX();
+        }
         public override void Load()
         {
+            GFX.LoadGFX(this);
             MyPlayer.KaiokenKey = RegisterHotKey("Kaioken", "J");
             MyPlayer.EnergyCharge = RegisterHotKey("Energy Charge", "C");
-            KiBar.visible = true;
-
-            if (!Main.dedServ)
+            /*KiBar.visible = true;
+            GFX.KiBar = GetTexture("GFX/KiBar");
             {
-                KiBar kiBar = new KiBar();
-                kiBar.Activate();
+                kibar = new KiBar();
+                kibar.Activate();
                 KiBarInterface = new UserInterface();
-                KiBar.visible = true;
-                KiBarInterface.SetState(kiBar);
+                KiBarInterface.SetState(kibar);
             }
         }
         public override void ModifyInterfaceLayers(List<GameInterfaceLayer> layers)
         {
-            for (int i = 0; i < layers.Count; i++)
+            int index = layers.FindIndex(layer => layer.Name.Contains("Resource Bars"));
+            if (index != -1)
             {
-                layers.Insert(i, new LegacyGameInterfaceLayer(
-                    "DBZMOD: Ki Bar",
-                    delegate
-                    {
-                        if (KiBar.visible)
+                    layers.Insert(index, new LegacyGameInterfaceLayer(
+                        "DBZMOD: Ki Bar",
+                        delegate
                         {
-                            KiBarInterface.Update(Main._drawInterfaceGameTime);
-                            kibar.Draw(Main.spriteBatch);
-                        }
-                        return true;
-                    },
-                    InterfaceScaleType.UI)
-                );
+                            if (KiBar.visible)
+                            {
+                                KiBarInterface.Update(Main._drawInterfaceGameTime);
+                                kibar.Draw(Main.spriteBatch);
+                            }
+                            return true;
+                        },
+                        InterfaceScaleType.UI)
+                    );
             }
+            }
+        */
         }
     }
 }
-
 

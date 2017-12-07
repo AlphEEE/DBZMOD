@@ -35,7 +35,7 @@
   <ItemGroup>
     <Compile Include="Buffs\KaiokenBuff.cs" />
     <Compile Include="Buffs\NimbusBuff.cs" />
-    <Compile Include="Buffs\StressedDebuff.cs" />
+    <Compile Include="Buffs\TiredDebuff.cs" />
     <Compile Include="DBZMOD.cs" />
     <Compile Include="DBZMODNpc.cs" />
     <Compile Include="Destruction\DirtBlockDestruction.cs" />
