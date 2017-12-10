@@ -17,10 +17,10 @@ namespace DBZMOD.Projectiles
             projectile.friendly = true;
 			projectile.tileCollide = false;
 			projectile.hide = true;
-            projectile.width = 6;
-            projectile.height = 6;
+            projectile.width = 4;
+            projectile.height = 4;
 			projectile.aiStyle = 1;
-			projectile.timeLeft = 20;
+			projectile.timeLeft = 10;
             projectile.ignoreWater = true;
 			projectile.penetrate = 1;
         }
