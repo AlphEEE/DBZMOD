@@ -44,8 +44,10 @@
     <Compile Include="Items\AngerKiCrystal.cs" />
     <Compile Include="Items\CalmKiCrystal.cs" />
     <Compile Include="Items\HonorKiCrystal.cs" />
+    <Compile Include="Items\KiManipulatorItem.cs" />
     <Compile Include="Items\NimbusWhistle.cs" />
     <Compile Include="Items\PridefulKiCrystal.cs" />
+    <Compile Include="Items\ScrapMetal.cs" />
     <Compile Include="Items\SenzuBean.cs" />
     <Compile Include="Items\StableKiCrystal.cs" />
     <Compile Include="Items\Weapons\BigBangAttack.cs" />
@@ -96,6 +98,7 @@
     <Compile Include="Projectiles\SuperKamehamehaBlast.cs" />
     <Compile Include="Projectiles\SuperKamehamehaTrail.cs" />
     <Compile Include="Tiles\KiCrystalOre.cs" />
+    <Compile Include="Tiles\KiManipulator.cs" />
     <Compile Include="UI\KiBar.cs" />
     <Compile Include="Waters\NamekWater.cs" />
     <Compile Include="Waters\NamekWaterfall.cs" />

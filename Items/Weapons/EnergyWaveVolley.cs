@@ -47,8 +47,8 @@ namespace DBZMOD.Items.Weapons
 		{
 			ModRecipe recipe = new ModRecipe(mod);
 	        recipe.AddIngredient(null, "PridefulKiCrystal", 45);
-            recipe.AddTile(TileID.MythrilAnvil);
-			recipe.SetResult(this);
+            recipe.AddTile(null, "KiManipulator");
+            recipe.SetResult(this);
 	        recipe.AddRecipe();
 		}
 	}

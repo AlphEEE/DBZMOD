@@ -42,8 +42,8 @@ namespace DBZMOD.Items.Weapons
 		{
 			ModRecipe recipe = new ModRecipe(mod);
 	        recipe.AddIngredient(null, "HonorKiCrystal", 30);
-            recipe.AddTile(TileID.Anvils);
-			recipe.SetResult(this);
+            recipe.AddTile(null, "KiManipulator");
+            recipe.SetResult(this);
 	        recipe.AddRecipe();
 		}
 	}

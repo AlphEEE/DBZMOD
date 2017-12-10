@@ -51,8 +51,8 @@ namespace DBZMOD.Items.Weapons
 	        recipe.AddIngredient(null, "HonorKiCrystal", 30);
             recipe.AddIngredient(null, "CalmKiCrystal", 30);
             recipe.AddIngredient(null, "EnergyWave");
-            recipe.AddTile(TileID.Anvils);
-			recipe.SetResult(this);
+            recipe.AddTile(null, "KiManipulator");
+            recipe.SetResult(this);
 	        recipe.AddRecipe();
 		}
 	}

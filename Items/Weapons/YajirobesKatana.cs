@@ -38,8 +38,8 @@ namespace DBZMOD.Items.Weapons
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(22, 5);
 			recipe.AddIngredient(null, "CalmKiCrystal", 10);
-            recipe.AddIngredient(null, "StableKiCrystal", 10);			
-            recipe.AddTile(TileID.MythrilAnvil);
+            recipe.AddIngredient(null, "StableKiCrystal", 10);
+            recipe.AddTile(null, "KiManipulator");
             recipe.SetResult(this);
             recipe.AddRecipe();
 		}
