@@ -8,7 +8,7 @@ namespace DBZMOD.Items
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Anger Ki Crystal");
+            DisplayName.SetDefault("Angerful Ki Crystal");
             Tooltip.SetDefault("-Tier 4 Material-");
         }
 

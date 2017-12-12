@@ -30,7 +30,7 @@ namespace DBZMOD.Items.Weapons
 	    }
 		public override void SetStaticDefaults()
 		{
-		Tooltip.SetDefault("-Tier 2.5-");
+		Tooltip.SetDefault("-Tier 2-");
 		DisplayName.SetDefault("Energy Blast Barrage");
 		}
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
@@ -45,7 +45,6 @@ namespace DBZMOD.Items.Weapons
 		{
 			ModRecipe recipe = new ModRecipe(mod);
 	        recipe.AddIngredient(null, "CalmKiCrystal", 45);
-            recipe.AddIngredient(null, "HonorKiCrystal", 30);
             recipe.AddIngredient(null, "KiBlast");
             recipe.AddTile(null, "KiManipulator");
             recipe.SetResult(this);

@@ -34,14 +34,14 @@ namespace DBZMOD.Items.Weapons
 	    public override void SetStaticDefaults()
 		{
 		Tooltip.SetDefault("Yamcha!." 
-		+ "\n-Tier 2.5-");
+		+ "\n-Tier 2-");
 		DisplayName.SetDefault("Spirit Ball");
 		}
 
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
-	        recipe.AddIngredient(null, "HonorKiCrystal", 30);
+	        recipe.AddIngredient(null, "CalmKiCrystal", 30);
             recipe.AddTile(null, "KiManipulator");
             recipe.SetResult(this);
 	        recipe.AddRecipe();

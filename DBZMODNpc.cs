@@ -102,7 +102,7 @@ namespace DBZMOD
                 {
                     if (Main.rand.Next(4) == 0)
                     {
-                        Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("AngerfulKiCrystal"), Main.rand.Next(1, 3));
+                        Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("AngerKiCrystal"), Main.rand.Next(1, 3));
                     }
                 }
             }
@@ -112,7 +112,7 @@ namespace DBZMOD
                 {
                     if (Main.rand.Next(4) == 0)
                     {
-                        Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("AngerfulKiCrystal"), Main.rand.Next(1, 3));
+                        Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("AngerKiCrystal"), Main.rand.Next(1, 3));
                     }
                 }
             }
