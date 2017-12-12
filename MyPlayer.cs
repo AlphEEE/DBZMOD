@@ -16,6 +16,10 @@ namespace DBZMOD
         public bool ZoneCustomBiome = false;
         public int drawX;
         public int drawY;
+        public bool scouterT2;
+        public bool scouterT3;
+        public bool scouterT4;
+        public bool spiritualEmblem;
         public static ModHotKey KaiokenKey;
         public static ModHotKey EnergyCharge;
 
@@ -64,6 +68,10 @@ namespace DBZMOD
             KiKbAddition = 0f;
             KiMax = 100;
             KiRegen = 2f;
+            scouterT2 = false;
+            scouterT3 = false;
+            scouterT4 = false;
+            spiritualEmblem = false;
         }
 	
         public override void SetupStartInventory(IList<Item> items)
