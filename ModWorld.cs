@@ -9,7 +9,7 @@ using Terraria.GameContent.Generation;
 
 namespace DBZMOD
 {
-    public class ModWord : ModWorld
+    /*public class ModWord : ModWorld
     {
         private const int saveVersion = 0;
         public override void ModifyWorldGenTasks(List<GenPass> tasks, ref float totalWeight)
@@ -31,4 +31,4 @@ namespace DBZMOD
         }
 
     }
-}
+*/}
