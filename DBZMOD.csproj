@@ -41,6 +41,10 @@
     <Compile Include="Destruction\DirtBlockDestruction.cs" />
     <Compile Include="Destruction\StoneBlockDestruction.cs" />
     <Compile Include="GFX.cs" />
+    <Compile Include="Items\Accessories\ScouterT2.cs" />
+    <Compile Include="Items\Accessories\ScouterT3.cs" />
+    <Compile Include="Items\Accessories\ScouterT4.cs" />
+    <Compile Include="Items\Accessories\SpiritualEmblem.cs" />
     <Compile Include="Items\AngerKiCrystal.cs" />
     <Compile Include="Items\CalmKiCrystal.cs" />
     <Compile Include="Items\HonorKiCrystal.cs" />

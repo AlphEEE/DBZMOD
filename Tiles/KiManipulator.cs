@@ -10,14 +10,15 @@ namespace DBZMOD.Tiles
     {
         public override void SetDefaults()
         {
-            Main.tileSolidTop[Type] = true;
+            Main.tileSolidTop[Type] = false;
             Main.tileFrameImportant[Type] = true;
             Main.tileNoAttach[Type] = true;
-            Main.tileTable[Type] = true;
-            Main.tileLavaDeath[Type] = true;
+            Main.tileTable[Type] = false;
+            Main.tileLavaDeath[Type] = false;
             TileObjectData.newTile.CopyFrom(TileObjectData.Style3x2);
-            TileObjectData.newTile.CoordinateHeights = new int[] { 1, 18 };
+            TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16 };
             TileObjectData.addTile(Type);
+            TileObjectData.newTile.CoordinatePadding = 2;
             ModTranslation name = CreateMapEntryName();
             name.SetDefault("Ki Manipulator");
             AddMapEntry(new Color(223, 245, 255), name);

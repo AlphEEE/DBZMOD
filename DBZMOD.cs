@@ -28,7 +28,7 @@ namespace DBZMOD
             GFX.LoadGFX(this);
             MyPlayer.KaiokenKey = RegisterHotKey("Kaioken", "J");
             MyPlayer.EnergyCharge = RegisterHotKey("Energy Charge", "C");
-            /*KiBar.visible = true;
+            KiBar.visible = true;
             GFX.KiBar = GetTexture("GFX/KiBar");
             {
                 kibar = new KiBar();
@@ -42,23 +42,22 @@ namespace DBZMOD
             int index = layers.FindIndex(layer => layer.Name.Contains("Resource Bars"));
             if (index != -1)
             {
-                    layers.Insert(index, new LegacyGameInterfaceLayer(
-                        "DBZMOD: Ki Bar",
-                        delegate
+                layers.Insert(index, new LegacyGameInterfaceLayer(
+                    "DBZMOD: Ki Bar",
+                    delegate
+                    {
+                        if (KiBar.visible)
                         {
-                            if (KiBar.visible)
-                            {
-                                KiBarInterface.Update(Main._drawInterfaceGameTime);
-                                kibar.Draw(Main.spriteBatch);
-                            }
-                            return true;
-                        },
-                        InterfaceScaleType.UI)
-                    );
+                            KiBarInterface.Update(Main._drawInterfaceGameTime);
+                            kibar.Draw(Main.spriteBatch);
+                        }
+                        return true;
+                    },
+                    InterfaceScaleType.UI)
+                );
             }
-            }
-        */
         }
     }
 }
+ 
 

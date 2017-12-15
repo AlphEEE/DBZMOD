@@ -17,10 +17,10 @@ namespace DBZMOD.UI
         {
             Kibar = new UIPanel();
             Kibar.SetPadding(0);
-            Kibar.Left.Set(400f, 0f);
-            Kibar.Top.Set(100f, 0f);
-            Kibar.Width.Set(170f, 0f);
-            Kibar.Height.Set(70f, 0f);
+            Kibar.Left.Set(300f, 0f);
+            Kibar.Top.Set(70f, 0f);
+            Kibar.Width.Set(130f, 0f);
+            Kibar.Height.Set(50f, 0f);
             Kibar.BackgroundColor = new Color(0, 94, 171);
 
             base.Append(Kibar);

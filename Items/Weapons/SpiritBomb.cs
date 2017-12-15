@@ -14,7 +14,7 @@ namespace DBZMOD.Items.Weapons
 		public override void SetDefaults()
 		{
 			item.shoot = mod.ProjectileType("SpiritBombProjectile");
-			item.shootSpeed = 10f;
+			item.shootSpeed = 6f;
 			item.damage = 300;
 			item.knockBack = 12f;
 			item.useStyle = 1;
@@ -60,15 +60,7 @@ namespace DBZMOD.Items.Weapons
 		}
         public override bool CanUseItem(Player player)
         {
-            if (player.HasBuff(mod.BuffType("TiredDebuff")))
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-            
+            return !player.HasBuff(mod.BuffType("TiredDebuff"));
         }
 
 		public override void AddRecipes()
