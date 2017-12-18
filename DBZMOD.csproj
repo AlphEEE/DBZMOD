@@ -101,7 +101,6 @@
     <Compile Include="Projectiles\SpiritBombProjectile.cs" />
     <Compile Include="Projectiles\SuperKamehamehaBlast.cs" />
     <Compile Include="Projectiles\SuperKamehamehaTrail.cs" />
-    <Compile Include="Tiles\KiCrystalOre.cs" />
     <Compile Include="Tiles\KiManipulator.cs" />
     <Compile Include="UI\KiBar.cs" />
     <Compile Include="Waters\NamekWater.cs" />

@@ -30,7 +30,11 @@ namespace DBZMOD.Items.Accessories
                 player.GetModPlayer<MyPlayer>(mod).scouterT3 = true;
             }
         }
-
+        public override void DrawHair(ref bool drawHair, ref bool drawAltHair)
+        {
+            drawHair = true;
+            drawAltHair = true;
+        }
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);

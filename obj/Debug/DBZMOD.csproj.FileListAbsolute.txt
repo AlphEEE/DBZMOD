@@ -7,6 +7,5 @@ C:\Users\Logan\Documents\My Games\Terraria\ModLoader\Mod Sources\DBZMOD\bin\Debu
 C:\Users\Logan\Documents\My Games\Terraria\ModLoader\Mod Sources\DBZMOD\bin\Debug\Microsoft.Xna.Framework.Game.dll
 C:\Users\Logan\Documents\My Games\Terraria\ModLoader\Mod Sources\DBZMOD\bin\Debug\Microsoft.Xna.Framework.Graphics.dll
 C:\Users\Logan\Documents\My Games\Terraria\ModLoader\Mod Sources\DBZMOD\bin\Debug\Microsoft.Xna.Framework.Xact.dll
-C:\Users\Logan\Documents\My Games\Terraria\ModLoader\Mod Sources\DBZMOD\bin\Debug\Terraria.exe
 C:\Users\Logan\Documents\My Games\Terraria\ModLoader\Mod Sources\DBZMOD\obj\Debug\Slimymod.dll
 C:\Users\Logan\Documents\My Games\Terraria\ModLoader\Mod Sources\DBZMOD\obj\Debug\Slimymod.pdb

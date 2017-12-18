@@ -30,11 +30,15 @@ namespace DBZMOD.Items.Accessories
                 player.GetModPlayer<MyPlayer>(mod).scouterT5 = true;
             }
         }
-
+        public override void DrawHair(ref bool drawHair, ref bool drawAltHair)
+        {
+            drawHair = true;
+            drawAltHair = true;
+        }
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, "AngerfulKiCrystal", 20);
+            recipe.AddIngredient(null, "AngerKiCrystal", 20);
             recipe.AddIngredient(null, "ScouterT4");
             recipe.AddTile(null, "KiManipulator");
             recipe.SetResult(this);
