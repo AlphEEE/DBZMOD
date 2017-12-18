@@ -60,10 +60,10 @@ namespace DBZMOD.Items.Weapons
 		}
         public override bool CanUseItem(Player player)
         {
-            if (player.HasBuff(mod.BuffType("TiredDebuff"))
-                {
+            if (player.HasBuff(mod.BuffType("TiredDebuff")))
+            {
                 return false;
-                }
+            }
             else
             {
                 return true;
