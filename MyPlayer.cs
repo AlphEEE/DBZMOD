@@ -19,6 +19,8 @@ namespace DBZMOD
         public bool scouterT2;
         public bool scouterT3;
         public bool scouterT4;
+        public bool scouterT5;
+        public bool scouterT6;
         public bool spiritualEmblem;
         public static ModHotKey KaiokenKey;
         public static ModHotKey EnergyCharge;
@@ -71,6 +73,8 @@ namespace DBZMOD
             scouterT2 = false;
             scouterT3 = false;
             scouterT4 = false;
+            scouterT5 = false;
+            scouterT6 = false;
             spiritualEmblem = false;
         }
 	

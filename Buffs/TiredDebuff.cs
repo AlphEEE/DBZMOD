@@ -15,7 +15,6 @@ namespace DBZMOD.Buffs
         }
         public override void Update(Player player, ref int buffIndex)
         {
-            player.lifeRegen = -2;
             player.meleeDamage *= 0.8f;
             player.rangedDamage *= 0.8f;
             player.magicDamage *= 0.8f;
