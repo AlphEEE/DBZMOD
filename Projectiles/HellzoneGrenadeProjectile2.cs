@@ -83,7 +83,10 @@ namespace DBZMOD.Projectiles
 			}
             if (Main.rand.Next(6) == 0)
             {
-
+            	Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, 158, projectile.velocity.X * 0.5f, projectile.velocity.Y * 0.5f);
+            }
+        }
+		
 		public override void Kill(int timeLeft)
         {
             if (!projectile.active)
