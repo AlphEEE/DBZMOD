@@ -3,6 +3,7 @@ using Terraria.ModLoader;
 
 namespace DBZMOD.Items.Accessories
 {
+    [AutoloadEquip(EquipType.Face)]
     public class ScouterT3 : ModItem
     {
         public override void SetStaticDefaults()
@@ -10,6 +11,7 @@ namespace DBZMOD.Items.Accessories
             Tooltip.SetDefault("A Piece of equipment used for scanning powerlevels."
                + "\nGives Increased Ki Damage, Spelunker and Hunter effects."
                + "\n--Tier 3--");
+            DisplayName.SetDefault("Blue Scouter");
         }
 
         public override void SetDefaults()

@@ -16,14 +16,15 @@ namespace DBZMOD.Tiles
             Main.tileTable[Type] = false;
             Main.tileLavaDeath[Type] = false;
             TileObjectData.newTile.CopyFrom(TileObjectData.Style3x2);
-            TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16 };
-            TileObjectData.addTile(Type);
+            TileObjectData.newTile.CoordinateHeights = new int[] { 18 };
             TileObjectData.newTile.CoordinatePadding = 2;
+            TileObjectData.newTile.Height = 1;
             ModTranslation name = CreateMapEntryName();
             name.SetDefault("Ki Manipulator");
             AddMapEntry(new Color(223, 245, 255), name);
             dustType = mod.DustType("MetalDust");
             disableSmartCursor = true;
+            TileObjectData.addTile(Type);
         }
 
         public override void NumDust(int i, int j, bool fail, ref int num)
