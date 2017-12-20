@@ -16,9 +16,9 @@ namespace DBZMOD.Tiles
             Main.tileTable[Type] = false;
             Main.tileLavaDeath[Type] = false;
             TileObjectData.newTile.CopyFrom(TileObjectData.Style3x2);
+            TileObjectData.newTile.Height = 1;
             TileObjectData.newTile.CoordinateHeights = new int[] { 18 };
             TileObjectData.newTile.CoordinatePadding = 2;
-            TileObjectData.newTile.Height = 1;
             ModTranslation name = CreateMapEntryName();
             name.SetDefault("Ki Manipulator");
             AddMapEntry(new Color(223, 245, 255), name);

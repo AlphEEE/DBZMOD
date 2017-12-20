@@ -23,6 +23,7 @@ namespace DBZMOD.Items
             item.useTime = 10;
             item.useStyle = 1;
             item.consumable = true;
+            item.rare = 2;
             item.value = 3000;
             item.createTile = mod.TileType("KiManipulator");
         }
