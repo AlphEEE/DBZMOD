@@ -53,7 +53,7 @@ namespace DBZMOD
             }
         }
 
-        public override void ProcessTriggers(TriggersSet triggersSet)
+         public override void ProcessTriggers(TriggersSet triggersSet)
         {
             //if (StatGUIOn == null)
             //ErrorLogger.Log("StatGUIOn is null");
@@ -66,7 +66,7 @@ namespace DBZMOD
             {
                 player.AddBuff(mod.BuffType("KaiokenBuff"), 18000);
             }
-            if (KaiokenKey.JustPressed && (player.HasBuff(mod.BuffType("KaiokenBuff"))))
+            else if (KaiokenKey.JustPressed && (player.HasBuff(mod.BuffType("KaiokenBuff"))))
             {
                 player.ClearBuff(mod.BuffType("KaiokenBuff"));
             }
