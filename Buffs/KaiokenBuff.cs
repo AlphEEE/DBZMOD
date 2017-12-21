@@ -21,8 +21,7 @@ namespace DBZMOD.Buffs
 			player.minionDamage *= 2f;
 			player.thrownDamage *= 2f;
 			MyPlayer.ModPlayer(player).KiDamage *= 2f;
-			player.buffImmune[BuffID.Shine] = true;
-			Lighting.AddLight(player.Center, 1.1f, 1.15f, 1.2f);
+			Lighting.AddLight(player.Center, 5f, 0f, 0f);
         }	
 	}
 }
