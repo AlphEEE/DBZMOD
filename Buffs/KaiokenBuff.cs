@@ -21,7 +21,7 @@ namespace DBZMOD.Buffs
 			player.minionDamage *= 2f;
 			player.thrownDamage *= 2f;
 			MyPlayer.ModPlayer(player).KiDamage *= 2f;
-			Lighting.AddLight((int)player.Center.X, (int)player.Center.Y,  0.8f, 0, 0);
+			Lighting.AddLight((int)player.Center.X, (int)player.Center.Y,  10f, 0, 0);
         }	
 	}
 }
