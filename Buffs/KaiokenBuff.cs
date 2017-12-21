@@ -14,14 +14,14 @@ namespace DBZMOD.Buffs
         public override void Update(Player player, ref int buffIndex)
         {                                             
             player.lifeRegen = -20;
-			player.moveSpeed *= 3f;
-            player.meleeDamage *= 2f;
-			player.rangedDamage *= 2f;
-			player.magicDamage *= 2f;
-			player.minionDamage *= 2f;
-			player.thrownDamage *= 2f;
+			player.moveSpeed += 3f;
+            player.meleeDamage += 2f;
+			player.rangedDamage += 2f;
+			player.magicDamage += 2f;
+			player.minionDamage += 2f;
+			player.thrownDamage += 2f;
 			MyPlayer.ModPlayer(player).KiDamage *= 2f;
-			Lighting.AddLight((int)player.Center.X, (int)player.Center.Y,  10f, 0, 0);
+			Lighting.AddLight((int)(p.Center.X / 16), (int)(p.Center.Y / 16), 10, 0, 0);
         }	
 	}
 }
