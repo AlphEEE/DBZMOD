@@ -71,8 +71,7 @@ namespace DBZMOD.Items.Weapons
         }
         public override bool UseItem(Player player)
         {
-            player.AddBuff(mod.BuffType("TiredDebuff"), 18000);
-            return true;
+            return player.AddBuff(mod.BuffType("TiredDebuff"), 18000);
         }
 
 		public override void AddRecipes()
