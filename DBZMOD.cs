@@ -29,7 +29,7 @@ namespace DBZMOD
             MyPlayer.KaiokenKey = RegisterHotKey("Kaioken", "J");
             MyPlayer.EnergyCharge = RegisterHotKey("Energy Charge", "C");
             KiBar.visible = true;
-            GFX.KiBar = GetTexture("GFX/KiBar");
+            if(!Main.dedServ)
             {
                 kibar = new KiBar();
                 kibar.Activate();

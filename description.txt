@@ -1,13 +1,37 @@
 Dragon Ball Z Mod For Terraria!
 
 (SMALL TUTORIAL)
-You Will Start with a Empty scroll on character creation, this scroll will be used to make your first class based beam.
-Your First class based beam will need Ki Gems, Which means you need to go find the new ki crystal ore, you will need a nightmare pickaxe at least to mine it.
+You start with a basic fist type attack on character creation, and your first material is found in the souls of the forest biome.
 
 Please List any bugs you find on my forum page or on my discord!
 
-This Is A Beta Version And Expect Bugs, Alot of the Sprites and Sounds are placeholder, so deal with it. :P
+Discord Link :  https://discord.gg/hc6Jdws
 
+Update 1.0.0
+
+-Redone entire mod from the ground up
+-Added kaioken with its own key
+-Removed Frieza's ship
+-Removed katchin items
+-Removed old ki attacks
+-Added a new damage type called "Ki"
+-Added Ki Blast
+-Added Masenko
+-Added Spirit ball
+-Added Big Bang Attack
+-Added Destructo Disk
+-Added Energy blast barrage
+-Added Hellzone grenade
+-Added ki beam
+-Added a new mana system called ki
+-Added custom sounds for most ki attacks
+-Added a hotkey for charging your ki
+-Added Ki Manipulator
+-Added Scrap metal
+-Added Capsule Corp Training Bot Enemy
+-Added tier 2 and 3 scouters
+-Added Spiritual emblem
+-Added dodon ray
 
 Update 0.2.1
 
@@ -26,16 +50,10 @@ Update 0.2(Second Half of the 0.2 Update)
 -Ki Crystal ore now shows on spelunker.
 -Bug Fixes.
 
-
-
-(Known Bugs)
-Frieza Ship Rarely not Spawning on a multiplayer server.
-
-
-
 (Credit)
 -Credit To JFC_263, Peppermint Bark, Earth and some other amazing spriters for their hard work!
 -Credit To GabeHasWon's, Divermansam and the whole TModLoader Discord For Help with code and such.
 -Credit To Akira Toriyama For Creating Dragon Ball Z!
 -Credit To Bluemagic and everyone else for creating TModloader.
 -Credit To Relogic for making an incredible game.
+-Credit To MyPicts for the aura sprites.

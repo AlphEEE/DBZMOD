@@ -52,6 +52,7 @@ namespace DBZMOD
                 return hasKaioken = false;
             }
         }
+        
 
          public override void ProcessTriggers(TriggersSet triggersSet)
         {
@@ -65,6 +66,7 @@ namespace DBZMOD
             if (KaiokenKey.JustPressed /*&& (MyPlayer.ModPlayer(player).Powerlevel > 10000)*/ && (!player.HasBuff(mod.BuffType("KaiokenBuff"))))
             {
                 player.AddBuff(mod.BuffType("KaiokenBuff"), 18000);
+                Projectile.NewProjectile(player.Center.X - 40, player.Center.Y + 90, 0, 0, mod.ProjectileType("KaiokenAuraProj"), 0, 0, player.whoAmI);
             }
             else if (KaiokenKey.JustPressed && (player.HasBuff(mod.BuffType("KaiokenBuff"))))
             {
@@ -105,7 +107,7 @@ namespace DBZMOD
 
         //ZoneCustomBiome = (DBZMODWorld.customBiome > 0);  
 
-        private static readonly PlayerLayer miscEffectsBack = new PlayerLayer("DBZMOD", "MiscEffectsBack", PlayerLayer.MiscEffectsBack, delegate (PlayerDrawInfo drawInfo)
+        public static readonly PlayerLayer MiscEffectsBack = new PlayerLayer("DBZMOD", "MiscEffectsBack", PlayerLayer.MiscEffectsBack, delegate (PlayerDrawInfo drawInfo)
              {
                  if (drawInfo.shadow != 0f)
                  {
@@ -114,21 +116,21 @@ namespace DBZMOD
                  Player drawPlayer = drawInfo.drawPlayer;
                  Mod mod = ModLoader.GetMod("DBZMOD");
                  Player player = new Player();
-                 MyPlayer modPlayer = player.GetModPlayer<MyPlayer>(mod);
+                 MyPlayer modPlayer = drawPlayer.GetModPlayer<MyPlayer>(mod);
                     if (modPlayer.hasKaioken)
-                 {
-                     Texture2D texture = mod.GetTexture("Auras/KaiokenAura");
-                     int drawX = (int)(drawInfo.position.X + drawPlayer.width / 2f);
-                      int drawY = (int)(drawInfo.position.Y + drawPlayer.height / 2f);
-                     DrawData data = new DrawData(texture, new Vector2(drawX, drawY), null, Color.White, 0f, new Vector2(texture.Width / 2f, texture.Height / 2f), 1f, SpriteEffects.None, 0);
-                     Main.playerDrawData.Add(data);
-                 }
-             });
+                    {
+                        Texture2D texture = mod.GetTexture("Auras/KaiokenAura");
+                        int drawX = (int)(drawInfo.position.X + drawPlayer.width / 2f);
+                        int drawY = (int)(drawInfo.position.Y + drawPlayer.height / 4f);
+                        DrawData data = new DrawData(texture, new Vector2(drawX, drawY), null, Color.White, 0f, new Vector2(texture.Width / 2f, texture.Height / 2f), 1f, SpriteEffects.None, 0);
+                        Main.playerDrawData.Add(data);
+                    }
+                });
         
         public override void ModifyDrawLayers(List<PlayerLayer> layers)
             {
-                miscEffectsBack.visible = true;
-                layers.Insert(0, miscEffectsBack);
+                MiscEffectsBack.visible = true;
+                layers.Insert(0, MiscEffectsBack);
             }
     }
 }

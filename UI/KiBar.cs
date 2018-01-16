@@ -15,31 +15,23 @@ namespace DBZMOD.UI
 
         public override void OnInitialize()
         {
-            Kibar = new UIPanel();
-            Kibar.SetPadding(0);
-            Kibar.Left.Set(300f, 0f);
-            Kibar.Top.Set(70f, 0f);
-            Kibar.Width.Set(130f, 0f);
-            Kibar.Height.Set(50f, 0f);
-            Kibar.BackgroundColor = new Color(0, 94, 171);
+            UIFlatPanel parent = new UIFlatPanel();
+            parent.SetPadding(0);
+            parent.Left.Set(300f, 0f);
+            parent.Top.Set(70f, 0f);
+            parent.Width.Set(130f, 0f);
+            parent.Height.Set(50f, 0f);
+            parent.backgroundColor = new Color(0, 94, 171);
 
-            base.Append(Kibar);
-        }
-        private Vector2 KiBarPosition
-        {
-            get
-            {
-                return new Vector2((float)Main.screenWidth / 2f - 128f, Main.screenHeight);
-            }
-        }
+            UIFlatPanel ki = new UIFlatPanel();
+            ki.Height.Set(40f, 0f);
+            ki.Width.Set(110f, 0f);
+            ki.Left.Set(290f, 0f);
+            ki.Top.Set(65f, 0f);
+            ki.backgroundColor = Color.Red;
+            parent.Append(ki);
 
-        protected override void DrawSelf(SpriteBatch spriteBatch)
-        {
-            if (visible)
-            {
-                spriteBatch.Draw(GFX.KiBar, new Vector2(KiBarPosition.X, KiBarPosition.Y), Color.White);
-            }
+            base.Append(parent);
         }
-
     }
 }

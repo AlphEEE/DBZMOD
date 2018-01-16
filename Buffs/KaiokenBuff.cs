@@ -1,3 +1,4 @@
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -8,13 +9,13 @@ namespace DBZMOD.Buffs
 		public override void SetDefaults()
 		{
 			DisplayName.SetDefault("Kaioken");
-			Description.SetDefault("2x Damage, 3x Speed, Drains Life.");
+			Description.SetDefault("2x Damage, 2x Speed, Drains Life.");
 			Main.buffNoTimeDisplay[Type] = true;
 		}
         public override void Update(Player player, ref int buffIndex)
         {                                             
             player.lifeRegen = -20;
-			player.moveSpeed *= 3f;
+			player.moveSpeed *= 2f;
             player.meleeDamage *= 2f;
 			player.rangedDamage *= 2f;
 			player.magicDamage *= 2f;

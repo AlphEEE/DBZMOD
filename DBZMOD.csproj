@@ -48,6 +48,7 @@
     <Compile Include="Items\AngerKiCrystal.cs" />
     <Compile Include="Items\CalmKiCrystal.cs" />
     <Compile Include="Items\HonorKiCrystal.cs" />
+    <Compile Include="Items\kaiotestitem.cs" />
     <Compile Include="Items\KiManipulatorItem.cs" />
     <Compile Include="Items\NimbusWhistle.cs" />
     <Compile Include="Items\PridefulKiCrystal.cs" />
@@ -89,6 +90,7 @@
     <Compile Include="Projectiles\EnergyWaveVolleyTrail.cs" />
     <Compile Include="Projectiles\HellzoneGrenadeProjectile.cs" />
     <Compile Include="Projectiles\HellzoneGrenadeProjectile2.cs" />
+    <Compile Include="Projectiles\KaiokenAuraProj.cs" />
     <Compile Include="Projectiles\KamehamehaBlast.cs" />
     <Compile Include="Projectiles\KamehamehaProjectile.cs" />
     <Compile Include="Projectiles\KamehamehaTrail.cs" />
@@ -103,6 +105,7 @@
     <Compile Include="Projectiles\SuperKamehamehaTrail.cs" />
     <Compile Include="Tiles\KiManipulator.cs" />
     <Compile Include="UI\KiBar.cs" />
+    <Compile Include="UI\KiResource.cs" />
     <Compile Include="Waters\NamekWater.cs" />
     <Compile Include="Waters\NamekWaterfall.cs" />
   </ItemGroup>

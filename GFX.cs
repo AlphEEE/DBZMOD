@@ -12,18 +12,23 @@ namespace DBZMOD
     {
 
         private const string GUI_DIRECTORY = "GFX/";
+        private const string AURA_DIRECTORY = "Auras/";
         private const string KIBAR = GUI_DIRECTORY + "KiBar";
+        private const string KAIOAURA = AURA_DIRECTORY + "KaiokenAura";
 
         public static Texture2D KiBar;
+        public static Texture2D KaiokenAura;
 		
         public static void LoadGFX(Mod mod)
         {
             KiBar = mod.GetTexture(KIBAR);
+            KaiokenAura = mod.GetTexture(KAIOAURA);
         }
 
         public static void UnloadGFX()
         {
             KiBar = null;
+            KaiokenAura = null;
         }
     }
 }
