@@ -9,6 +9,7 @@ namespace DBZMOD.Projectiles
 {
     public class KaiokenAuraProj : ModProjectile
     {
+        public float KaioAuraTimer;
         public override void SetStaticDefaults()
         {
             Main.projFrames[projectile.type] = 4;
@@ -25,6 +26,7 @@ namespace DBZMOD.Projectiles
             projectile.ignoreWater = true;
             projectile.penetrate = -1;
             projectile.damage = 0;
+            KaioAuraTimer = 240;
         }
         public override void AI()
         {
@@ -32,7 +34,6 @@ namespace DBZMOD.Projectiles
             projectile.position.X = player.Center.X;
             projectile.position.Y = player.Center.Y;
             projectile.Center = player.Center + new Vector2(0, -25);
-            MyPlayer myplayer = new MyPlayer();
 
             if (!player.HasBuff(mod.BuffType("KaiokenBuff")))
             {
@@ -51,6 +52,15 @@ namespace DBZMOD.Projectiles
             if (projectile.frame >= 4)
             {
                 projectile.frame = 0;
+            }
+            if (KaioAuraTimer > 0)
+            {
+                projectile.scale = 1f + 2f * (KaioAuraTimer / 240f);
+                KaioAuraTimer--;
+            }
+            else
+            {
+                projectile.scale = 1f;
             }
         }
     }

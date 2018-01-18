@@ -11,10 +11,11 @@ namespace DBZMOD.Buffs
 			DisplayName.SetDefault("Kaioken");
 			Description.SetDefault("2x Damage, 2x Speed, Drains Life.");
 			Main.buffNoTimeDisplay[Type] = true;
-		}
+            Main.buffNoSave[Type] = true;
+        }
         public override void Update(Player player, ref int buffIndex)
         {                                             
-            player.lifeRegen = -20;
+            player.lifeRegen = -25;
 			player.moveSpeed *= 2f;
             player.meleeDamage *= 2f;
 			player.rangedDamage *= 2f;

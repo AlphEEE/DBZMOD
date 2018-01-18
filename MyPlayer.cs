@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria.DataStructures;
 using Terraria.Graphics;
 using Microsoft.Xna.Framework;
+using DBZMOD.Projectiles;
 
 namespace DBZMOD
 {
@@ -53,26 +54,20 @@ namespace DBZMOD
             }
         }
         
-
          public override void ProcessTriggers(TriggersSet triggersSet)
         {
-            //if (StatGUIOn == null)
-            //ErrorLogger.Log("StatGUIOn is null");
-            //if (ui == null)
-            //  ErrorLogger.Log("ui is null");
-            //if (ui.GuiOpen = true)
-            //  Main.NewText("Gui is active");
-
-            if (KaiokenKey.JustPressed /*&& (MyPlayer.ModPlayer(player).Powerlevel > 10000)*/ && (!player.HasBuff(mod.BuffType("KaiokenBuff"))))
+            if (KaiokenKey.JustPressed /*&& (MyPlayer.ModPlayer(player).Powerlevel > 10000)*/ && (!player.HasBuff(mod.BuffType("KaiokenBuff"))) && (!player.HasBuff(mod.BuffType("TiredDebuff"))))
             {
                 player.AddBuff(mod.BuffType("KaiokenBuff"), 18000);
                 Projectile.NewProjectile(player.Center.X - 40, player.Center.Y + 90, 0, 0, mod.ProjectileType("KaiokenAuraProj"), 0, 0, player.whoAmI);
+                Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/AuraStart").WithVolume(.5f));
             }
             else if (KaiokenKey.JustPressed && (player.HasBuff(mod.BuffType("KaiokenBuff"))))
             {
                 player.ClearBuff(mod.BuffType("KaiokenBuff"));
+                player.AddBuff(mod.BuffType("TiredDebuff"), 3600);
             }
-            if (EnergyCharge.Current && KiMax < 100)
+            if (EnergyCharge.Current && KiMax <= 100)
             {
                 KiMax++;
             }
