@@ -26,7 +26,7 @@ namespace DBZMOD
         public override void Load()
         {
             GFX.LoadGFX(this);
-            MyPlayer.KaiokenKey = RegisterHotKey("Kaioken", "J");
+            MyPlayer.KaiokenKey = RegisterHotKey("Kaioken Toggle", "J");
             MyPlayer.EnergyCharge = RegisterHotKey("Energy Charge", "C");
             KiBar.visible = true;
             if(!Main.dedServ)

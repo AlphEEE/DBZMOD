@@ -17,6 +17,7 @@ namespace DBZMOD
         public float KiDamage;
         public float KiKbAddition;
         public int KiMax;
+        public int KiCurrent;
         public float KiRegen;
         public bool ZoneCustomBiome = false;
         public int drawX;
@@ -28,6 +29,7 @@ namespace DBZMOD
         public bool scouterT6;
         public bool spiritualEmblem;
         public bool hasKaioken;
+        public int TransformCooldown;
         public static ModHotKey KaiokenKey;
         public static ModHotKey EnergyCharge;
 
@@ -61,15 +63,17 @@ namespace DBZMOD
                 player.AddBuff(mod.BuffType("KaiokenBuff"), 18000);
                 Projectile.NewProjectile(player.Center.X - 40, player.Center.Y + 90, 0, 0, mod.ProjectileType("KaiokenAuraProj"), 0, 0, player.whoAmI);
                 Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/AuraStart").WithVolume(.5f));
+                TransformCooldown++;
             }
-            else if (KaiokenKey.JustPressed && (player.HasBuff(mod.BuffType("KaiokenBuff"))))
+            else if (KaiokenKey.JustPressed && (player.HasBuff(mod.BuffType("KaiokenBuff"))) && TransformCooldown <= 600)
             {
                 player.ClearBuff(mod.BuffType("KaiokenBuff"));
                 player.AddBuff(mod.BuffType("TiredDebuff"), 3600);
+                TransformCooldown = 0;
             }
-            if (EnergyCharge.Current && KiMax <= 100)
+            if (EnergyCharge.Current && (KiCurrent < KiMax))
             {
-                KiMax++;
+                KiCurrent++;
             }
 
         }
@@ -83,6 +87,7 @@ namespace DBZMOD
             KiKbAddition = 0f;
             KiMax = 100;
             KiRegen = 2f;
+            KiCurrent = 100;
             scouterT2 = false;
             scouterT3 = false;
             scouterT4 = false;
@@ -101,31 +106,5 @@ namespace DBZMOD
         //public override void UpdateBiomes()
 
         //ZoneCustomBiome = (DBZMODWorld.customBiome > 0);  
-
-        public static readonly PlayerLayer MiscEffectsBack = new PlayerLayer("DBZMOD", "MiscEffectsBack", PlayerLayer.MiscEffectsBack, delegate (PlayerDrawInfo drawInfo)
-             {
-                 if (drawInfo.shadow != 0f)
-                 {
-                     return;
-                 }
-                 Player drawPlayer = drawInfo.drawPlayer;
-                 Mod mod = ModLoader.GetMod("DBZMOD");
-                 Player player = new Player();
-                 MyPlayer modPlayer = drawPlayer.GetModPlayer<MyPlayer>(mod);
-                    if (modPlayer.hasKaioken)
-                    {
-                        Texture2D texture = mod.GetTexture("Auras/KaiokenAura");
-                        int drawX = (int)(drawInfo.position.X + drawPlayer.width / 2f);
-                        int drawY = (int)(drawInfo.position.Y + drawPlayer.height / 4f);
-                        DrawData data = new DrawData(texture, new Vector2(drawX, drawY), null, Color.White, 0f, new Vector2(texture.Width / 2f, texture.Height / 2f), 1f, SpriteEffects.None, 0);
-                        Main.playerDrawData.Add(data);
-                    }
-                });
-        
-        public override void ModifyDrawLayers(List<PlayerLayer> layers)
-            {
-                MiscEffectsBack.visible = true;
-                layers.Insert(0, MiscEffectsBack);
-            }
     }
 }

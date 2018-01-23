@@ -13,7 +13,8 @@ namespace DBZMOD
 
         private const string GUI_DIRECTORY = "GFX/";
         private const string AURA_DIRECTORY = "Auras/";
-        private const string KIBAR = GUI_DIRECTORY + "KiBar";
+        private const string UI_DIRECTORY = "UI/";
+        private const string KIBAR = UI_DIRECTORY + "KiBar";
         private const string KAIOAURA = AURA_DIRECTORY + "KaiokenAura";
 
         public static Texture2D KiBar;

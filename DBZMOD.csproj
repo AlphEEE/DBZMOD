@@ -106,6 +106,7 @@
     <Compile Include="Tiles\KiManipulator.cs" />
     <Compile Include="UI\KiBar.cs" />
     <Compile Include="UI\KiResource.cs" />
+    <Compile Include="UI\ResourceBar.cs" />
     <Compile Include="Waters\NamekWater.cs" />
     <Compile Include="Waters\NamekWaterfall.cs" />
   </ItemGroup>

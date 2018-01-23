@@ -15,23 +15,19 @@ namespace DBZMOD.UI
 
         public override void OnInitialize()
         {
-            UIFlatPanel parent = new UIFlatPanel();
-            parent.SetPadding(0);
-            parent.Left.Set(300f, 0f);
-            parent.Top.Set(70f, 0f);
-            parent.Width.Set(130f, 0f);
-            parent.Height.Set(50f, 0f);
-            parent.backgroundColor = new Color(0, 94, 171);
+            ResourceBar Bar = new ResourceBar(ResourceBarMode.KI, 6, 86);
+            Bar.Left.Set(500f, 0f); //175
+            Bar.Top.Set(40f, 0f);
 
-            UIFlatPanel ki = new UIFlatPanel();
-            ki.Height.Set(40f, 0f);
-            ki.Width.Set(110f, 0f);
-            ki.Left.Set(290f, 0f);
-            ki.Top.Set(65f, 0f);
-            ki.backgroundColor = Color.Red;
-            parent.Append(ki);
+            Texture2D BarTexture = ModLoader.GetTexture("DBZMOD/UI/KiBar");
+            UIImage ki = new UIImage(BarTexture);
+            ki.Left.Set(-20, 0f);
+            ki.Top.Set(-8, 0f);
+            ki.Width.Set(80, 0f);
+            ki.Height.Set(18, 0f);
+            Bar.Append(ki);
 
-            base.Append(parent);
+            base.Append(Bar);
         }
     }
 }
