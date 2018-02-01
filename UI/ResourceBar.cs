@@ -61,11 +61,15 @@ namespace DBZMOD.UI
             text.Width.Set(width, 0f);
             text.Height.Set(height, 0f);
             text.Top.Set(height / 2 + 10, 0f); //center the UIText
+            text.Left.Set(width - 100, 0f);
             
+                        
             barBackground.Append(currentBar);
             barBackground.Append(text);
             base.Append(barBackground);
         }
+        
+            
         public override void Draw(SpriteBatch spriteBatch)
         {
             MyPlayer player = Main.LocalPlayer.GetModPlayer<MyPlayer>();

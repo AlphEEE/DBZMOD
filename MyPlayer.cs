@@ -85,9 +85,9 @@ namespace DBZMOD
         {
             KiDamage = 1f;
             KiKbAddition = 0f;
-            KiMax = 100;
+            KiMax = 1000;
             KiRegen = 2f;
-            KiCurrent = 100;
+            KiCurrent = 876;
             scouterT2 = false;
             scouterT3 = false;
             scouterT4 = false;
