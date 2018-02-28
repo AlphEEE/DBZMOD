@@ -7,8 +7,8 @@
     <ProjectGuid>{31EFD09E-37C1-4CB4-9050-1388F949EFC5}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Slimymod</RootNamespace>
-    <AssemblyName>Slimymod</AssemblyName>
+    <RootNamespace>DBZMOD</RootNamespace>
+    <AssemblyName>DBZMOD</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -48,7 +48,6 @@
     <Compile Include="Items\AngerKiCrystal.cs" />
     <Compile Include="Items\CalmKiCrystal.cs" />
     <Compile Include="Items\HonorKiCrystal.cs" />
-    <Compile Include="Items\kaiotestitem.cs" />
     <Compile Include="Items\KiManipulatorItem.cs" />
     <Compile Include="Items\NimbusWhistle.cs" />
     <Compile Include="Items\PridefulKiCrystal.cs" />
@@ -78,6 +77,7 @@
     <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="Projectiles\BaseAuraProj.cs" />
     <Compile Include="Projectiles\BigBangAttackProjectile.cs" />
     <Compile Include="Projectiles\BigBangAttackProjectile2.cs" />
     <Compile Include="Projectiles\DestructoDiskProjectile.cs" />
@@ -92,7 +92,6 @@
     <Compile Include="Projectiles\HellzoneGrenadeProjectile2.cs" />
     <Compile Include="Projectiles\KaiokenAuraProj.cs" />
     <Compile Include="Projectiles\KamehamehaBlast.cs" />
-    <Compile Include="Projectiles\KamehamehaProjectile.cs" />
     <Compile Include="Projectiles\KamehamehaTrail.cs" />
     <Compile Include="Projectiles\KiBeamProjectile.cs" />
     <Compile Include="Projectiles\KiBlastProjectile.cs" />

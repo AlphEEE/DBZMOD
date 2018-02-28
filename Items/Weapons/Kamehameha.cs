@@ -9,18 +9,17 @@ using Terraria.ModLoader;
 
 namespace DBZMOD.Items.Weapons
 {
-	public class Kamehameha: KiItem
+	public class Kamehameha : KiItem
 	{
 		public override void SetDefaults()
 		{
-			// Alter any of these values as you see fit, but you should probably keep useStyle on 1, as well as the noUseGraphic and noMelee bools
 			item.shoot = mod.ProjectileType("KamehamehaBlast");
 			item.shootSpeed = 70f;
 			item.damage = 70;
 			item.knockBack = 2f;
 			item.useStyle = 5;
 			item.UseSound = SoundID.Item12;
-			item.useAnimation = 25;
+			item.useAnimation = 100;
 			item.useTime = 100;
 			item.width = 40;
 			item.noUseGraphic = true;
@@ -28,6 +27,7 @@ namespace DBZMOD.Items.Weapons
 			item.autoReuse = false;
 			item.value = Item.sellPrice(0, 0, 5, 0);
 			item.rare = 3;
+            KiDrain = 150;
 	    }
 	    public override void SetStaticDefaults()
 		{

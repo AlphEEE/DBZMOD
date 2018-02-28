@@ -38,6 +38,14 @@ namespace DBZMOD
             item.thrown = false;
             item.summon = false;
         }
+        public int KiDrain;
+        public override bool CloneNewInstances
+        {
+            get
+            {
+                return true;
+            }
+        }
 
         public override void GetWeaponKnockback(Player player, ref float knockback)
         {
@@ -48,26 +56,43 @@ namespace DBZMOD
 			damage = (int)(damage * MyPlayer.ModPlayer(player).KiDamage);
         }
         public override void ModifyTooltips(List<TooltipLine> tooltips)
-		{
-			TooltipLine tt = tooltips.FirstOrDefault(x => x.Name == "Damage" && x.mod == "Terraria");
-			if (tt != null)
-			{
-				string[] splitText = tt.text.Split(' ');
-				string damageValue = splitText.First();
-				string damageWord = splitText.Last();
-				tt.text = damageValue + " ki " + damageWord;
-			}
-        if (item.damage > 0)
         {
-            foreach (TooltipLine line in tooltips)
+            TooltipLine Indicate = new TooltipLine(mod, "", "");
+            string[] Text = Indicate.text.Split(' ');
+            Indicate.text = " Consumes " + KiDrain + " Ki ";
+            tooltips.Add(Indicate);
+            TooltipLine tt = tooltips.FirstOrDefault(x => x.Name == "Damage" && x.mod == "Terraria");
+            if (tt != null)
             {
-            if (line.mod == "Terraria" && line.Name == "Damage")
+                string[] splitText = tt.text.Split(' ');
+                string damageValue = splitText.First();
+                string damageWord = splitText.Last();
+                tt.text = damageValue + " ki " + damageWord;
+            }
+            if (item.damage > 0)
+            {
+                foreach (TooltipLine line in tooltips)
                 {
-                    line.overrideColor = Color.Cyan;
+                    if (line.mod == "Terraria" && line.Name == "Damage")
+                    {
+                        line.overrideColor = Color.Cyan;
+                    }
                 }
             }
         }
+        public override bool CanUseItem(Player player)
+        {
+            if (KiDrain < MyPlayer.ModPlayer(player).KiCurrent)
+            {
+               MyPlayer.ModPlayer(player).KiCurrent -= KiDrain;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
-	    }
+
     }
 }

@@ -28,6 +28,7 @@ namespace DBZMOD
             GFX.LoadGFX(this);
             MyPlayer.KaiokenKey = RegisterHotKey("Kaioken Toggle", "J");
             MyPlayer.EnergyCharge = RegisterHotKey("Energy Charge", "C");
+            MyPlayer.Transform = RegisterHotKey("Transform", "X");
             KiBar.visible = true;
             if(!Main.dedServ)
             {

@@ -29,9 +29,12 @@ namespace DBZMOD
         public bool scouterT6;
         public bool spiritualEmblem;
         public bool hasKaioken;
+        public bool hasSSJ1;
         public int TransformCooldown;
         public static ModHotKey KaiokenKey;
         public static ModHotKey EnergyCharge;
+        public static ModHotKey Transform;
+
 
         public static MyPlayer ModPlayer(Player player)
         {
@@ -44,7 +47,7 @@ namespace DBZMOD
                 return player.statLifeMax2 + player.moveSpeed + player.statDefense + player.statManaMax2 + player.maxMinions * 50;
             }
         }
-        public bool HasKaioken()
+        public bool KaiokenCheck()
         {
             if(player.HasBuff(mod.BuffType("KaiokenBuff")))
             {
@@ -55,9 +58,35 @@ namespace DBZMOD
                 return hasKaioken = false;
             }
         }
+
+        public bool SSJ1Check()
+        {
+            if (player.HasBuff(mod.BuffType("SSJ1Buff")))
+            {
+                return hasSSJ1 = true;
+            }
+            else
+            {
+                return hasSSJ1 = false;
+            }
+        }
         
          public override void ProcessTriggers(TriggersSet triggersSet)
         {
+            if (Transform.JustPressed)
+            {
+                if (!player.HasBuff(mod.BuffType("SSJ1Buff")))
+                {
+                    player.AddBuff(mod.BuffType("SSJ1Buff"), 18000);
+                    Projectile.NewProjectile(player.Center.X - 40, player.Center.Y + 90, 0, 0, mod.ProjectileType("SSJ1AuraProjStart"), 0, 0, player.whoAmI);
+                    Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/AuraStart").WithVolume(.7f));
+                }
+            }
+            else if (Transform.JustPressed && (player.HasBuff(mod.BuffType("SSJ1Buff"))))
+            {
+                player.ClearBuff(mod.BuffType("SSJ1Buff"));
+            }
+
             if (KaiokenKey.JustPressed /*&& (MyPlayer.ModPlayer(player).Powerlevel > 10000)*/ && (!player.HasBuff(mod.BuffType("KaiokenBuff"))) && (!player.HasBuff(mod.BuffType("TiredDebuff"))))
             {
                 player.AddBuff(mod.BuffType("KaiokenBuff"), 18000);
@@ -65,15 +94,22 @@ namespace DBZMOD
                 Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/AuraStart").WithVolume(.5f));
                 TransformCooldown++;
             }
-            else if (KaiokenKey.JustPressed && (player.HasBuff(mod.BuffType("KaiokenBuff"))) && TransformCooldown <= 600)
+            else if (KaiokenKey.JustPressed && (player.HasBuff(mod.BuffType("KaiokenBuff"))) && TransformCooldown < 600)
             {
                 player.ClearBuff(mod.BuffType("KaiokenBuff"));
                 player.AddBuff(mod.BuffType("TiredDebuff"), 3600);
                 TransformCooldown = 0;
             }
+
             if (EnergyCharge.Current && (KiCurrent < KiMax))
             {
                 KiCurrent++;
+                player.velocity = new Vector2(0,0); 
+            }
+
+            if (EnergyCharge.JustPressed)
+            {
+                Projectile.NewProjectile(player.Center.X - 40, player.Center.Y + 90, 0, 0, mod.ProjectileType("BaseAuraProj"), 0, 0, player.whoAmI);
             }
 
         }
@@ -87,7 +123,6 @@ namespace DBZMOD
             KiKbAddition = 0f;
             KiMax = 1000;
             KiRegen = 2f;
-            KiCurrent = 876;
             scouterT2 = false;
             scouterT3 = false;
             scouterT4 = false;
