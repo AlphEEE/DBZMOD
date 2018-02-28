@@ -140,73 +140,82 @@ namespace DBZMOD
             //THIS IS AN EXAMPLE OF HOW TO MAKE ITEMS DROP FROM VANILA NPCs
 
             if (npc.type == NPCID.WallofFlesh)   //this is where you choose the npc you want
+            {
+                if (Main.rand.Next(3) == 0) ; //this is the item rarity, so 4 is 1 in 5 chance that the npc will drop the item.
                 {
-                if (Main.rand.Next(3) == 0); //this is the item rarity, so 4 is 1 in 5 chance that the npc will drop the item.
                     {
-                        {
-                            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("Rhongomyniad"), 1); //this is where you set what item to drop, mod.ItemType("CustomSword") is an example of how to add your custom item. and 1 is the amount
-                        }
+                        Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("Rhongomyniad"), 1); //this is where you set what item to drop, mod.ItemType("CustomSword") is an example of how to add your custom item. and 1 is the amount
                     }
                 }
-
-
-            //THIS IS AN EXAMPLE OF HOW TO MAKE ITEMS DROP FROM NPCs IN CUSTOM BIOME
-            //if (Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].GetModPlayer<MyPlayer>(mod).ZoneCustomBiome) //change MyPlayer with your myplayer.cs name and ZoneCustomBiome with your zone name
-            //{
-            //if (Main.rand.Next(2) == 0) //this is the item rarity, so 2 is 1 in 3 chance that the npc will drop the item.
-            //{
-            //{
-            //Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.SoulofMight, 1); //this is where you set what item to drop
-            //  }
-            // }
-            //}
-
-            //THIS IS AN EXAMPLE OF HOW TO MAKE ITEMS DROP FROM CUSTOM NPCs
-
-            //if (npc.type == mod.NPCType("GelmalineSlime"))//this is how you add your custom npc
-            //{
-            //if (Main.rand.Next(3) == 0) //this is the item rarity, so 2 is 1 in 3 chance that the npc will drop the item.
-            //{
-            //{
-            // Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("GelmalineOre"), Main.rand.Next(3, 12)); //this is where you set what item to drop, mod.ItemType("CustomSword") is an example of how to add your custom item. and 1 is the amount
-            //}
-            // }
-            //}
-            //if (npc.type == mod.NPCType("OrangeSlime"))//this is how you add your custom npc
-            //{
-            //if (Main.rand.Next(20) == 0) //this is the item rarity, so 2 is 1 in 3 chance that the npc will drop the item.
-            //{
-            //{
-            //  Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("BlazingCore"), 1); //this is where you set what item to drop, mod.ItemType("CustomSword") is an example of how to add your custom item. and 1 is the amount
-            //}
-            // }
-            // }
-            //if (npc.type == mod.NPCType("CyanSlime"))//this is how you add your custom npc
-            //{
-            // if (Main.rand.Next(20) == 0)  //this is the item rarity, so 2 is 1 in 3 chance that the npc will drop the item.
-            //{
-            //{
-            //     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("IcyAmalgam"), 1); //this is where you set what item to drop, mod.ItemType("CustomSword") is an example of how to add your custom item. and 1 is the amount
-            //}
-            //}
-            //}
-            //if (npc.type == mod.NPCType("TealSlime"))//this is how you add your custom npc
-            //{
-            // if (Main.rand.Next(20) == 0) //this is the item rarity, so 2 is 1 in 3 chance that the npc will drop the item.
-            //{
-            //  {
-            //    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("PoisonPearl"), 1); //this is where you set what item to drop, mod.ItemType("CustomSword") is an example of how to add your custom item. and 1 is the amount
-            //}
-            // }
-            // }
-            //if (npc.type == mod.NPCType("WhiteSlime"))//this is how you add your custom npc
-            //{
-            // if (Main.rand.Next(20) == 0) //this is the item rarity, so 2 is 1 in 3 chance that the npc will drop the item.
-            //{
-            // {
-            //    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ArmorShard"), 1); //this is where you set what item to drop, mod.ItemType("CustomSword") is an example of how to add your custom item. and 1 is the amount
-            //}
-            //}
+            }
         }
+
+            public override void SetupShop(int type, Chest shop, ref int nextSlot)
+            {
+                if (type == NPCID.Merchant)
+                {
+                    shop.item[nextSlot].SetDefaults(mod.ItemType<Items.ScrapMetal>());
+                    nextSlot++;
+                }
+            }
+        //THIS IS AN EXAMPLE OF HOW TO MAKE ITEMS DROP FROM NPCs IN CUSTOM BIOME
+        //if (Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].GetModPlayer<MyPlayer>(mod).ZoneCustomBiome) //change MyPlayer with your myplayer.cs name and ZoneCustomBiome with your zone name
+        //{
+        //if (Main.rand.Next(2) == 0) //this is the item rarity, so 2 is 1 in 3 chance that the npc will drop the item.
+        //{
+        //{
+        //Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.SoulofMight, 1); //this is where you set what item to drop
+        //  }
+        // }
+        //}
+
+        //THIS IS AN EXAMPLE OF HOW TO MAKE ITEMS DROP FROM CUSTOM NPCs
+
+        //if (npc.type == mod.NPCType("GelmalineSlime"))//this is how you add your custom npc
+        //{
+        //if (Main.rand.Next(3) == 0) //this is the item rarity, so 2 is 1 in 3 chance that the npc will drop the item.
+        //{
+        //{
+        // Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("GelmalineOre"), Main.rand.Next(3, 12)); //this is where you set what item to drop, mod.ItemType("CustomSword") is an example of how to add your custom item. and 1 is the amount
+        //}
+        // }
+        //}
+        //if (npc.type == mod.NPCType("OrangeSlime"))//this is how you add your custom npc
+        //{
+        //if (Main.rand.Next(20) == 0) //this is the item rarity, so 2 is 1 in 3 chance that the npc will drop the item.
+        //{
+        //{
+        //  Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("BlazingCore"), 1); //this is where you set what item to drop, mod.ItemType("CustomSword") is an example of how to add your custom item. and 1 is the amount
+        //}
+        // }
+        // }
+        //if (npc.type == mod.NPCType("CyanSlime"))//this is how you add your custom npc
+        //{
+        // if (Main.rand.Next(20) == 0)  //this is the item rarity, so 2 is 1 in 3 chance that the npc will drop the item.
+        //{
+        //{
+        //     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("IcyAmalgam"), 1); //this is where you set what item to drop, mod.ItemType("CustomSword") is an example of how to add your custom item. and 1 is the amount
+        //}
+        //}
+        //}
+        //if (npc.type == mod.NPCType("TealSlime"))//this is how you add your custom npc
+        //{
+        // if (Main.rand.Next(20) == 0) //this is the item rarity, so 2 is 1 in 3 chance that the npc will drop the item.
+        //{
+        //  {
+        //    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("PoisonPearl"), 1); //this is where you set what item to drop, mod.ItemType("CustomSword") is an example of how to add your custom item. and 1 is the amount
+        //}
+        // }
+        // }
+        //if (npc.type == mod.NPCType("WhiteSlime"))//this is how you add your custom npc
+        //{
+        // if (Main.rand.Next(20) == 0) //this is the item rarity, so 2 is 1 in 3 chance that the npc will drop the item.
+        //{
+        // {
+        //    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ArmorShard"), 1); //this is where you set what item to drop, mod.ItemType("CustomSword") is an example of how to add your custom item. and 1 is the amount
+        //}
+        //}
     }
+
 }
+

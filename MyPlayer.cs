@@ -106,6 +106,10 @@ namespace DBZMOD
                 KiCurrent++;
                 player.velocity = new Vector2(0,0); 
             }
+            if (KiCurrent > KiMax)
+            {
+                KiCurrent = KiMax;
+            }
 
             if (EnergyCharge.JustPressed)
             {

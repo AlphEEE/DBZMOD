@@ -10,8 +10,6 @@ namespace DBZMOD.Items
 	{
 		public override void SetDefaults()
 		{
-
-
 			item.width = 24;
 			item.height = 24;
 			item.healLife = 9001;
@@ -26,12 +24,32 @@ namespace DBZMOD.Items
 			item.rare = 5;
 			item.potion = true;
 		}
+    
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Senzu Bean");
+            Tooltip.SetDefault("Restores your body and Ki!");
+        }
+        MyPlayer Kiplayer = new MyPlayer();
+        
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Senzu Bean");
-      Tooltip.SetDefault("Restores your body!");
+        public override bool UseItem(Player player)
+        {
+            player.AddBuff(mod.BuffType("SenzuCooldown"), 18000);
+            Kiplayer.KiCurrent =+ 10000;
+            return true;
+            
+        }
+        public override bool CanUseItem(Player player)
+        {
+            if (player.HasBuff(mod.BuffType("SenzuCooldown")))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
     }
-
-	}
 }

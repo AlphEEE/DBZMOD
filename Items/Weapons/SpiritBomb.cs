@@ -28,6 +28,7 @@ namespace DBZMOD.Items.Weapons
 			item.autoReuse = false;
 			item.value = Item.sellPrice(0, 0, 5, 0);
 			item.rare = 4;
+            KiDrain = 500;
 	    }
 		
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)

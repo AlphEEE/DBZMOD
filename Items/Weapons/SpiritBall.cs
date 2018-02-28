@@ -30,6 +30,7 @@ namespace DBZMOD.Items.Weapons
 			item.channel = true;
 			item.value = Item.sellPrice(0, 0, 5, 0);
 			item.rare = 1;
+            KiDrain = 60;
 	    }
 	    public override void SetStaticDefaults()
 		{
