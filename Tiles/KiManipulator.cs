@@ -1,5 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.DataStructures;
+using Terraria.Enums;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
@@ -15,9 +17,13 @@ namespace DBZMOD.Tiles
             Main.tileNoAttach[Type] = true;
             Main.tileTable[Type] = false;
             Main.tileLavaDeath[Type] = false;
-            TileObjectData.newTile.CopyFrom(TileObjectData.Style3x2);
+            TileObjectData.newTile.AnchorBottom = new AnchorData(AnchorType.SolidTile | AnchorType.SolidWithTop | AnchorType.SolidSide, TileObjectData.newTile.Width, 0);
+            TileObjectData.newTile.UsesCustomCanPlace = true;
+            TileObjectData.newTile.CoordinateWidth = 16;
+            TileObjectData.newTile.Width = 3;
             TileObjectData.newTile.Height = 1;
             TileObjectData.newTile.CoordinateHeights = new int[] { 18 };
+            TileObjectData.newTile.Origin = new Point16(1, 0);
             TileObjectData.newTile.CoordinatePadding = 2;
             ModTranslation name = CreateMapEntryName();
             name.SetDefault("Ki Manipulator");
