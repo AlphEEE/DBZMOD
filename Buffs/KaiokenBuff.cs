@@ -17,12 +17,12 @@ namespace DBZMOD.Buffs
         {                                             
             player.lifeRegen = -25;
 			player.moveSpeed *= 2f;
-            player.meleeDamage *= 2f;
-			player.rangedDamage *= 2f;
-			player.magicDamage *= 2f;
-			player.minionDamage *= 2f;
-			player.thrownDamage *= 2f;
-			MyPlayer.ModPlayer(player).KiDamage *= 2f;
+            player.meleeDamage += 1f;
+			player.rangedDamage += 1f;
+			player.magicDamage += 1f;
+			player.minionDamage += 1f;
+			player.thrownDamage += 1f;
+			MyPlayer.ModPlayer(player).KiDamage += 1f;
 			Lighting.AddLight(player.Center, 5f, 0f, 0f);
         }	
 	}
