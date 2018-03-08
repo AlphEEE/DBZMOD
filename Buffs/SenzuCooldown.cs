@@ -15,6 +15,7 @@ namespace DBZMOD.Buffs
             DisplayName.SetDefault("Senzu Cooldown");
             Description.SetDefault("You feel too sick to eat another senzu.");
             Main.buffNoTimeDisplay[Type] = false;
+            Main.debuff[Type] = true;
         }
     }
 }

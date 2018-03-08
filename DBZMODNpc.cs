@@ -139,12 +139,12 @@ namespace DBZMOD
             //}
             //THIS IS AN EXAMPLE OF HOW TO MAKE ITEMS DROP FROM VANILA NPCs
 
-            if (npc.type == NPCID.WallofFlesh)   //this is where you choose the npc you want
+            if (npc.boss)   //this is where you choose the npc you want
             {
-                if (Main.rand.Next(3) == 0) ; //this is the item rarity, so 4 is 1 in 5 chance that the npc will drop the item.
+                if (Main.rand.Next(3) == 0) //this is the item rarity, so 4 is 1 in 5 chance that the npc will drop the item.
                 {
                     {
-                        Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("Rhongomyniad"), 1); //this is where you set what item to drop, mod.ItemType("CustomSword") is an example of how to add your custom item. and 1 is the amount
+                        Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("SenzuBean"), Main.rand.Next(1, 3)); //this is where you set what item to drop, mod.ItemType("CustomSword") is an example of how to add your custom item. and 1 is the amount
                     }
                 }
             }

@@ -12,10 +12,11 @@ namespace DBZMOD.Buffs
 			Description.SetDefault("2x Damage, 2x Speed, Drains Life.");
 			Main.buffNoTimeDisplay[Type] = true;
             Main.buffNoSave[Type] = true;
+            Main.debuff[Type] = true;
         }
         public override void Update(Player player, ref int buffIndex)
         {                                             
-            player.lifeRegen = -25;
+            player.lifeRegen = -15;
 			player.moveSpeed *= 2f;
             player.meleeDamage += 1f;
 			player.rangedDamage += 1f;

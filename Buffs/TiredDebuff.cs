@@ -12,6 +12,7 @@ namespace DBZMOD.Buffs
             DisplayName.SetDefault("Exhausted");
             Description.SetDefault("You have used too much Ki.");
             Main.buffNoTimeDisplay[Type] = false;
+            Main.debuff[Type] = true;
         }
         public override void Update(Player player, ref int buffIndex)
         {
