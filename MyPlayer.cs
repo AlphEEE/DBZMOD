@@ -30,6 +30,7 @@ namespace DBZMOD
         public bool spiritualEmblem;
         public bool hasKaioken;
         public bool hasSSJ1;
+        public int ChargeSoundTimer;
         public int TransformCooldown;
         public static ModHotKey KaiokenKey;
         public static ModHotKey EnergyCharge;
@@ -91,20 +92,27 @@ namespace DBZMOD
             {
                 player.AddBuff(mod.BuffType("KaiokenBuff"), 18000);
                 Projectile.NewProjectile(player.Center.X - 40, player.Center.Y + 90, 0, 0, mod.ProjectileType("KaiokenAuraProj"), 0, 0, player.whoAmI);
-                Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/AuraStart").WithVolume(.5f));
+                Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/KaioAuraStart").WithVolume(.5f));
                 TransformCooldown++;
             }
             else if (KaiokenKey.JustPressed && (player.HasBuff(mod.BuffType("KaiokenBuff"))) && TransformCooldown < 600)
             {
                 player.ClearBuff(mod.BuffType("KaiokenBuff"));
                 player.AddBuff(mod.BuffType("TiredDebuff"), 3600);
+                Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/PowerDown").WithVolume(.3f));
                 TransformCooldown = 0;
             }
 
             if (EnergyCharge.Current && (KiCurrent < KiMax))
             {
                 KiCurrent++;
-                player.velocity = new Vector2(0,0); 
+                player.velocity = new Vector2(0,player.velocity.Y);
+                ChargeSoundTimer++;
+                if (ChargeSoundTimer > 22)
+                {
+                    Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/EnergyCharge").WithVolume(.5f));
+                    ChargeSoundTimer = 0;
+                }
             }
             if (KiCurrent > KiMax)
             {
@@ -114,6 +122,7 @@ namespace DBZMOD
             if (EnergyCharge.JustPressed)
             {
                 Projectile.NewProjectile(player.Center.X - 40, player.Center.Y + 90, 0, 0, mod.ProjectileType("BaseAuraProj"), 0, 0, player.whoAmI);
+                Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/EnergyChargeStart").WithVolume(.7f));
             }
 
         }

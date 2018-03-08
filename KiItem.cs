@@ -82,7 +82,7 @@ namespace DBZMOD
         }
         public override bool CanUseItem(Player player)
         {
-            if (KiDrain < MyPlayer.ModPlayer(player).KiCurrent)
+            if (KiDrain <= MyPlayer.ModPlayer(player).KiCurrent)
             {
                MyPlayer.ModPlayer(player).KiCurrent -= KiDrain;
                 return true;

@@ -33,27 +33,12 @@ Update 1.0.0
 -Added Spiritual emblem
 -Added dodon ray
 
-Update 0.2.1
-
--Updated to tmodloader 0.10
--Changed how frieza's ship shoots projectiles
--Added Some Resprites
--Rebalancing
-
-Update 0.2(Second Half of the 0.2 Update)
-
-
--More Resprites.
--Completly Remade the Ki Crystal Ore.
--Added The Nimbus Cloud Mount.
--Recipe Revamps.
--Ki Crystal ore now shows on spelunker.
--Bug Fixes.
 
 (Credit)
 -Credit To JFC_263, Peppermint Bark, Earth and some other amazing spriters for their hard work!
 -Credit To GabeHasWon's, Divermansam and the whole TModLoader Discord For Help with code and such.
 -Credit To Akira Toriyama For Creating Dragon Ball Z!
 -Credit To Bluemagic and everyone else for creating TModloader.
+-Credit To My Discord Moderators and everyone else for giving me motivation.
 -Credit To Relogic for making an incredible game.
 -Credit To MyPicts for the aura sprites.

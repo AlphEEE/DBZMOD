@@ -1,5 +1,4 @@
 author = NuovaPrime/Earth
-
 version = 1.0.0
 displayName = Dragon Ball T
 buildIgnore = *.csproj, *.user, obj\*, bin\*, .vs\*, .git\*

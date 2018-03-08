@@ -10,6 +10,8 @@ namespace DBZMOD
     {
         private UserInterface KiBarInterface;
         private KiBar kibar;
+        private UIFlatPanel UIFlatPanel;
+        private DBZMOD mod;
         public DBZMOD()
         {
             Properties = new ModProperties()
@@ -25,13 +27,13 @@ namespace DBZMOD
         }
         public override void Load()
         {
-            GFX.LoadGFX(this);
             MyPlayer.KaiokenKey = RegisterHotKey("Kaioken Toggle", "J");
             MyPlayer.EnergyCharge = RegisterHotKey("Energy Charge", "C");
             MyPlayer.Transform = RegisterHotKey("Transform", "X");
             KiBar.visible = true;
             if(!Main.dedServ)
             {
+                GFX.LoadGFX(this);
                 kibar = new KiBar();
                 kibar.Activate();
                 KiBarInterface = new UserInterface();
