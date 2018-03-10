@@ -22,7 +22,7 @@ namespace DBZMOD.Items
 			item.useTime = 17;
 			item.value = 10000;
 			item.rare = 5;
-			item.potion = true;
+			item.potion = false;
 		}
     
         public override void SetStaticDefaults()

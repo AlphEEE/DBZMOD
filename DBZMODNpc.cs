@@ -1,4 +1,5 @@
-﻿using Terraria;
+﻿using System;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -13,15 +14,27 @@ namespace DBZMOD
                 return true;
             }
         }
+        MyPlayer dbzplayer = new MyPlayer();
         public override void PostAI(NPC npc)
         {
-            // npc.lifeMax = ((int)Math.Round(npc.lifeMax * player.Powerlevel * 0.15));
-            //npc.life = ((int)Math.Round(npc.life * player.Powerlevel * 0.15));
-            //npc.defense = ((int)Math.Round(npc.life * player.Powerlevel * 0.10));
-            //if (npc.damage > 0 && !npc.boss)
+            if(npc.boss)
             {
-                //npc.damage = ((int)Math.Round(npc.life * player.Powerlevel * 0.20));
-            }
+                if(dbzplayer.hasKaioken)
+                {
+                    npc.lifeMax = ((int)Math.Round(npc.lifeMax * 3.00));
+                    npc.life = ((int)Math.Round(npc.life * 3.00));
+                }
+                else if(dbzplayer.hasSSJ1)
+                {
+                    npc.lifeMax = ((int)Math.Round(npc.lifeMax * 4.00));
+                    npc.life = ((int)Math.Round(npc.life * 4.00));
+                }
+                else
+                {
+                    npc.lifeMax = ((int)Math.Round(npc.lifeMax * 2.00));
+                    npc.life = ((int)Math.Round(npc.life * 2.00));
+                }
+            }            
         }
         public override void NPCLoot(NPC npc)
         {
@@ -139,12 +152,12 @@ namespace DBZMOD
             //}
             //THIS IS AN EXAMPLE OF HOW TO MAKE ITEMS DROP FROM VANILA NPCs
 
-            if (npc.type == NPCID.WallofFlesh)   //this is where you choose the npc you want
+            if (npc.boss)   //this is where you choose the npc you want
             {
-                if (Main.rand.Next(3) == 0) ; //this is the item rarity, so 4 is 1 in 5 chance that the npc will drop the item.
+                if (Main.rand.Next(3) == 0) //this is the item rarity, so 4 is 1 in 5 chance that the npc will drop the item.
                 {
                     {
-                        Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("Rhongomyniad"), 1); //this is where you set what item to drop, mod.ItemType("CustomSword") is an example of how to add your custom item. and 1 is the amount
+                        Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("SenzuBean"), Main.rand.Next(1, 3)); //this is where you set what item to drop, mod.ItemType("CustomSword") is an example of how to add your custom item. and 1 is the amount
                     }
                 }
             }

@@ -24,11 +24,11 @@ namespace DBZMOD.Projectiles
 			projectile.light = 0.9f;
             projectile.friendly = true;
             projectile.ignoreWater = true;
+            projectile.tileCollide = false;
             projectile.penetrate = 1;
             projectile.timeLeft = 120;
 			ProjectileID.Sets.TrailCacheLength[projectile.type] = 4;
             ProjectileID.Sets.TrailingMode[projectile.type] = 0;
-            projectile.magic = true;
         }
 
 		public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)

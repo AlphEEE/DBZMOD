@@ -19,7 +19,7 @@ namespace DBZMOD.Items.Weapons
 			item.knockBack = 12f;
 			item.useStyle = 1;
 			item.UseSound = SoundID.Item1;
-			item.useAnimation = 25;
+			item.useAnimation = 550;
 			item.useTime =  550;
 			item.width = 40;
 			item.channel = true;
@@ -59,23 +59,12 @@ namespace DBZMOD.Items.Weapons
 		Tooltip.SetDefault("-Tier 4-");
 		DisplayName.SetDefault("Spirit Bomb");
 		}
-        public override bool CanUseItem(Player player)
-        {
-            if (player.HasBuff(mod.BuffType("TiredDebuff")))
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-        }
         public override bool UseItem(Player player)
         {
             player.AddBuff(mod.BuffType("TiredDebuff"), 18000);
             return true;
         }
-
+        
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);

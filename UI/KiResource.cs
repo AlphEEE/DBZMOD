@@ -11,12 +11,12 @@ namespace DBZMOD.UI
     class UIFlatPanel : UIElement
     {
         public Color backgroundColor = Color.Gray;
-        private static Texture2D _backgroundTexture;
+        public static Texture2D _backgroundTexture;
 
         public UIFlatPanel()
         {
             if (_backgroundTexture == null)
-                _backgroundTexture = ModLoader.GetTexture("DBZMOD/UI/Bg");
+                _backgroundTexture = GFX.Bg;
         }
 
         protected override void DrawSelf(SpriteBatch spriteBatch)

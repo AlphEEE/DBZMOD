@@ -19,7 +19,7 @@ namespace DBZMOD.UI
             Bar.Left.Set(500f, 0f); //175
             Bar.Top.Set(40f, 0f);
 
-            Texture2D BarTexture = ModLoader.GetTexture("DBZMOD/UI/KiBar");
+            Texture2D BarTexture = GFX.KiBar;
             UIImage ki = new UIImage(BarTexture);
             ki.Left.Set(-20, 0f);
             ki.Top.Set(-8, 0f);

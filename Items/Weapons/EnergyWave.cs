@@ -16,11 +16,11 @@ namespace DBZMOD.Items.Weapons
 			// Alter any of these values as you see fit, but you should probably keep useStyle on 1, as well as the noUseGraphic and noMelee bools
 			item.shoot = mod.ProjectileType("EnergyWaveBlast");
 			item.shootSpeed = 70f;
-			item.damage = 19;
+			item.damage = 22;
 			item.knockBack = 2f;
 			item.useStyle = 5;
 			item.UseSound = SoundID.Item12;
-			item.useAnimation = 25;
+			item.useAnimation = 90;
 			item.useTime = 90;
 			item.width = 40;
 			item.noUseGraphic = true;

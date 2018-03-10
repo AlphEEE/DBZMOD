@@ -11,12 +11,12 @@ namespace DBZMOD.Projectiles
 {
 	public class EnergyWaveBlast : KiProjectile
 	{
-		public override void SetDefaults()
+        public override void SetDefaults()
         {
             projectile.CloneDefaults(ProjectileID.SwordBeam);
             projectile.hostile = false;
             projectile.friendly = true;
-			projectile.tileCollide = true;
+			projectile.tileCollide = false;
             projectile.width = 50;
             projectile.height = 50;
 			projectile.aiStyle = 1;
@@ -26,7 +26,7 @@ namespace DBZMOD.Projectiles
 			aiType = 14;
             projectile.ignoreWater = true;
 			projectile.penetrate = -1;
-			ProjectileID.Sets.TrailCacheLength[projectile.type] = 4;
+            ProjectileID.Sets.TrailCacheLength[projectile.type] = 4;
             ProjectileID.Sets.TrailingMode[projectile.type] = 0;
         }
 
@@ -128,6 +128,7 @@ namespace DBZMOD.Projectiles
    
         public override void AI()
         {
+
 			 projectile.ai[1]++;
             if(projectile.ai[1] == 2)
             {

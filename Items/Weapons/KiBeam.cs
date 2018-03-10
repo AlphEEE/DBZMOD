@@ -28,7 +28,7 @@ namespace DBZMOD.Items.Weapons
 			item.autoReuse = true;
 			item.value = Item.sellPrice(0, 0, 5, 0);
 			item.rare = 1;
-            KiDrain = 40;
+            KiDrain = 30;
 	    }
 	    public override void SetStaticDefaults()
 		{
