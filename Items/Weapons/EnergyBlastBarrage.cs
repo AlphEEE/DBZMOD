@@ -15,7 +15,7 @@ namespace DBZMOD.Items.Weapons
 		{
 			item.shoot = mod.ProjectileType("EnergyBlastBarrageProjectile");
 			item.shootSpeed = 29f;
-			item.damage = 27;
+			item.damage = 34;
 			item.knockBack = 5f;
 			item.useStyle = 1;
 			item.UseSound = SoundID.Item1;

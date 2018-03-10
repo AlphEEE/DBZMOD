@@ -39,7 +39,7 @@ namespace DBZMOD.Items.Weapons
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
 		{
 			float numberProjectiles = 2 + Main.rand.Next(1); // 3, 4, or 5 shots
-			float rotation = MathHelper.ToRadians(20);
+			float rotation = MathHelper.ToRadians(7);
 			position += Vector2.Normalize(new Vector2(speedX, speedY)) * 20f;
 			for (int i = 0; i < numberProjectiles; i++)
 			{

@@ -1,4 +1,5 @@
-﻿using Terraria;
+﻿using System;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -13,15 +14,27 @@ namespace DBZMOD
                 return true;
             }
         }
+        MyPlayer dbzplayer = new MyPlayer();
         public override void PostAI(NPC npc)
         {
-            // npc.lifeMax = ((int)Math.Round(npc.lifeMax * player.Powerlevel * 0.15));
-            //npc.life = ((int)Math.Round(npc.life * player.Powerlevel * 0.15));
-            //npc.defense = ((int)Math.Round(npc.life * player.Powerlevel * 0.10));
-            //if (npc.damage > 0 && !npc.boss)
+            if(npc.boss)
             {
-                //npc.damage = ((int)Math.Round(npc.life * player.Powerlevel * 0.20));
-            }
+                if(dbzplayer.hasKaioken)
+                {
+                    npc.lifeMax = ((int)Math.Round(npc.lifeMax * 3.00));
+                    npc.life = ((int)Math.Round(npc.life * 3.00));
+                }
+                else if(dbzplayer.hasSSJ1)
+                {
+                    npc.lifeMax = ((int)Math.Round(npc.lifeMax * 4.00));
+                    npc.life = ((int)Math.Round(npc.life * 4.00));
+                }
+                else
+                {
+                    npc.lifeMax = ((int)Math.Round(npc.lifeMax * 2.00));
+                    npc.life = ((int)Math.Round(npc.life * 2.00));
+                }
+            }            
         }
         public override void NPCLoot(NPC npc)
         {

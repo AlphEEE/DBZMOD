@@ -9,7 +9,7 @@ namespace DBZMOD.Items.Accessories
         public override void SetStaticDefaults()
         {
             Tooltip.SetDefault("A Piece of equipment used for scanning powerlevels."
-               + "\nIncreased Ki Damage, Spelunker and Hunter effects."
+               + "\nIncreased Ki Damage and Hunter effect."
                + "\n-Tier 2-");
             DisplayName.SetDefault("Green Scouter");
         }
@@ -29,6 +29,7 @@ namespace DBZMOD.Items.Accessories
             {
                 player.GetModPlayer<MyPlayer>(mod).KiDamage *= 1.05f;
                 player.GetModPlayer<MyPlayer>(mod).scouterT2 = true;
+                player.detectCreature = true;
             }
         }
         public override void DrawHair(ref bool drawHair, ref bool drawAltHair)

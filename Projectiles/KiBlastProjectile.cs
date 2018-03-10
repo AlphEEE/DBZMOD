@@ -24,6 +24,7 @@ namespace DBZMOD.Projectiles
 			projectile.light = 0.9f;
             projectile.friendly = true;
             projectile.ignoreWater = true;
+            projectile.tileCollide = false;
             projectile.penetrate = 1;
             projectile.timeLeft = 120;
 			ProjectileID.Sets.TrailCacheLength[projectile.type] = 4;
