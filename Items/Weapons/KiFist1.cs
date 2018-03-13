@@ -15,7 +15,7 @@ namespace DBZMOD.Items.Weapons
 		{
 			item.shoot = mod.ProjectileType("KiFistProj");
 			item.shootSpeed = 0f;
-			item.damage = 15;
+			item.damage = 10;
 			item.knockBack = 5f;
 			item.useStyle = 3;
 			item.UseSound = SoundID.Item1;

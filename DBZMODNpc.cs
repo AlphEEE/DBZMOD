@@ -15,27 +15,6 @@ namespace DBZMOD
             }
         }
         MyPlayer dbzplayer = new MyPlayer();
-        public override void PostAI(NPC npc)
-        {
-            if(npc.boss)
-            {
-                if(dbzplayer.hasKaioken)
-                {
-                    npc.lifeMax = ((int)Math.Round(npc.lifeMax * 3.00));
-                    npc.life = ((int)Math.Round(npc.life * 3.00));
-                }
-                else if(dbzplayer.hasSSJ1)
-                {
-                    npc.lifeMax = ((int)Math.Round(npc.lifeMax * 4.00));
-                    npc.life = ((int)Math.Round(npc.life * 4.00));
-                }
-                else
-                {
-                    npc.lifeMax = ((int)Math.Round(npc.lifeMax * 2.00));
-                    npc.life = ((int)Math.Round(npc.life * 2.00));
-                }
-            }            
-        }
         public override void NPCLoot(NPC npc)
         {
 
@@ -73,9 +52,9 @@ namespace DBZMOD
             {
                 if (!Main.player[(int)Player.FindClosest(npc.position, npc.width, npc.height)].ZoneBeach && !Main.player[(int)Player.FindClosest(npc.position, npc.width, npc.height)].ZoneCorrupt && !Main.player[(int)Player.FindClosest(npc.position, npc.width, npc.height)].ZoneCrimson && !Main.player[(int)Player.FindClosest(npc.position, npc.width, npc.height)].ZoneDesert && !Main.player[(int)Player.FindClosest(npc.position, npc.width, npc.height)].ZoneDungeon && !Main.player[(int)Player.FindClosest(npc.position, npc.width, npc.height)].ZoneGlowshroom && !Main.player[(int)Player.FindClosest(npc.position, npc.width, npc.height)].ZoneHoly && !Main.player[(int)Player.FindClosest(npc.position, npc.width, npc.height)].ZoneJungle && !Main.player[(int)Player.FindClosest(npc.position, npc.width, npc.height)].ZoneMeteor && !Main.player[(int)Player.FindClosest(npc.position, npc.width, npc.height)].ZoneOldOneArmy && !Main.player[(int)Player.FindClosest(npc.position, npc.width, npc.height)].ZoneSandstorm && !Main.player[(int)Player.FindClosest(npc.position, npc.width, npc.height)].ZoneSnow && !Main.player[(int)Player.FindClosest(npc.position, npc.width, npc.height)].ZoneTowerNebula && !Main.player[(int)Player.FindClosest(npc.position, npc.width, npc.height)].ZoneTowerSolar && !Main.player[(int)Player.FindClosest(npc.position, npc.width, npc.height)].ZoneTowerStardust && !Main.player[(int)Player.FindClosest(npc.position, npc.width, npc.height)].ZoneTowerVortex && !Main.player[(int)Player.FindClosest(npc.position, npc.width, npc.height)].ZoneUndergroundDesert && !Main.player[(int)Player.FindClosest(npc.position, npc.width, npc.height)].ZoneUnderworldHeight)        //this is where you choose what biome you whant the item to drop. ZoneCorrupt is in Corruption
                 {
-                    if (Main.rand.Next(4) == 0)      //this is the item rarity, so 9 = 1 in 10 chance that the npc will drop the item.
+                    if (Main.rand.Next(2) == 0)      //this is the item rarity, so 9 = 1 in 10 chance that the npc will drop the item.
                     {
-                        Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("StableKiCrystal"), Main.rand.Next(1, 3));//this is where you set what item to drop ,ItemID.VileMushroom is an example of how to add vanila items , Main.rand.Next(5, 10) it's the quantity,so it will chose a number from 5 to 10 
+                        Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("StableKiCrystal"), Main.rand.Next(1, 5));//this is where you set what item to drop ,ItemID.VileMushroom is an example of how to add vanila items , Main.rand.Next(5, 10) it's the quantity,so it will chose a number from 5 to 10 
 
                     }
                 }
@@ -84,9 +63,9 @@ namespace DBZMOD
             {
                 if (Main.player[(int)Player.FindClosest(npc.position, npc.width, npc.height)].ZoneJungle)
                 {
-                    if (Main.rand.Next(4) == 0)
+                    if (Main.rand.Next(2) == 0)
                     {
-                        Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("CalmKiCrystal"), Main.rand.Next(1, 3));
+                        Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("CalmKiCrystal"), Main.rand.Next(1, 5));
                     }
                 }
             }
@@ -94,9 +73,9 @@ namespace DBZMOD
             {
                 if (Main.player[(int)Player.FindClosest(npc.position, npc.width, npc.height)].ZoneUnderworldHeight)
                 {
-                    if (Main.rand.Next(4) == 0)
+                    if (Main.rand.Next(2) == 0)
                     {
-                        Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("HonorKiCrystal"), Main.rand.Next(1, 3));
+                        Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("HonorKiCrystal"), Main.rand.Next(1, 5));
                     }
                 }
             }
@@ -104,9 +83,9 @@ namespace DBZMOD
             {
                 if (Main.player[(int)Player.FindClosest(npc.position, npc.width, npc.height)].ZoneHoly)
                 {
-                    if (Main.rand.Next(4) == 0)
+                    if (Main.rand.Next(2) == 0)
                     {
-                        Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("PridefulKiCrystal"), Main.rand.Next(1, 3));
+                        Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("PridefulKiCrystal"), Main.rand.Next(1, 5));
                     }
                 }
             }
@@ -114,9 +93,9 @@ namespace DBZMOD
             {
                 if (Main.player[(int)Player.FindClosest(npc.position, npc.width, npc.height)].ZoneCrimson)
                 {
-                    if (Main.rand.Next(4) == 0)
+                    if (Main.rand.Next(2) == 0)
                     {
-                        Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("AngerKiCrystal"), Main.rand.Next(1, 3));
+                        Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("AngerKiCrystal"), Main.rand.Next(1, 5));
                     }
                 }
             }
@@ -124,9 +103,9 @@ namespace DBZMOD
             {
                 if (Main.player[(int)Player.FindClosest(npc.position, npc.width, npc.height)].ZoneCorrupt)
                 {
-                    if (Main.rand.Next(4) == 0)
+                    if (Main.rand.Next(2) == 0)
                     {
-                        Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("AngerKiCrystal"), Main.rand.Next(1, 3));
+                        Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("AngerKiCrystal"), Main.rand.Next(1, 5));
                     }
                 }
             }

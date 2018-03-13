@@ -36,7 +36,7 @@ namespace DBZMOD.Items.Weapons
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(22, 5);
+			recipe.AddRecipeGroup("IronBar", 5);
 			recipe.AddIngredient(null, "CalmKiCrystal", 10);
             recipe.AddIngredient(null, "StableKiCrystal", 10);
             recipe.AddTile(null, "KiManipulator");
