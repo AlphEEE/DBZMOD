@@ -30,7 +30,8 @@ namespace DBZMOD.Projectiles
 			aiType = 14;
             projectile.ignoreWater = true;
 			projectile.penetrate = -1;
-			ProjectileID.Sets.TrailCacheLength[projectile.type] = 1;
+            projectile.netUpdate = true;
+            ProjectileID.Sets.TrailCacheLength[projectile.type] = 1;
             ProjectileID.Sets.TrailingMode[projectile.type] = 0;
         }
 		

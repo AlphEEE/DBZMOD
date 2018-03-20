@@ -31,6 +31,7 @@ namespace DBZMOD.Projectiles
 			projectile.tileCollide = false;
 			ProjectileID.Sets.TrailCacheLength[projectile.type] = 4;
             ProjectileID.Sets.TrailingMode[projectile.type] = 0;
+            projectile.netUpdate = true;
         }
 
 		public override void Kill(int timeLeft)
@@ -114,8 +115,12 @@ namespace DBZMOD.Projectiles
 		
 		public override void AI()
         {
-        	if (Vector2.Distance(projectile.position, Main.MouseWorld) > 0.1)
-            projectile.velocity = Vector2.Normalize(Main.MouseWorld - projectile.position) * 13;
+            if(Main.myPlayer == projectile.owner)
+            {
+                if (Vector2.Distance(projectile.position, Main.MouseWorld) > 0.1)
+                projectile.velocity = Vector2.Normalize(Main.MouseWorld - projectile.position) * 13;
+            }
+        	
         }
 		
 		public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)

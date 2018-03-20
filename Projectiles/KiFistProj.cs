@@ -23,6 +23,7 @@ namespace DBZMOD.Projectiles
 			projectile.timeLeft = 10;
             projectile.ignoreWater = true;
 			projectile.penetrate = 1;
+            projectile.netUpdate = true;
         }
 
         public override void SetStaticDefaults()

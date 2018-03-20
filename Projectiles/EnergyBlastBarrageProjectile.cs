@@ -30,6 +30,7 @@ namespace DBZMOD.Projectiles
             aiType = 14;
 			ProjectileID.Sets.TrailCacheLength[projectile.type] = 8;
             ProjectileID.Sets.TrailingMode[projectile.type] = 0;
+            projectile.netUpdate = true;
         }
 		
 		public override void Kill(int timeLeft)

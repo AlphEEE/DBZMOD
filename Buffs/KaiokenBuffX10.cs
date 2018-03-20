@@ -4,13 +4,13 @@ using Terraria.ModLoader;
 
 namespace DBZMOD.Buffs
 {
-	public class KaiokenBuff : ModBuff
+	public class KaiokenBuffX10 : ModBuff
 	{
         private int kaioDamageTimer;
         public override void SetDefaults()
 		{
-			DisplayName.SetDefault("Kaioken");
-			Description.SetDefault("2x Damage, 2x Speed, Slowly Drains Life.");
+			DisplayName.SetDefault("Kaioken x10");
+			Description.SetDefault("10x Damage, 10x Speed, Drains Life Quickly.");
 			Main.buffNoTimeDisplay[Type] = true;
             Main.buffNoSave[Type] = true;
             Main.debuff[Type] = true;
@@ -18,24 +18,24 @@ namespace DBZMOD.Buffs
         public override void Update(Player player, ref int buffIndex)
         {
             player.lifeRegenCount = 0;
-            player.moveSpeed *= 2f;
-            player.meleeDamage *= 2f;
-            player.rangedDamage *= 2f;
-            player.magicDamage *= 2f;
-            player.minionDamage *= 2f;
-            player.thrownDamage *= 2f;
-            MyPlayer.ModPlayer(player).KiDamage *= 2f;
+            player.moveSpeed *= 10f;
+            player.meleeDamage *= 10f;
+            player.rangedDamage *= 10f;
+            player.magicDamage *= 10f;
+            player.minionDamage *= 10f;
+            player.thrownDamage *= 10f;
+            MyPlayer.ModPlayer(player).KiDamage *= 10f;
             Lighting.AddLight(player.Center, 5f, 0f, 0f);
             kaioDamageTimer++;
-            if (kaioDamageTimer > 5 && player.statLife >= 0)
+            if (kaioDamageTimer > 2 && player.statLife >= 0)
             {
                 player.statLife -= 1;
                 kaioDamageTimer = 0;
             }
             if (DBZMOD.instance.thoriumLoaded)
             {
-                player.GetModPlayer<ThoriumMod.ThoriumPlayer>(ModLoader.GetMod("ThoriumMod")).symphonicDamage *= 2f;
-                player.GetModPlayer<ThoriumMod.ThoriumPlayer>(ModLoader.GetMod("ThoriumMod")).radiantBoost *= 2f;
+                player.GetModPlayer<ThoriumMod.ThoriumPlayer>(ModLoader.GetMod("ThoriumMod")).symphonicDamage *= 10f;
+                player.GetModPlayer<ThoriumMod.ThoriumPlayer>(ModLoader.GetMod("ThoriumMod")).radiantBoost *= 10f;
             }
             if (DBZMOD.instance.tremorLoaded)
             {

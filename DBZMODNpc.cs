@@ -59,7 +59,7 @@ namespace DBZMOD
                     }
                 }
             }
-            if (!Main.hardMode)
+            if (!Main.hardMode && NPC.downedBoss1)
             {
                 if (Main.player[(int)Player.FindClosest(npc.position, npc.width, npc.height)].ZoneJungle)
                 {
@@ -69,7 +69,7 @@ namespace DBZMOD
                     }
                 }
             }
-            if (!Main.hardMode)
+            if (!Main.hardMode && NPC.downedBoss3)
             {
                 if (Main.player[(int)Player.FindClosest(npc.position, npc.width, npc.height)].ZoneUnderworldHeight)
                 {
@@ -89,7 +89,7 @@ namespace DBZMOD
                     }
                 }
             }
-            if (Main.hardMode)
+            if (Main.hardMode && NPC.downedMechBossAny)
             {
                 if (Main.player[(int)Player.FindClosest(npc.position, npc.width, npc.height)].ZoneCrimson)
                 {
@@ -99,7 +99,7 @@ namespace DBZMOD
                     }
                 }
             }
-            if (Main.hardMode)
+            if (Main.hardMode && NPC.downedMechBossAny)
             {
                 if (Main.player[(int)Player.FindClosest(npc.position, npc.width, npc.height)].ZoneCorrupt)
                 {

@@ -12,6 +12,10 @@ namespace DBZMOD
         private KiBar kibar;
         private UIFlatPanel UIFlatPanel;
         private DBZMOD mod;
+        public bool thoriumLoaded;
+        public bool tremorLoaded;
+        public static DBZMOD instance;
+
         public DBZMOD()
         {
             Properties = new ModProperties()
@@ -24,15 +28,20 @@ namespace DBZMOD
         public override void Unload()
         {
             GFX.UnloadGFX();
+            KiBar.visible = false;
         }
         public override void Load()
         {
+            instance = this;
+            tremorLoaded = ModLoader.GetMod("Tremor") != null;
+            thoriumLoaded = ModLoader.GetMod("ThoriumMod") != null;
             MyPlayer.KaiokenKey = RegisterHotKey("Kaioken Toggle", "J");
             MyPlayer.EnergyCharge = RegisterHotKey("Energy Charge", "C");
             MyPlayer.Transform = RegisterHotKey("Transform", "X");
-            KiBar.visible = true;
+            MyPlayer.PowerDown = RegisterHotKey("Power Down", "V");
             if(!Main.dedServ)
             {
+                KiBar.visible = true;
                 GFX.LoadGFX(this);
                 kibar = new KiBar();
                 kibar.Activate();

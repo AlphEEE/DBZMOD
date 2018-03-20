@@ -36,7 +36,7 @@ namespace DBZMOD.Items
         public override bool UseItem(Player player)
         {
             player.AddBuff(mod.BuffType("SenzuCooldown"), 18000);
-            Kiplayer.KiCurrent =+ 10000;
+            Kiplayer.KiCurrent += 10000;
             return true;
             
         }
