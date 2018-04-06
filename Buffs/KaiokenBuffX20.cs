@@ -20,7 +20,10 @@ namespace DBZMOD.Buffs
         {
             player.lifeRegenCount = 0;
             player.moveSpeed *= 20f;
+<<<<<<< HEAD
             player.maxRunSpeed *= 20f;
+=======
+>>>>>>> 090fab9dd248e77d3537c6a57f88521a3c9e4299
             player.meleeDamage *= 20f;
             player.rangedDamage *= 20f;
             player.magicDamage *= 20f;

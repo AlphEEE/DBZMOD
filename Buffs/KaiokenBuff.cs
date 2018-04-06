@@ -41,6 +41,7 @@ namespace DBZMOD.Buffs
             if (DBZMOD.instance.tremorLoaded)
             {
                 player.GetModPlayer<Tremor.MPlayer>(ModLoader.GetMod("Tremor")).alchemicalDamage *= 2f;
+                player.GetModPlayer<Tremor.MPlayer>(ModLoader.GetMod("Tremor")).alchemicalDamage *= 20f;
             }
         }
 	}

@@ -85,7 +85,11 @@ namespace DBZMOD
                 player.ClearBuff(mod.BuffType("SSJ1Buff"));
             }
 
+<<<<<<< HEAD
             if (KaiokenKey.JustPressed && (!player.HasBuff(mod.BuffType("KaiokenBuff")) && !player.HasBuff(mod.BuffType("KaiokenBuffX3")) && !player.HasBuff(mod.BuffType("KaiokenBuffX10")) && !player.HasBuff(mod.BuffType("KaiokenBuffX20")) && !player.HasBuff(mod.BuffType("KaiokenBuffX100"))) && (!player.HasBuff(mod.BuffType("TiredDebuff"))))
+=======
+            if (KaiokenKey.JustPressed && (!player.HasBuff(mod.BuffType("KaiokenBuff"))) && (!player.HasBuff(mod.BuffType("TiredDebuff"))))
+>>>>>>> 090fab9dd248e77d3537c6a57f88521a3c9e4299
             {
                 player.AddBuff(mod.BuffType("KaiokenBuff"), 18000);
                 Projectile.NewProjectile(player.Center.X - 40, player.Center.Y + 90, 0, 0, mod.ProjectileType("KaiokenAuraProj"), 0, 0, player.whoAmI);

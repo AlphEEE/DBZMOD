@@ -54,3 +54,8 @@ dkms.conf
 .vs/DBZMOD/v15/Server/sqlite3/storage.ide
 .vs/DBZMOD/v15/Server/sqlite3/storage.ide-shm
 .vs/DBZMOD/v15/Server/sqlite3/storage.ide-wal
+*.db
+.vs/DBZMOD/v15/.suo
+.vs/DBZMOD/v15/Server/sqlite3/storage.ide
+.vs/DBZMOD/v15/Server/sqlite3/storage.ide
+.vs/DBZMOD/v15/.suo
