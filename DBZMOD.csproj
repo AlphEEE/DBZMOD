@@ -34,6 +34,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Buffs\KaiokenBuff.cs" />
+    <Compile Include="Buffs\KaiokenBuffX10.cs" />
+    <Compile Include="Buffs\KaiokenBuffX100.cs" />
+    <Compile Include="Buffs\KaiokenBuffX20.cs" />
+    <Compile Include="Buffs\KaiokenBuffX3.cs" />
     <Compile Include="Buffs\NimbusBuff.cs" />
     <Compile Include="Buffs\SenzuCooldown.cs" />
     <Compile Include="Buffs\TiredDebuff.cs" />
@@ -41,10 +45,13 @@
     <Compile Include="DBZMODNpc.cs" />
     <Compile Include="Destruction\DirtBlockDestruction.cs" />
     <Compile Include="Destruction\StoneBlockDestruction.cs" />
+    <Compile Include="Dusts\MetalDust.cs" />
     <Compile Include="GFX.cs" />
     <Compile Include="Items\Accessories\ScouterT2.cs" />
     <Compile Include="Items\Accessories\ScouterT3.cs" />
     <Compile Include="Items\Accessories\ScouterT4.cs" />
+    <Compile Include="Items\Accessories\ScouterT5.cs" />
+    <Compile Include="Items\Accessories\ScouterT6.cs" />
     <Compile Include="Items\Accessories\SpiritualEmblem.cs" />
     <Compile Include="Items\AngerKiCrystal.cs" />
     <Compile Include="Items\CalmKiCrystal.cs" />
@@ -134,6 +141,35 @@
     <Reference Include="Terraria">
       <HintPath>E:\Steam\steamapps\common\Terraria\Terraria.exe</HintPath>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Auras\KaiokenAura.png" />
+    <Content Include="Auras\TransformObjects\New Text Document.txt" />
+    <Content Include="Backgrounds\New Text Document.txt" />
+    <Content Include="Dusts\MetalDust.png" />
+    <Content Include="Dusts\New Text Document.txt" />
+    <Content Include="Extra Sprites\New Piskel %2844%29.png" />
+    <Content Include="Extra Sprites\ScouterBlueSheet.png" />
+    <Content Include="Extra Sprites\ScouterGreenSheet.png" />
+    <Content Include="Extra Sprites\ScouterPurpleSheet.png" />
+    <Content Include="Extra Sprites\ScouterRedSheet.png" />
+    <Content Include="Extra Sprites\TrapShooterProjectile.png" />
+    <Content Include="Extra Sprites\TrunksSword.png" />
+    <Content Include="Extra Sprites\zzzswrd.png" />
+    <Content Include="Gores\New Text Document.txt" />
+    <Content Include="Npcs\Boss\FriezaShip.png" />
+    <Content Include="Npcs\Boss\FriezaShip_Head_Boss.png" />
+    <Content Include="Sounds\DiskFire.wav" />
+    <Content Include="Sounds\EnergyCharge.wav" />
+    <Content Include="Sounds\EnergyChargeStart.wav" />
+    <Content Include="Sounds\Explosion.wav" />
+    <Content Include="Sounds\KaioAuraStart.wav" />
+    <Content Include="Sounds\KamehamehaFire.wav" />
+    <Content Include="Sounds\Kiblast.wav" />
+    <Content Include="Sounds\LaserBlast.wav" />
+    <Content Include="Sounds\Music\DBZMODTheme1.mp3" />
+    <Content Include="Sounds\PowerDown.wav" />
+    <Content Include="Sounds\SwordSlash.wav" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

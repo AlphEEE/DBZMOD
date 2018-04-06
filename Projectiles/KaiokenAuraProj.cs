@@ -10,6 +10,7 @@ namespace DBZMOD.Projectiles
     public class KaiokenAuraProj : ModProjectile
     {
         public float KaioAuraTimer;
+        public float KaioSizeAddition;
         public override void SetStaticDefaults()
         {
             Main.projFrames[projectile.type] = 4;
@@ -27,6 +28,7 @@ namespace DBZMOD.Projectiles
             projectile.penetrate = -1;
             projectile.damage = 0;
             KaioAuraTimer = 240;
+            projectile.netUpdate = true;
         }
         public override void AI()
         {
@@ -34,10 +36,14 @@ namespace DBZMOD.Projectiles
             projectile.position.X = player.Center.X;
             projectile.position.Y = player.Center.Y;
             projectile.Center = player.Center + new Vector2(0, -25);
-
-            if (!player.HasBuff(mod.BuffType("KaiokenBuff")))
+            MyPlayer MPlayer = new MyPlayer();
+            if (!MPlayer.hasKaioken)
             {
                 projectile.Kill();
+            }
+            if(projectile.active)
+            {
+                Main.NewText("KaioAuraActive");
             }
             if (projectile.timeLeft < 2)
             {
@@ -55,13 +61,34 @@ namespace DBZMOD.Projectiles
             }
             if (KaioAuraTimer > 0)
             {
-                projectile.scale = 1f + 2f * (KaioAuraTimer / 240f);
+                projectile.scale = 1f + KaioSizeAddition * (KaioAuraTimer / 240f);
                 KaioAuraTimer--;
             }
             else
             {
                 projectile.scale = 1f;
             }
+            if (player.HasBuff(mod.BuffType("KaiokenBuffX100")))
+            {
+                KaioSizeAddition = 6f;
+            }
+            if (player.HasBuff(mod.BuffType("KaiokenBuffX20")))
+            {
+                KaioSizeAddition = 4f;
+            }
+            if (player.HasBuff(mod.BuffType("KaiokenBuffX10")))
+            {
+                KaioSizeAddition = 2.5f;
+            }
+            if (player.HasBuff(mod.BuffType("KaiokenBuffX3")))
+            {
+                KaioSizeAddition = 1.5f;
+            }
+            else
+            {
+                KaioSizeAddition = 1f;
+            }
+            
         }
     }
 }

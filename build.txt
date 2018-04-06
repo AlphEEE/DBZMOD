@@ -1,5 +1,7 @@
-author = NuovaPrime/Earth
+author = NuovaPrime
 version = 1.0.0
-displayName = Dragon Ball T
+displayName = Terraria Ball Z
 buildIgnore = *.csproj, *.user, obj\*, bin\*, .vs\*, .git\*
 includePDB = true
+weakReferences = ThoriumMod@1.4.0.0, Tremor@1.3.2.4
+includeSource = true

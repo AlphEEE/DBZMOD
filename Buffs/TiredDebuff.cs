@@ -22,7 +22,17 @@ namespace DBZMOD.Buffs
             player.minionDamage *= 0.8f;
             player.thrownDamage *= 0.8f;
             MyPlayer.ModPlayer(player).KiDamage *= 0.8f;
+            if (DBZMOD.instance.thoriumLoaded)
+            {
+                player.GetModPlayer<ThoriumMod.ThoriumPlayer>(ModLoader.GetMod("ThoriumMod")).symphonicDamage *= 0.8f;
+                player.GetModPlayer<ThoriumMod.ThoriumPlayer>(ModLoader.GetMod("ThoriumMod")).radiantBoost *= 0.8f;
+            }
+            if (DBZMOD.instance.tremorLoaded)
+            {
+                player.GetModPlayer<Tremor.MPlayer>(ModLoader.GetMod("Tremor")).alchemicalDamage *= 0.8f;
+            }
         }
+
         public void PreHurt(double damage, Player player, NPC npc)
         {
             if (player.HasBuff(mod.BuffType("TiredDebuff")))

@@ -34,7 +34,7 @@ namespace DBZMOD.Items
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.Cloud, 20);
-            recipe.AddIngredient(null, "HonorKiCrystal");
+            recipe.AddIngredient(null, "HonorKiCrystal", 5);
             recipe.AddTile(null, "KiManipulator");
             recipe.SetResult(this);
             recipe.AddRecipe();

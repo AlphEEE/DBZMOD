@@ -37,6 +37,7 @@ namespace DBZMOD.Projectiles
 			projectile.aiStyle = 1;
 			projectile.light = 20f;
             projectile.friendly = true;
+            projectile.netUpdate = true;
             projectile.ignoreWater = true;
             projectile.penetrate = 40;
             projectile.timeLeft = 500;

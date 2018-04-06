@@ -28,6 +28,7 @@ namespace DBZMOD.Projectiles
             projectile.penetrate = -1;
             projectile.damage = 0;
             BaseAuraTimer = 5;
+            projectile.netUpdate = true;
         }
         public override void AI()
         {

@@ -28,6 +28,7 @@ namespace DBZMOD.Projectiles
 			projectile.penetrate = -1;
 			ProjectileID.Sets.TrailCacheLength[projectile.type] = 5;
             ProjectileID.Sets.TrailingMode[projectile.type] = 0;
+            projectile.netUpdate = true;
         }
 
         public override void SetStaticDefaults()

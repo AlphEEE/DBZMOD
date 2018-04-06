@@ -27,7 +27,8 @@ namespace DBZMOD.Projectiles
 			projectile.aiStyle = 1;
 			projectile.light = 1f;
 			projectile.timeLeft = 30;
-			aiType = 14;
+            projectile.netUpdate = true;
+            aiType = 14;
             projectile.ignoreWater = true;
 			projectile.penetrate = -1;
 			ProjectileID.Sets.TrailCacheLength[projectile.type] = 1;

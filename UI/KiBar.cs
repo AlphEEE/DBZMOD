@@ -11,6 +11,7 @@ namespace DBZMOD.UI
     internal class KiBar: UIState
     {
         public UIPanel Kibar;
+        public UIImage ki;
         public static bool visible = false;
 
         public override void OnInitialize()
@@ -26,8 +27,30 @@ namespace DBZMOD.UI
             ki.Width.Set(80, 0f);
             ki.Height.Set(18, 0f);
             Bar.Append(ki);
+            ki.OnMouseDown += new UIElement.MouseEvent(DragStart);
+            ki.OnMouseUp += new UIElement.MouseEvent(DragEnd);
+
+
 
             base.Append(Bar);
+        }
+        Vector2 offset;
+        public bool dragging = false;
+        private void DragStart(UIMouseEvent evt, UIElement listeningElement)
+        {
+            offset = new Vector2(evt.MousePosition.X - ki.Left.Pixels, evt.MousePosition.Y - ki.Top.Pixels);
+            dragging = true;
+        }
+
+        private void DragEnd(UIMouseEvent evt, UIElement listeningElement)
+        {
+            Vector2 end = evt.MousePosition;
+            dragging = false;
+
+            ki.Left.Set(end.X - offset.X, 0f);
+            ki.Top.Set(end.Y - offset.Y, 0f);
+
+            Recalculate();
         }
     }
 }

@@ -35,22 +35,16 @@ namespace DBZMOD
         public static ModHotKey KaiokenKey;
         public static ModHotKey EnergyCharge;
         public static ModHotKey Transform;
+        public static ModHotKey PowerDown;
 
 
         public static MyPlayer ModPlayer(Player player)
         {
             return player.GetModPlayer<MyPlayer>();
         }
-        public float Powerlevel
-        {
-            get
-            {
-                return player.statLifeMax2 + player.moveSpeed + player.statDefense + player.statManaMax2 + player.maxMinions * 50;
-            }
-        }
         public bool KaiokenCheck()
         {
-            if(player.HasBuff(mod.BuffType("KaiokenBuff")))
+            if(player.HasBuff(mod.BuffType("KaiokenBuff")) || player.HasBuff(mod.BuffType("KaiokenBuffX3")) || player.HasBuff(mod.BuffType("KaiokenBuffX10")) || player.HasBuff(mod.BuffType("KaiokenBuffX20")) || player.HasBuff(mod.BuffType("KaiokenBuffX100")))
             {
                 return hasKaioken = true;
             }
@@ -72,6 +66,9 @@ namespace DBZMOD
             }
         }
         
+
+        
+        
          public override void ProcessTriggers(TriggersSet triggersSet)
         {
             if (Transform.JustPressed)
@@ -88,19 +85,31 @@ namespace DBZMOD
                 player.ClearBuff(mod.BuffType("SSJ1Buff"));
             }
 
-            if (KaiokenKey.JustPressed /*&& (MyPlayer.ModPlayer(player).Powerlevel > 10000)*/ && (!player.HasBuff(mod.BuffType("KaiokenBuff"))) && (!player.HasBuff(mod.BuffType("TiredDebuff"))))
+            if (KaiokenKey.JustPressed && (!player.HasBuff(mod.BuffType("KaiokenBuff")) && !player.HasBuff(mod.BuffType("KaiokenBuffX3")) && !player.HasBuff(mod.BuffType("KaiokenBuffX10")) && !player.HasBuff(mod.BuffType("KaiokenBuffX20")) && !player.HasBuff(mod.BuffType("KaiokenBuffX100"))) && (!player.HasBuff(mod.BuffType("TiredDebuff"))))
             {
                 player.AddBuff(mod.BuffType("KaiokenBuff"), 18000);
                 Projectile.NewProjectile(player.Center.X - 40, player.Center.Y + 90, 0, 0, mod.ProjectileType("KaiokenAuraProj"), 0, 0, player.whoAmI);
                 Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/KaioAuraStart").WithVolume(.5f));
-                TransformCooldown++;
             }
-            else if (KaiokenKey.JustPressed && (player.HasBuff(mod.BuffType("KaiokenBuff"))) && TransformCooldown < 600)
+            else if (KaiokenKey.JustPressed && (player.HasBuff(mod.BuffType("KaiokenBuff"))))
             {
                 player.ClearBuff(mod.BuffType("KaiokenBuff"));
-                player.AddBuff(mod.BuffType("TiredDebuff"), 3600);
-                Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/PowerDown").WithVolume(.3f));
-                TransformCooldown = 0;
+                player.AddBuff(mod.BuffType("KaiokenBuffX3"), 18000);
+            }
+            else if (KaiokenKey.JustPressed && (player.HasBuff(mod.BuffType("KaiokenBuffX3"))))
+            {
+                player.ClearBuff(mod.BuffType("KaiokenBuffX3"));
+                player.AddBuff(mod.BuffType("KaiokenBuffX10"), 18000);
+            }
+            else if (KaiokenKey.JustPressed && (player.HasBuff(mod.BuffType("KaiokenBuffX10"))))
+            {
+                player.ClearBuff(mod.BuffType("KaiokenBuffX10"));
+                player.AddBuff(mod.BuffType("KaiokenBuffX20"), 18000);
+            }
+            else if (KaiokenKey.JustPressed && (player.HasBuff(mod.BuffType("KaiokenBuffX20"))))
+            {
+                player.ClearBuff(mod.BuffType("KaiokenBuffX20"));
+                player.AddBuff(mod.BuffType("KaiokenBuffX100"), 18000);
             }
 
             if (EnergyCharge.Current && (KiCurrent < KiMax))
@@ -123,6 +132,16 @@ namespace DBZMOD
             {
                 Projectile.NewProjectile(player.Center.X - 40, player.Center.Y + 90, 0, 0, mod.ProjectileType("BaseAuraProj"), 0, 0, player.whoAmI);
                 Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/EnergyChargeStart").WithVolume(.7f));
+            }
+            if (PowerDown.JustPressed && (player.HasBuff(mod.BuffType("KaiokenBuff")) || player.HasBuff(mod.BuffType("KaiokenBuffX3")) || player.HasBuff(mod.BuffType("KaiokenBuffX10")) || player.HasBuff(mod.BuffType("KaiokenBuffX20")) || player.HasBuff(mod.BuffType("KaiokenBuffX100"))))
+            {
+                player.ClearBuff(mod.BuffType("KaiokenBuff"));
+                player.ClearBuff(mod.BuffType("KaiokenBuffX3"));
+                player.ClearBuff(mod.BuffType("KaiokenBuffX10"));
+                player.ClearBuff(mod.BuffType("KaiokenBuffX20"));
+                player.ClearBuff(mod.BuffType("KaiokenBuffX100"));
+                player.AddBuff(mod.BuffType("TiredDebuff"), 3600);
+                Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/PowerDown").WithVolume(.3f));
             }
 
         }
