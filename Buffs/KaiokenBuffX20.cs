@@ -20,17 +20,15 @@ namespace DBZMOD.Buffs
         {
             player.lifeRegenCount = 0;
             player.moveSpeed *= 20f;
-<<<<<<< HEAD
             player.maxRunSpeed *= 20f;
-=======
->>>>>>> 090fab9dd248e77d3537c6a57f88521a3c9e4299
+            player.runAcceleration *= 20f;
             player.meleeDamage *= 20f;
             player.rangedDamage *= 20f;
             player.magicDamage *= 20f;
             player.minionDamage *= 20f;
             player.thrownDamage *= 20f;
             MyPlayer.ModPlayer(player).KiDamage *= 20f;
-            Lighting.AddLight(player.Center, 5f, 0f, 0f);
+            Lighting.AddLight(player.Center, 12f, 0f, 0f);
             kaioDamageTimer++;
             if (kaioDamageTimer > 1 && player.statLife >= 0)
             {

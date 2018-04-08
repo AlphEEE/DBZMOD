@@ -29,10 +29,7 @@ namespace DBZMOD
         {
             GFX.UnloadGFX();
             KiBar.visible = false;
-<<<<<<< HEAD
             instance = null;
-=======
->>>>>>> 090fab9dd248e77d3537c6a57f88521a3c9e4299
         }
         public override void Load()
         {

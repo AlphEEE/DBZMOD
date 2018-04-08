@@ -20,6 +20,7 @@ namespace DBZMOD.Buffs
             player.lifeRegenCount = 0;
             player.moveSpeed *= 2f;
             player.maxRunSpeed *= 2f;
+            player.runAcceleration *= 2f;
             player.meleeDamage *= 2f;
             player.rangedDamage *= 2f;
             player.magicDamage *= 2f;
@@ -41,7 +42,6 @@ namespace DBZMOD.Buffs
             if (DBZMOD.instance.tremorLoaded)
             {
                 player.GetModPlayer<Tremor.MPlayer>(ModLoader.GetMod("Tremor")).alchemicalDamage *= 2f;
-                player.GetModPlayer<Tremor.MPlayer>(ModLoader.GetMod("Tremor")).alchemicalDamage *= 20f;
             }
         }
 	}

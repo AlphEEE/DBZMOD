@@ -19,17 +19,15 @@ namespace DBZMOD.Buffs
         {
             player.lifeRegenCount = 0;
             player.moveSpeed *= 10f;
-<<<<<<< HEAD
             player.maxRunSpeed *= 10f;
-=======
->>>>>>> 090fab9dd248e77d3537c6a57f88521a3c9e4299
+            player.runAcceleration *= 10f;
             player.meleeDamage *= 10f;
             player.rangedDamage *= 10f;
             player.magicDamage *= 10f;
             player.minionDamage *= 10f;
             player.thrownDamage *= 10f;
             MyPlayer.ModPlayer(player).KiDamage *= 10f;
-            Lighting.AddLight(player.Center, 5f, 0f, 0f);
+            Lighting.AddLight(player.Center, 10f, 0f, 0f);
             kaioDamageTimer++;
             if (kaioDamageTimer > 2 && player.statLife >= 0)
             {
@@ -43,11 +41,7 @@ namespace DBZMOD.Buffs
             }
             if (DBZMOD.instance.tremorLoaded)
             {
-<<<<<<< HEAD
                 player.GetModPlayer<Tremor.MPlayer>(ModLoader.GetMod("Tremor")).alchemicalDamage *= 10f;
-=======
-                player.GetModPlayer<Tremor.MPlayer>(ModLoader.GetMod("Tremor")).alchemicalDamage *= 20f;
->>>>>>> 090fab9dd248e77d3537c6a57f88521a3c9e4299
             }
         }
 	}

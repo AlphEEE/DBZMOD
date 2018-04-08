@@ -7,33 +7,6 @@ Please List any bugs you find on my forum page or on my discord!
 
 Discord Link :  https://discord.gg/hc6Jdws
 
-Update 1.0.0
-
--Redone entire mod from the ground up
--Added kaioken with its own key
--Removed Frieza's ship
--Removed katchin items
--Removed old ki attacks
--Added a new damage type called "Ki"
--Added Ki Blast
--Added Masenko
--Added Spirit ball
--Added Big Bang Attack
--Added Destructo Disk
--Added Energy blast barrage
--Added Hellzone grenade
--Added ki beam
--Added a new mana system called ki
--Added custom sounds for most ki attacks
--Added a hotkey for charging your ki
--Added Ki Manipulator
--Added Scrap metal
--Added Capsule Corp Training Bot Enemy
--Added tier 2 and 3 scouters
--Added Spiritual emblem
--Added dodon ray
-
-
 (Credit)
 -Credit To JFC_263, Peppermint Bark, Earth and some other amazing spriters for their hard work!
 -Credit To GabeHasWon's, Divermansam and the whole TModLoader Discord For Help with code and such.

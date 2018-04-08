@@ -37,7 +37,7 @@ namespace DBZMOD.Projectiles
             projectile.position.Y = player.Center.Y;
             projectile.Center = player.Center + new Vector2(0, -25);
             MyPlayer MPlayer = new MyPlayer();
-            if (!MPlayer.hasKaioken)
+            if (!player.HasBuff(mod.BuffType("KaiokenBuff")))
             {
                 projectile.Kill();
             }
