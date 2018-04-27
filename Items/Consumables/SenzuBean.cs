@@ -4,7 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace DBZMOD.Items
+namespace DBZMOD.Items.Consumables
 {
 	public class SenzuBean : ModItem
 	{
@@ -13,6 +13,7 @@ namespace DBZMOD.Items
 			item.width = 24;
 			item.height = 24;
 			item.healLife = 9001;
+            item.healMana = 9001;
 			item.consumable = true;
 			item.maxStack = 3;
 			item.UseSound = SoundID.Item3;
@@ -30,13 +31,12 @@ namespace DBZMOD.Items
             DisplayName.SetDefault("Senzu Bean");
             Tooltip.SetDefault("Restores your body and Ki!");
         }
-        MyPlayer Kiplayer = new MyPlayer();
         
 
         public override bool UseItem(Player player)
         {
             player.AddBuff(mod.BuffType("SenzuCooldown"), 18000);
-            Kiplayer.KiCurrent += 10000;
+            MyPlayer.ModPlayer(player).KiCurrent = MyPlayer.ModPlayer(player).KiMax;
             return true;
             
         }

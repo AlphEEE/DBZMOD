@@ -15,7 +15,7 @@ namespace DBZMOD.Items.Weapons
 		{
 			item.shoot = mod.ProjectileType("HellzoneGrenadeProjectile");
 			item.shootSpeed = 17f;
-			item.damage = 100;
+			item.damage = 62;
 			item.knockBack = 6f;
 			item.useStyle = 1;
 			item.UseSound = SoundID.Item1;
@@ -27,7 +27,7 @@ namespace DBZMOD.Items.Weapons
 			item.autoReuse = true;
 			item.value = Item.sellPrice(0, 0, 5, 0);
 			item.rare = 4;
-            KiDrain = 120;
+            KiDrain = 70;
 	    }
 	    public override void SetStaticDefaults()
 		{

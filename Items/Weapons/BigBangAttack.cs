@@ -14,7 +14,7 @@ namespace DBZMOD.Items.Weapons
 		public override void SetDefaults()
 		{
 			item.shoot = mod.ProjectileType("BigBangAttackProjectile");
-			item.damage = 32;
+			item.damage = 89;
 			item.shootSpeed = 25f;
 			item.knockBack = 5f;
 			item.useStyle = 3;
@@ -25,7 +25,7 @@ namespace DBZMOD.Items.Weapons
 			item.noUseGraphic = true;
 			item.height = 40;
 			item.autoReuse = false;
-			item.value = Item.sellPrice(0, 0, 5, 0);
+			item.value = Item.sellPrice(0, 4, 5, 0);
 			item.rare = 4;
             KiDrain = 100;
 	    }

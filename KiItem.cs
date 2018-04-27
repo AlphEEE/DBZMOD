@@ -17,6 +17,11 @@ namespace DBZMOD
 {
     public abstract class KiProjectile : ModProjectile
     {
+        public int ChargeLevel;
+        public int ChargeTimer;
+        public int KiDrainTimer;
+        public bool KiWeapon = true;
+
         public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
         {
             Player owner = null;
@@ -25,10 +30,24 @@ namespace DBZMOD
             else if (projectile.owner == 255)
                 owner = Main.LocalPlayer;
         }
+        public override void OnHitNPC(NPC npc, int damage, float knockback, bool crit)
+        {
+            if(KiWeapon)
+            {
+                if(npc.life < 0)
+                {
+                    if(Main.rand.Next(3) == 0)
+                    {
+                        Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("KiOrb"), 1);
+                    }
+                }
+            }
+        }
     }
 
     public abstract class KiItem : ModItem
     {
+        private Player player;
         // make-safe
         public override void SetDefaults()
         {
@@ -49,11 +68,11 @@ namespace DBZMOD
 
         public override void GetWeaponKnockback(Player player, ref float knockback)
         {
-            knockback = knockback + MyPlayer.ModPlayer(player).KiKbAddition; 
+            knockback = knockback + MyPlayer.ModPlayer(player).KiKbAddition;
         }
         public override void GetWeaponDamage(Player player, ref int damage)
-        {
-			damage = (int)(damage * MyPlayer.ModPlayer(player).KiDamage);
+        {   
+            damage = (int)(damage * MyPlayer.ModPlayer(player).KiDamage);
         }
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {

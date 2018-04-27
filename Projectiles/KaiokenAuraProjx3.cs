@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace DBZMOD.Projectiles
 {
-    public class KaiokenAuraProj : ModProjectile
+    public class KaiokenAuraProjx3 : ModProjectile
     {
         public float KaioAuraTimer;
         public override void SetStaticDefaults()
@@ -35,7 +35,7 @@ namespace DBZMOD.Projectiles
             projectile.position.Y = player.Center.Y;
             projectile.Center = player.Center + new Vector2(0, -25);
 
-            if (!player.HasBuff(mod.BuffType("KaiokenBuff")))
+            if (!player.HasBuff(mod.BuffType("KaiokenBuffX3")))
             {
                 projectile.Kill();
             }
@@ -55,12 +55,12 @@ namespace DBZMOD.Projectiles
             }
             if (KaioAuraTimer > 0)
             {
-                projectile.scale = 1f + 2f * (KaioAuraTimer / 240f);
+                projectile.scale = 1.5f + 2f * (KaioAuraTimer / 240f);
                 KaioAuraTimer--;
             }
             else
             {
-                projectile.scale = 1f;
+                projectile.scale = 1.5f;
             }
         }
     }

@@ -32,13 +32,5 @@ namespace DBZMOD.Buffs
                 player.GetModPlayer<Tremor.MPlayer>(ModLoader.GetMod("Tremor")).alchemicalDamage *= 0.8f;
             }
         }
-
-        public void PreHurt(double damage, Player player, NPC npc)
-        {
-            if (player.HasBuff(mod.BuffType("TiredDebuff")))
-            {
-                npc.damage *= 2;
-            }
-        }
     }
 }

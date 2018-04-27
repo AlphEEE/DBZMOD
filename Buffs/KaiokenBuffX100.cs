@@ -19,9 +19,18 @@ namespace DBZMOD.Buffs
         public override void Update(Player player, ref int buffIndex)
         {
             player.lifeRegenCount = 0;
-            player.moveSpeed *= 100f;
-            player.maxRunSpeed *= 100f;
-            player.runAcceleration *= 100f;
+            if (MyPlayer.ModPlayer(player).speedToggled)
+            {
+                player.moveSpeed *= 100f;
+                player.maxRunSpeed *= 100f;
+                player.runAcceleration *= 100f;
+            }
+            else if (!MyPlayer.ModPlayer(player).speedToggled)
+            {
+                player.moveSpeed *= 2f;
+                player.maxRunSpeed *= 2f;
+                player.runAcceleration *= 2f;
+            }
             player.meleeDamage *= 100f;
             player.rangedDamage *= 100f;
             player.magicDamage *= 100f;

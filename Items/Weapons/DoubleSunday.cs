@@ -32,7 +32,7 @@ namespace DBZMOD.Items.Weapons
 	    }
 	    public override void SetStaticDefaults()
 		{
-		Tooltip.SetDefault("-Tier 2.5-");
+		Tooltip.SetDefault("-Tier 2-");
 		DisplayName.SetDefault("Double Sunday");
 		}
 
@@ -53,7 +53,7 @@ namespace DBZMOD.Items.Weapons
 		{
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(null, "EnergyWave", 1);
-	        recipe.AddIngredient(null, "PridefulKiCrystal", 35);
+	        recipe.AddIngredient(null, "CalmKiCrystal", 35);
             recipe.AddTile(null, "KiManipulator");
             recipe.SetResult(this);
 	        recipe.AddRecipe();

@@ -40,6 +40,7 @@ namespace DBZMOD
             MyPlayer.EnergyCharge = RegisterHotKey("Energy Charge", "C");
             MyPlayer.Transform = RegisterHotKey("Transform", "X");
             MyPlayer.PowerDown = RegisterHotKey("Power Down", "V");
+            MyPlayer.SpeedToggle = RegisterHotKey("Speed Toggle", "Z");
             if(!Main.dedServ)
             {
                 KiBar.visible = true;

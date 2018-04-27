@@ -7,44 +7,32 @@ using Terraria.ModLoader;
 
 namespace DBZMOD.Projectiles
 {
-    public class KaiokenAuraProj : ModProjectile
+    public class TrapShooterExplosion : ModProjectile
     {
-        public float KaioAuraTimer;
+        private float SizeTimer;
         public override void SetStaticDefaults()
         {
             Main.projFrames[projectile.type] = 4;
         }
         public override void SetDefaults()
         {
-            projectile.width = 95;
-            projectile.height = 89;
+            projectile.width = 120;
+            projectile.height = 120;
             projectile.aiStyle = 0;
             projectile.alpha = 70;
-            projectile.timeLeft = 10;
+            projectile.timeLeft = 240;
             projectile.friendly = true;
             projectile.tileCollide = false;
             projectile.ignoreWater = true;
             projectile.penetrate = -1;
-            projectile.damage = 0;
-            KaioAuraTimer = 240;
+            projectile.damage = 60;
+            SizeTimer = 240;
         }
         public override void AI()
         {
             Player player = Main.player[projectile.owner];
-            projectile.position.X = player.Center.X;
-            projectile.position.Y = player.Center.Y;
-            projectile.Center = player.Center + new Vector2(0, -25);
-
-            if (!player.HasBuff(mod.BuffType("KaiokenBuff")))
-            {
-                projectile.Kill();
-            }
-            if (projectile.timeLeft < 2)
-            {
-                projectile.timeLeft = 10;
-            }
             projectile.frameCounter++;
-            if (projectile.frameCounter > 5)
+            if (projectile.frameCounter > 3)
             {
                 projectile.frame++;
                 projectile.frameCounter = 0;
@@ -53,10 +41,10 @@ namespace DBZMOD.Projectiles
             {
                 projectile.frame = 0;
             }
-            if (KaioAuraTimer > 0)
+            if (SizeTimer > 0)
             {
-                projectile.scale = 1f + 2f * (KaioAuraTimer / 240f);
-                KaioAuraTimer--;
+                projectile.scale = (SizeTimer / 240f) * 2;
+                SizeTimer--;
             }
             else
             {
