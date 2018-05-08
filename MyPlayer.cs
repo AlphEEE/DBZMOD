@@ -23,6 +23,7 @@ namespace DBZMOD
         public bool ZoneCustomBiome = false;
         public int drawX;
         public int drawY;
+        public bool RealismMode;
         public bool scouterT2;
         public bool scouterT3;
         public bool scouterT4;
@@ -33,10 +34,16 @@ namespace DBZMOD
         public bool Fragment3;
         public bool Fragment4;
         public bool Fragment5;
+        public bool KaioFragment1;
+        public bool KaioFragment2;
+        public bool KaioFragment3;
+        public bool KaioFragment4;
+        public bool KaioAchieved;
         public bool spiritualEmblem;
         public bool hasKaioken;
         public bool hasSSJ1;
-        public bool speedToggled;
+        public bool kiLantern;
+        public bool speedToggled = true;
         public int ChargeSoundTimer;
         public int TransformCooldown;
         public static ModHotKey KaiokenKey;
@@ -63,17 +70,13 @@ namespace DBZMOD
         }
         public override void PreUpdate()
         {
-            if(player.statLife < 0 && hasKaioken)
+            if(kiLantern)
             {
-                player.KillMe(PlayerDeathReason.ByCustomReason(" Destroyed Their Body"), 9001, 0);
+                player.AddBuff(mod.BuffType("KiLanternBuff"), 18000);
             }
-            if(speedToggled)
+            if (!kiLantern && player.HasBuff(mod.BuffType("KiLanternBuff")))
             {
-                Main.NewText("Speed On");
-            }
-            if(!speedToggled)
-            {
-                Main.NewText("Speed Off");
+                player.ClearBuff(mod.BuffType("KiLanternBuff"));
             }
         }
 
@@ -94,6 +97,11 @@ namespace DBZMOD
             var fragment = new List<string>();
             if (Fragment1) fragment.Add("Fragment1");
             if (Fragment2) fragment.Add("Fragment2");
+            if (KaioAchieved) fragment.Add("KaioAchieved");
+            if (KaioFragment1) fragment.Add("KaioFragment1");
+            if (KaioFragment2) fragment.Add("KaioFragment2");
+            if (KaioFragment1) fragment.Add("KaioFragment3");
+            if (KaioFragment2) fragment.Add("KaioFragment4");
 
             return new TagCompound {
                 {"fragment", fragment}
@@ -107,6 +115,11 @@ namespace DBZMOD
             var fragment = tag.GetList<string>("fragment");
             Fragment1 = fragment.Contains("Fragment1");
             Fragment2 = fragment.Contains("Fragment2");
+            KaioFragment1 = fragment.Contains("KaioFragment1");
+            KaioFragment2 = fragment.Contains("KaioFragment2");
+            KaioFragment3 = fragment.Contains("KaioFragment3");
+            KaioFragment4 = fragment.Contains("KaioFragment4");
+            KaioAchieved = fragment.Contains("KaioAchieved");
         }
 
 
@@ -130,34 +143,34 @@ namespace DBZMOD
                 speedToggled = !speedToggled;
             }
                 
-            if (KaiokenKey.JustPressed && (!player.HasBuff(mod.BuffType("KaiokenBuff")) && !player.HasBuff(mod.BuffType("KaiokenBuffX3")) && !player.HasBuff(mod.BuffType("KaiokenBuffX10")) && !player.HasBuff(mod.BuffType("KaiokenBuffX20")) && !player.HasBuff(mod.BuffType("KaiokenBuffX100"))) && !player.HasBuff(mod.BuffType("TiredDebuff")))
+            if (KaiokenKey.JustPressed && (!player.HasBuff(mod.BuffType("KaiokenBuff")) && !player.HasBuff(mod.BuffType("KaiokenBuffX3")) && !player.HasBuff(mod.BuffType("KaiokenBuffX10")) && !player.HasBuff(mod.BuffType("KaiokenBuffX20")) && !player.HasBuff(mod.BuffType("KaiokenBuffX100"))) && !player.HasBuff(mod.BuffType("TiredDebuff")) && KaioAchieved)
             {
                 player.AddBuff(mod.BuffType("KaiokenBuff"), 18000);
                 Projectile.NewProjectile(player.Center.X - 40, player.Center.Y + 90, 0, 0, mod.ProjectileType("KaiokenAuraProj"), 0, 0, player.whoAmI);
                 Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/KaioAuraStart").WithVolume(.5f));
             }
-            else if (KaiokenKey.JustPressed && (player.HasBuff(mod.BuffType("KaiokenBuff"))))
+            else if (KaiokenKey.JustPressed && (player.HasBuff(mod.BuffType("KaiokenBuff"))) && KaioFragment1)
             {
                 player.ClearBuff(mod.BuffType("KaiokenBuff"));
                 player.AddBuff(mod.BuffType("KaiokenBuffX3"), 18000);
                 Projectile.NewProjectile(player.Center.X - 40, player.Center.Y + 90, 0, 0, mod.ProjectileType("KaiokenAuraProjx3"), 0, 0, player.whoAmI);
                 Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/KaioAuraAscend").WithVolume(.6f));
             }
-            else if (KaiokenKey.JustPressed && (player.HasBuff(mod.BuffType("KaiokenBuffX3"))))
+            else if (KaiokenKey.JustPressed && (player.HasBuff(mod.BuffType("KaiokenBuffX3"))) && KaioFragment2)
             {
                 player.ClearBuff(mod.BuffType("KaiokenBuffX3"));
                 player.AddBuff(mod.BuffType("KaiokenBuffX10"), 18000);
                 Projectile.NewProjectile(player.Center.X - 40, player.Center.Y + 90, 0, 0, mod.ProjectileType("KaiokenAuraProjx10"), 0, 0, player.whoAmI);
                 Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/KaioAuraAscend").WithVolume(.6f));
             }
-            else if (KaiokenKey.JustPressed && (player.HasBuff(mod.BuffType("KaiokenBuffX10"))))
+            else if (KaiokenKey.JustPressed && (player.HasBuff(mod.BuffType("KaiokenBuffX10"))) && KaioFragment3)
             {
                 player.ClearBuff(mod.BuffType("KaiokenBuffX10"));
                 player.AddBuff(mod.BuffType("KaiokenBuffX20"), 18000);
                 Projectile.NewProjectile(player.Center.X - 40, player.Center.Y + 90, 0, 0, mod.ProjectileType("KaiokenAuraProjx20"), 0, 0, player.whoAmI);
                 Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/KaioAuraAscend").WithVolume(.7f));
             }
-            else if (KaiokenKey.JustPressed && (player.HasBuff(mod.BuffType("KaiokenBuffX20"))))
+            else if (KaiokenKey.JustPressed && (player.HasBuff(mod.BuffType("KaiokenBuffX20"))) && KaioFragment4)
             {
                 player.ClearBuff(mod.BuffType("KaiokenBuffX20"));
                 player.AddBuff(mod.BuffType("KaiokenBuffX100"), 18000);
@@ -246,7 +259,6 @@ namespace DBZMOD
             scouterT5 = false;
             scouterT6 = false;
             spiritualEmblem = false;
-            speedToggled = true;
         }
         public override bool PreKill(double damage, int hitDirection, bool pvp, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource)
         {

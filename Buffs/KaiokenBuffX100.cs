@@ -18,7 +18,12 @@ namespace DBZMOD.Buffs
         }
         public override void Update(Player player, ref int buffIndex)
         {
-            player.lifeRegenCount = 0;
+            if (player.lifeRegen > 0)
+            {
+                player.lifeRegen = 0;
+            }
+            player.lifeRegenTime = 0;
+            player.lifeRegen -= 480;
             if (MyPlayer.ModPlayer(player).speedToggled)
             {
                 player.moveSpeed *= 100f;
@@ -35,24 +40,28 @@ namespace DBZMOD.Buffs
             player.rangedDamage *= 100f;
             player.magicDamage *= 100f;
             player.minionDamage *= 100f;
+            MyPlayer.ModPlayer(player).hasKaioken = true;
             player.thrownDamage *= 100f;
             MyPlayer.ModPlayer(player).KiDamage *= 100f;
             Lighting.AddLight(player.Center, 15f, 0f, 0f);
-            kaioDamageTimer++;
-            if (kaioDamageTimer > 1 && player.statLife >= 0)
-            {
-                player.statLife -= 4;
-                kaioDamageTimer = 0;
-            }
             if (DBZMOD.instance.thoriumLoaded)
             {
-                player.GetModPlayer<ThoriumMod.ThoriumPlayer>(ModLoader.GetMod("ThoriumMod")).symphonicDamage *= 100f;
-                player.GetModPlayer<ThoriumMod.ThoriumPlayer>(ModLoader.GetMod("ThoriumMod")).radiantBoost *= 100f;
+                ThoriumEffects(player);
             }
             if (DBZMOD.instance.tremorLoaded)
             {
-                player.GetModPlayer<Tremor.MPlayer>(ModLoader.GetMod("Tremor")).alchemicalDamage *= 100f;
+                TremorEffects(player);
             }
         }
-	}
+        public void ThoriumEffects(Player player)
+        {
+            player.GetModPlayer<ThoriumMod.ThoriumPlayer>(ModLoader.GetMod("ThoriumMod")).symphonicDamage *= 100f;
+            player.GetModPlayer<ThoriumMod.ThoriumPlayer>(ModLoader.GetMod("ThoriumMod")).radiantBoost *= 100f;
+        }
+        public void TremorEffects(Player player)
+        {
+            player.GetModPlayer<Tremor.MPlayer>(ModLoader.GetMod("Tremor")).alchemicalDamage *= 100f;
+        }
+    }
 }
+

@@ -51,6 +51,18 @@ namespace DBZMOD
                 KiBarInterface.SetState(kibar);
             }
         }
+        public override void AddRecipeGroups()
+        {
+            RecipeGroup group = new RecipeGroup(() => Lang.misc[37] + " Ki Fragment", new int[]
+            {
+            ItemType("KiFragment1"),
+            ItemType("KiFragment2"),
+            ItemType("KiFragment3"),
+            ItemType("KiFragment4"),
+            ItemType("KiFragment5")
+            });
+            RecipeGroup.RegisterGroup("DBZMOD:KiFragment", group);
+        }
         public override void ModifyInterfaceLayers(List<GameInterfaceLayer> layers)
         {
             int index = layers.FindIndex(layer => layer.Name.Contains("Resource Bars"));

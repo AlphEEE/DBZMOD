@@ -6,7 +6,7 @@ namespace DBZMOD.Buffs
 {
 	public class KaiokenBuff : ModBuff
 	{
-        private int kaioDamageTimer;
+        private Player player;
         public override void SetDefaults()
 		{
 			DisplayName.SetDefault("Kaioken");
@@ -29,29 +29,39 @@ namespace DBZMOD.Buffs
                 player.maxRunSpeed *= 2f;
                 player.runAcceleration *= 2f;
             }
-            player.lifeRegenCount = 0;
+            if (player.lifeRegen > 0)
+            {
+                player.lifeRegen = 0;
+            }
+            player.lifeRegenTime = 0;
+            player.lifeRegen -= 24;
             player.meleeDamage *= 2f;
             player.rangedDamage *= 2f;
             player.magicDamage *= 2f;
+            MyPlayer.ModPlayer(player).hasKaioken = true;
             player.minionDamage *= 2f;
             player.thrownDamage *= 2f;
             MyPlayer.ModPlayer(player).KiDamage *= 2f;
             Lighting.AddLight(player.Center, 5f, 0f, 0f);
-            kaioDamageTimer++;
-            if (kaioDamageTimer > 5 && player.statLife >= 0)
-            {
-                player.statLife -= 1;
-                kaioDamageTimer = 0;
-            }
             if (DBZMOD.instance.thoriumLoaded)
             {
-                player.GetModPlayer<ThoriumMod.ThoriumPlayer>(ModLoader.GetMod("ThoriumMod")).symphonicDamage *= 2f;
-                player.GetModPlayer<ThoriumMod.ThoriumPlayer>(ModLoader.GetMod("ThoriumMod")).radiantBoost *= 2f;
+                ThoriumEffects(player);
             }
             if (DBZMOD.instance.tremorLoaded)
             {
-                player.GetModPlayer<Tremor.MPlayer>(ModLoader.GetMod("Tremor")).alchemicalDamage *= 2f;
+                TremorEffects(player);
             }
         }
-	}
+        public void ThoriumEffects(Player player)
+        {
+            player.GetModPlayer<ThoriumMod.ThoriumPlayer>(ModLoader.GetMod("ThoriumMod")).symphonicDamage *= 2f;
+            player.GetModPlayer<ThoriumMod.ThoriumPlayer>(ModLoader.GetMod("ThoriumMod")).radiantBoost *= 2f;
+        }
+        public void TremorEffects(Player player)
+        {
+            player.GetModPlayer<Tremor.MPlayer>(ModLoader.GetMod("Tremor")).alchemicalDamage *= 2f;
+        }
+
+    }
 }
+

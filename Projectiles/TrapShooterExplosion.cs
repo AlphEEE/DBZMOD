@@ -26,7 +26,7 @@ namespace DBZMOD.Projectiles
             projectile.ignoreWater = true;
             projectile.penetrate = -1;
             projectile.damage = 60;
-            SizeTimer = 240;
+            SizeTimer = 120;
         }
         public override void AI()
         {
@@ -43,7 +43,7 @@ namespace DBZMOD.Projectiles
             }
             if (SizeTimer > 0)
             {
-                projectile.scale = (SizeTimer / 240f) * 2;
+                projectile.scale = (SizeTimer / 120f) * 2;
                 SizeTimer--;
             }
             else

@@ -30,29 +30,38 @@ namespace DBZMOD.Buffs
                 player.maxRunSpeed *= 2f;
                 player.runAcceleration *= 2f;
             }
-            player.lifeRegenCount = 0;
+            if (player.lifeRegen > 0)
+            {
+                player.lifeRegen = 0;
+            }
+            player.lifeRegenTime = 0;
+            player.lifeRegen -= 30;
             player.meleeDamage *= 3f;
             player.rangedDamage *= 3f;
             player.magicDamage *= 3f;
             player.minionDamage *= 3f;
             player.thrownDamage *= 3f;
+            MyPlayer.ModPlayer(player).hasKaioken = true;
             MyPlayer.ModPlayer(player).KiDamage *= 3f;
             Lighting.AddLight(player.Center, 7f, 0f, 0f);
-            kaioDamageTimer++;
-            if (kaioDamageTimer > 4 && player.statLife >= 0)
-            {
-                player.statLife -= 1;
-                kaioDamageTimer = 0;
-            }
             if (DBZMOD.instance.thoriumLoaded)
             {
-                player.GetModPlayer<ThoriumMod.ThoriumPlayer>(ModLoader.GetMod("ThoriumMod")).symphonicDamage *= 3f;
-                player.GetModPlayer<ThoriumMod.ThoriumPlayer>(ModLoader.GetMod("ThoriumMod")).radiantBoost *= 3f;
+                ThoriumEffects(player);
             }
             if (DBZMOD.instance.tremorLoaded)
             {
-                player.GetModPlayer<Tremor.MPlayer>(ModLoader.GetMod("Tremor")).alchemicalDamage *= 3f;
+                TremorEffects(player);
             }
         }
-	}
+        public void ThoriumEffects(Player player)
+        {
+            player.GetModPlayer<ThoriumMod.ThoriumPlayer>(ModLoader.GetMod("ThoriumMod")).symphonicDamage *= 3f;
+            player.GetModPlayer<ThoriumMod.ThoriumPlayer>(ModLoader.GetMod("ThoriumMod")).radiantBoost *= 3f;
+        }
+        public void TremorEffects(Player player)
+        {
+            player.GetModPlayer<Tremor.MPlayer>(ModLoader.GetMod("Tremor")).alchemicalDamage *= 3f;
+        }
+    }
 }
+

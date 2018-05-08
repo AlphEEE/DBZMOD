@@ -38,10 +38,12 @@
     <Compile Include="Buffs\KaiokenBuffX100.cs" />
     <Compile Include="Buffs\KaiokenBuffX20.cs" />
     <Compile Include="Buffs\KaiokenBuffX3.cs" />
+    <Compile Include="Buffs\KiLanternBuff.cs" />
     <Compile Include="Buffs\NimbusBuff.cs" />
     <Compile Include="Buffs\SenzuCooldown.cs" />
     <Compile Include="Buffs\TiredDebuff.cs" />
     <Compile Include="DBZMOD.cs" />
+    <Compile Include="DBZMODItem.cs" />
     <Compile Include="DBZMODNpc.cs" />
     <Compile Include="Destruction\DirtBlockDestruction.cs" />
     <Compile Include="Destruction\StoneBlockDestruction.cs" />
@@ -55,10 +57,16 @@
     <Compile Include="Items\Accessories\SpiritualEmblem.cs" />
     <Compile Include="Items\AngerKiCrystal.cs" />
     <Compile Include="Items\CalmKiCrystal.cs" />
+    <Compile Include="Items\Consumables\KaioFragment1.cs" />
+    <Compile Include="Items\Consumables\KaioFragment2.cs" />
+    <Compile Include="Items\Consumables\KaioFragment3.cs" />
+    <Compile Include="Items\Consumables\KaioFragment4.cs" />
+    <Compile Include="Items\Consumables\KaioFragmentFirst.cs" />
     <Compile Include="Items\Consumables\KiFragment1.cs" />
     <Compile Include="Items\Consumables\KiFragment2.cs" />
     <Compile Include="Items\Consumables\SenzuBean.cs" />
     <Compile Include="Items\HonorKiCrystal.cs" />
+    <Compile Include="Items\KiLanternItem.cs" />
     <Compile Include="Items\KiManipulatorItem.cs" />
     <Compile Include="Items\KiOrb.cs" />
     <Compile Include="Items\NimbusWhistle.cs" />
@@ -126,6 +134,7 @@
     <Compile Include="Projectiles\SuperKamehamehaTrail.cs" />
     <Compile Include="Projectiles\TrapShooterExplosion.cs" />
     <Compile Include="Projectiles\TrapShooterProjectile.cs" />
+    <Compile Include="Tiles\KiLantern.cs" />
     <Compile Include="Tiles\KiManipulator.cs" />
     <Compile Include="UI\KiBar.cs" />
     <Compile Include="UI\KiResource.cs" />
