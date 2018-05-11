@@ -57,7 +57,7 @@ namespace DBZMOD
             item.thrown = false;
             item.summon = false;
         }
-        public int KiDrain;
+        public static float KiDrain;
         public override bool CloneNewInstances
         {
             get
@@ -65,7 +65,6 @@ namespace DBZMOD
                 return true;
             }
         }
-
         public override void GetWeaponKnockback(Player player, ref float knockback)
         {
             knockback = knockback + MyPlayer.ModPlayer(player).KiKbAddition;
@@ -103,7 +102,7 @@ namespace DBZMOD
         {
             if (KiDrain <= MyPlayer.ModPlayer(player).KiCurrent)
             {
-               MyPlayer.ModPlayer(player).KiCurrent -= KiDrain;
+               MyPlayer.ModPlayer(player).KiCurrent -= (int)KiDrain;
                 return true;
             }
             else

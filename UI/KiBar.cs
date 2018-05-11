@@ -52,5 +52,19 @@ namespace DBZMOD.UI
 
             Recalculate();
         }
+        /*protected override void DrawSelf(SpriteBatch spriteBatch)
+        {
+            Vector2 MousePosition = new Vector2((float)Main.mouseX, (float)Main.mouseY);
+            if (ki.ContainsPoint(MousePosition))
+            {
+                Main.LocalPlayer.mouseInterface = true;
+            }
+            if (dragging)
+            {
+                ki.Left.Set(MousePosition.X - offset.X, 0f);
+                ki.Top.Set(MousePosition.Y - offset.Y, 0f);
+                Recalculate();
+            }
+        }*/
     }
 }

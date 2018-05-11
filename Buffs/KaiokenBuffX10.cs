@@ -4,62 +4,48 @@ using Terraria.ModLoader;
 
 namespace DBZMOD.Buffs
 {
-	public class KaiokenBuffX10 : ModBuff
-	{
-        private int kaioDamageTimer;
+    public class KaiokenBuffX10 : TransBuff
+    {
+        private Player player;
         public override void SetDefaults()
-		{
-			DisplayName.SetDefault("Kaioken x10");
-			Description.SetDefault("10x Damage, 10x Speed, Drains Life Quickly.");
-			Main.buffNoTimeDisplay[Type] = true;
+        {
+            DisplayName.SetDefault("Kaioken x10");
+            Main.buffNoTimeDisplay[Type] = true;
             Main.buffNoSave[Type] = true;
             Main.debuff[Type] = true;
+            IsKaioken = true;
+            KaioLightValue = 10f;
+            Description.SetDefault("{0}x Damage, {0}x Speed, Quickly Drains Life.");
         }
         public override void Update(Player player, ref int buffIndex)
         {
-            if (player.lifeRegen > 0)
+            if (MyPlayer.ModPlayer(player).RealismMode)
             {
-                player.lifeRegen = 0;
+                DamageMulti = 10;
+                SpeedMulti = 10;
+                HealthDrainRate = 60;
+                KiDrainMulti = 1f;
             }
-            player.lifeRegenTime = 0;
-            player.lifeRegen -= 60;
-            if (MyPlayer.ModPlayer(player).speedToggled)
+            else if (!MyPlayer.ModPlayer(player).RealismMode)
             {
-                player.moveSpeed *= 10f;
-                player.maxRunSpeed *= 10f;
-                player.runAcceleration *= 10f;
+                DamageMulti = 3f;
+                SpeedMulti = 3f;
+                HealthDrainRate = 72;
+                KiDrainMulti = 2f;
             }
-            else if (!MyPlayer.ModPlayer(player).speedToggled)
-            {
-                player.moveSpeed *= 2f;
-                player.maxRunSpeed *= 2f;
-                player.runAcceleration *= 2f;
-            }
-            player.meleeDamage *= 10f;
-            player.rangedDamage *= 10f;
-            player.magicDamage *= 10f;
-            player.minionDamage *= 10f;
-            MyPlayer.ModPlayer(player).hasKaioken = true;
-            player.thrownDamage *= 10f;
-            MyPlayer.ModPlayer(player).KiDamage *= 10f;
-            Lighting.AddLight(player.Center, 10f, 0f, 0f);
-            if (DBZMOD.instance.thoriumLoaded)
-            {
-                ThoriumEffects(player);
-            }
-            if (DBZMOD.instance.tremorLoaded)
-            {
-                TremorEffects(player);
-            }
+            base.Update(player, ref buffIndex);
         }
-        public void ThoriumEffects(Player player)
+        public override void ModifyBuffTip(ref string tip, ref int rare)
         {
-            player.GetModPlayer<ThoriumMod.ThoriumPlayer>(ModLoader.GetMod("ThoriumMod")).symphonicDamage *= 10f;
-            player.GetModPlayer<ThoriumMod.ThoriumPlayer>(ModLoader.GetMod("ThoriumMod")).radiantBoost *= 10f;
-        }
-        public void TremorEffects(Player player)
-        {
-            player.GetModPlayer<Tremor.MPlayer>(ModLoader.GetMod("Tremor")).alchemicalDamage *= 10f;
+            if (MyPlayer.ModPlayer(player).RealismMode)
+            {
+                tip = string.Format(tip, "10");
+            }
+            else
+            {
+                tip = string.Format(tip, "3");
+            }
+
         }
     }
 }

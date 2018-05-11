@@ -136,6 +136,7 @@
     <Compile Include="Projectiles\TrapShooterProjectile.cs" />
     <Compile Include="Tiles\KiLantern.cs" />
     <Compile Include="Tiles\KiManipulator.cs" />
+    <Compile Include="TransHandler.cs" />
     <Compile Include="UI\KiBar.cs" />
     <Compile Include="UI\KiResource.cs" />
     <Compile Include="UI\ResourceBar.cs" />
@@ -197,6 +198,9 @@
     <Content Include="Sounds\Music\DBZMODTheme1.mp3" />
     <Content Include="Sounds\PowerDown.wav" />
     <Content Include="Sounds\SwordSlash.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Hairs\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

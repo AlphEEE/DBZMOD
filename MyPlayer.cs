@@ -23,7 +23,7 @@ namespace DBZMOD
         public bool ZoneCustomBiome = false;
         public int drawX;
         public int drawY;
-        public bool RealismMode;
+        public bool RealismMode = false;
         public bool scouterT2;
         public bool scouterT3;
         public bool scouterT4;
@@ -100,8 +100,9 @@ namespace DBZMOD
             if (KaioAchieved) fragment.Add("KaioAchieved");
             if (KaioFragment1) fragment.Add("KaioFragment1");
             if (KaioFragment2) fragment.Add("KaioFragment2");
-            if (KaioFragment1) fragment.Add("KaioFragment3");
-            if (KaioFragment2) fragment.Add("KaioFragment4");
+            if (KaioFragment3) fragment.Add("KaioFragment3");
+            if (KaioFragment4) fragment.Add("KaioFragment4");
+            if (RealismMode) fragment.Add("RealismMode");
 
             return new TagCompound {
                 {"fragment", fragment}
@@ -120,6 +121,7 @@ namespace DBZMOD
             KaioFragment3 = fragment.Contains("KaioFragment3");
             KaioFragment4 = fragment.Contains("KaioFragment4");
             KaioAchieved = fragment.Contains("KaioAchieved");
+            RealismMode = fragment.Contains("RealismMode");
         }
 
 
@@ -213,7 +215,6 @@ namespace DBZMOD
         }        
         public MyPlayer() : base()
 		{
-
 		}
         public override void ResetEffects()
         {
@@ -280,4 +281,42 @@ namespace DBZMOD
 
         //ZoneCustomBiome = (DBZMODWorld.customBiome > 0);  
     }
+    /*public class SSJHairDraw : ModPlayer
+    {
+        public static Texture2D Hair;
+        public static SSJHairDraw ModPlayer(Player player)
+        {
+            return player.GetModPlayer<SSJHairDraw>();
+        }
+        public override void ModifyDrawLayers(List<PlayerLayer> layers)
+        {
+            int head = layers.FindIndex(l => l == PlayerLayer.Hair);
+            if (head < 0)
+                return;
+
+            layers[head] = new PlayerLayer(mod.Name, "TransHair",
+                delegate (PlayerDrawInfo draw)
+               {
+                   Player player = draw.drawPlayer;
+                   if (TransBuff.IsTransformation)
+                       return;
+
+                   Color alpha = draw.drawPlayer.GetImmuneAlpha(Lighting.GetColor((int)(draw.position.X + draw.drawPlayer.width * 0.5) / 16, (int)((draw.position.Y + draw.drawPlayer.height * 0.25) / 16.0), Color.White), draw.shadow);
+                   DrawData data = new DrawData(Hair, new Vector2((float)((int)(draw.position.X - Main.screenPosition.X - (float)(player.bodyFrame.Width / 2) + (float)(player.width / 2))), (float)((int)(draw.position.Y - Main.screenPosition.Y + (float)player.height - (float)player.bodyFrame.Height + 4f))) + player.headPosition + draw.headOrigin, player.bodyFrame, alpha, player.headRotation, draw.headOrigin, 1f, draw.spriteEffects, 0);
+                   data.shader = draw.hairShader;
+                   Main.playerDrawData.Add(data);
+               });
+        }
+        public void HairSelect(Player player)
+        {
+            if (player.HasBuff(mod.BuffType("SSJ1Buff")))
+            {
+                Hair = mod.GetTexture("Hairs/SSJ/SSJ1Hair");
+            }
+            if (player.HasBuff(mod.BuffType("SSJ2Buff")))
+            {
+                Hair = mod.GetTexture("Hairs/SSJ/SSJ2Hair");
+            }
+        }
+    }*/
 }
