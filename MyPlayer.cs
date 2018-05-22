@@ -51,6 +51,7 @@ namespace DBZMOD
         public static ModHotKey Transform;
         public static ModHotKey PowerDown;
         public static ModHotKey SpeedToggle;
+        public static ModHotKey QuickKi;
 
 
         public static MyPlayer ModPlayer(Player player)
@@ -97,6 +98,8 @@ namespace DBZMOD
             var fragment = new List<string>();
             if (Fragment1) fragment.Add("Fragment1");
             if (Fragment2) fragment.Add("Fragment2");
+            if (Fragment3) fragment.Add("Fragment3");
+            if (Fragment4) fragment.Add("Fragment4");
             if (KaioAchieved) fragment.Add("KaioAchieved");
             if (KaioFragment1) fragment.Add("KaioFragment1");
             if (KaioFragment2) fragment.Add("KaioFragment2");
@@ -116,6 +119,8 @@ namespace DBZMOD
             var fragment = tag.GetList<string>("fragment");
             Fragment1 = fragment.Contains("Fragment1");
             Fragment2 = fragment.Contains("Fragment2");
+            Fragment3 = fragment.Contains("Fragment3");
+            Fragment4 = fragment.Contains("Fragment4");
             KaioFragment1 = fragment.Contains("KaioFragment1");
             KaioFragment2 = fragment.Contains("KaioFragment2");
             KaioFragment3 = fragment.Contains("KaioFragment3");
@@ -143,6 +148,10 @@ namespace DBZMOD
             if (SpeedToggle.JustPressed)
             {
                 speedToggled = !speedToggled;
+            }
+            if(QuickKi.JustPressed && KiPotion.IsKiPotion)
+            {
+
             }
                 
             if (KaiokenKey.JustPressed && (!player.HasBuff(mod.BuffType("KaiokenBuff")) && !player.HasBuff(mod.BuffType("KaiokenBuffX3")) && !player.HasBuff(mod.BuffType("KaiokenBuffX10")) && !player.HasBuff(mod.BuffType("KaiokenBuffX20")) && !player.HasBuff(mod.BuffType("KaiokenBuffX100"))) && !player.HasBuff(mod.BuffType("TiredDebuff")) && KaioAchieved)

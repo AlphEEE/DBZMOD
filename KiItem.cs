@@ -91,7 +91,7 @@ namespace DBZMOD
             {
                 foreach (TooltipLine line in tooltips)
                 {
-                    if (line.mod == "Terraria" && line.Name == "Damage")
+                    if (line.mod == "Terraria" && line.Name == "Tooltip")
                     {
                         line.overrideColor = Color.Cyan;
                     }
@@ -112,5 +112,30 @@ namespace DBZMOD
         }
 
 
+    }
+    public abstract class KiPotion : ModItem
+    {
+        public int KiHeal;
+        public static bool IsKiPotion;
+
+        public override bool UseItem(Player player)
+        {
+            MyPlayer.ModPlayer(player).KiCurrent = MyPlayer.ModPlayer(player).KiCurrent + KiHeal;
+            player.AddBuff(mod.BuffType("KiPotionCooldown"), 300);
+            CombatText.NewText(new Rectangle((int)player.position.X, (int)player.position.Y, player.width, player.height), new Color(51, 204, 255), KiHeal, false, false);
+            return true;
+        }
+
+        public override bool CanUseItem(Player player)
+        {
+            if(player.HasBuff(mod.BuffType("KiPotionCooldown")))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
     }
 }

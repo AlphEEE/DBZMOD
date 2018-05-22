@@ -64,6 +64,12 @@
     <Compile Include="Items\Consumables\KaioFragmentFirst.cs" />
     <Compile Include="Items\Consumables\KiFragment1.cs" />
     <Compile Include="Items\Consumables\KiFragment2.cs" />
+    <Compile Include="Items\Consumables\KiFragment3.cs" />
+    <Compile Include="Items\Consumables\KiFragment4.cs" />
+    <Compile Include="Items\Consumables\Potions\KiPotion1.cs" />
+    <Compile Include="Items\Consumables\Potions\KiPotion2.cs" />
+    <Compile Include="Items\Consumables\Potions\KiPotion3.cs" />
+    <Compile Include="Items\Consumables\Potions\KiPotion4.cs" />
     <Compile Include="Items\Consumables\SenzuBean.cs" />
     <Compile Include="Items\HonorKiCrystal.cs" />
     <Compile Include="Items\KiLanternItem.cs" />
@@ -86,6 +92,7 @@
     <Compile Include="Items\Weapons\KiBlast.cs" />
     <Compile Include="Items\Weapons\KiFist1.cs" />
     <Compile Include="Items\Weapons\Masenko.cs" />
+    <Compile Include="Items\Weapons\MemeWeapons\GatlingSpiritBomb.cs" />
     <Compile Include="Items\Weapons\SpiritBall.cs" />
     <Compile Include="Items\Weapons\SpiritBomb.cs" />
     <Compile Include="Items\Weapons\SuperKamehameha.cs" />
@@ -185,6 +192,7 @@
     <Content Include="Gores\New Text Document.txt" />
     <Content Include="Items\Consumables\KiFragment1.png" />
     <Content Include="Items\Consumables\KiFragment2.png" />
+    <Content Include="Items\Consumables\Potions\KiPotion1.png" />
     <Content Include="Npcs\Boss\FriezaShip.png" />
     <Content Include="Npcs\Boss\FriezaShip_Head_Boss.png" />
     <Content Include="Sounds\DiskFire.wav" />

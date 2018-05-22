@@ -7,31 +7,31 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace DBZMOD.Items.Weapons
+namespace DBZMOD.Items.Weapons.MemeWeapons
 {
-	public class SpiritBomb : KiItem
-	{
-		public override void SetDefaults()
-		{
-			item.shoot = mod.ProjectileType("SpiritBombProjectile");
-			item.shootSpeed = 6f;
-			item.damage = 300;
-			item.knockBack = 12f;
-			item.useStyle = 1;
-			item.UseSound = SoundID.Item1;
-			item.useAnimation = 550;
-			item.useTime =  550;
-			item.width = 40;
-			item.channel = true;
-			item.noUseGraphic = true;
-			item.height = 40;
-			item.autoReuse = false;
-			item.value = Item.sellPrice(0, 0, 5, 0);
-			item.rare = 4;
-            KiDrain = 500;
-	    }
-		
-		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+    public class GatlingSpiritBomb : KiItem
+    {
+        public override void SetDefaults()
+        {
+            item.shoot = mod.ProjectileType("SpiritBombProjectile");
+            item.shootSpeed = 12f;
+            item.damage = 300;
+            item.knockBack = 25f;
+            item.useStyle = 1;
+            item.UseSound = SoundID.Item1;
+            item.useAnimation = 4;
+            item.useTime = 4;
+            item.width = 40;
+            item.channel = true;
+            item.noUseGraphic = true;
+            item.height = 40;
+            item.autoReuse = false;
+            item.value = Item.sellPrice(0, 0, 5, 0);
+            item.rare = 4;
+            KiDrain = 1;
+        }
+
+        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
             int numberProjectiles = 1 + Main.rand.Next(1);  //This defines how many projectiles to shot
             for (int index = 0; index < numberProjectiles; ++index)
@@ -53,27 +53,11 @@ namespace DBZMOD.Items.Weapons
             }
             return false;
         }
-		
-	    public override void SetStaticDefaults()
-		{
-		Tooltip.SetDefault("-Tier 4-");
-		DisplayName.SetDefault("Spirit Bomb");
-		}
-        public override bool UseItem(Player player)
+
+        public override void SetStaticDefaults()
         {
-            base.UseItem(player);
-            player.AddBuff(mod.BuffType("TiredDebuff"), 18000);
-            return true;
+            Tooltip.SetDefault("-Tier 999-");
+            DisplayName.SetDefault("Gatling Spirit Bomb");
         }
-        
-		public override void AddRecipes()
-		{
-			ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, "PridefulKiCrystal", 50);
-		    recipe.AddIngredient(null, "AngerKiCrystal", 50);
-            recipe.AddTile(null, "KiManipulator");
-            recipe.SetResult(this);
-	        recipe.AddRecipe();
-		}
-	}
+    }
 }
