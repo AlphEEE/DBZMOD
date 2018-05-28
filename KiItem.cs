@@ -116,8 +116,11 @@ namespace DBZMOD
     public abstract class KiPotion : ModItem
     {
         public int KiHeal;
-        public static bool IsKiPotion;
-
+        public bool IsKiPotion;
+        public override bool CloneNewInstances
+        {
+            get { return true; }
+        }
         public override bool UseItem(Player player)
         {
             MyPlayer.ModPlayer(player).KiCurrent = MyPlayer.ModPlayer(player).KiCurrent + KiHeal;

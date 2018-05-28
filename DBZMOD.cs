@@ -41,7 +41,7 @@ namespace DBZMOD
             MyPlayer.Transform = RegisterHotKey("Transform", "X");
             MyPlayer.PowerDown = RegisterHotKey("Power Down", "V");
             MyPlayer.SpeedToggle = RegisterHotKey("Speed Toggle", "Z");
-            //KiPotion.QuickKi = RegisterHotKey("Quick Ki", "N");
+            MyPlayer.QuickKi = RegisterHotKey("Quick Ki", "N");
             if(!Main.dedServ)
             {
                 KiBar.visible = true;

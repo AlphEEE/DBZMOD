@@ -92,6 +92,7 @@
     <Compile Include="Items\Weapons\KiBlast.cs" />
     <Compile Include="Items\Weapons\KiFist1.cs" />
     <Compile Include="Items\Weapons\Masenko.cs" />
+    <Compile Include="Items\Weapons\MemeWeapons\GalickGunMeme.cs" />
     <Compile Include="Items\Weapons\MemeWeapons\GatlingSpiritBomb.cs" />
     <Compile Include="Items\Weapons\SpiritBall.cs" />
     <Compile Include="Items\Weapons\SpiritBomb.cs" />

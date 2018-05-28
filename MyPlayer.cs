@@ -290,7 +290,7 @@ namespace DBZMOD
 
         //ZoneCustomBiome = (DBZMODWorld.customBiome > 0);  
     }
-    /*public class SSJHairDraw : ModPlayer
+    public class SSJHairDraw : ModPlayer
     {
         public static Texture2D Hair;
         public static SSJHairDraw ModPlayer(Player player)
@@ -326,6 +326,10 @@ namespace DBZMOD
             {
                 Hair = mod.GetTexture("Hairs/SSJ/SSJ2Hair");
             }
+            else
+            {
+                Hair = null;
+            }
         }
-    }*/
+    }
 }
