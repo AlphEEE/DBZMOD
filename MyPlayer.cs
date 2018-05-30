@@ -44,6 +44,7 @@ namespace DBZMOD
         public bool hasSSJ1;
         public bool kiLantern;
         public bool speedToggled = true;
+        public float KiDrainMulti;
         public int ChargeSoundTimer;
         public int TransformCooldown;
         public static ModHotKey KaiokenKey;
@@ -149,7 +150,7 @@ namespace DBZMOD
             {
                 speedToggled = !speedToggled;
             }
-            if(QuickKi.JustPressed && KiPotion.IsKiPotion)
+            if(QuickKi.JustPressed)
             {
 
             }
@@ -269,6 +270,7 @@ namespace DBZMOD
             scouterT5 = false;
             scouterT6 = false;
             spiritualEmblem = false;
+            KiDrainMulti = 1f;
         }
         public override bool PreKill(double damage, int hitDirection, bool pvp, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource)
         {

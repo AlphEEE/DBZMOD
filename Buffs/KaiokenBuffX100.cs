@@ -24,14 +24,14 @@ namespace DBZMOD.Buffs
                 DamageMulti = 100;
                 SpeedMulti = 100;
                 HealthDrainRate = 480;
-                KiDrainMulti = 1f;
+                KiDrainBuffMulti = 1f;
             }
             else if (!MyPlayer.ModPlayer(player).RealismMode)
             {
                 DamageMulti = 5f;
                 SpeedMulti = 5f;
                 HealthDrainRate = 520;
-                KiDrainMulti = 4f;
+                KiDrainBuffMulti = 4f;
             }
             base.Update(player, ref buffIndex);
         }

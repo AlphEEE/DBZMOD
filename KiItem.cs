@@ -47,6 +47,7 @@ namespace DBZMOD
 
     public abstract class KiItem : ModItem
     {
+        public bool IsFistWeapon;
         private Player player;
         // make-safe
         public override void SetDefaults()
@@ -57,7 +58,7 @@ namespace DBZMOD
             item.thrown = false;
             item.summon = false;
         }
-        public static float KiDrain;
+        public float KiDrain;
         public override bool CloneNewInstances
         {
             get
@@ -100,15 +101,13 @@ namespace DBZMOD
         }
         public override bool CanUseItem(Player player)
         {
-            if (KiDrain <= MyPlayer.ModPlayer(player).KiCurrent)
+            int RealKiDrain = (int)(KiDrain * MyPlayer.ModPlayer(player).KiDrainMulti);
+            if (RealKiDrain <= MyPlayer.ModPlayer(player).KiCurrent)
             {
-               MyPlayer.ModPlayer(player).KiCurrent -= (int)KiDrain;
+                MyPlayer.ModPlayer(player).KiCurrent -= RealKiDrain;
                 return true;
             }
-            else
-            {
-                return false;
-            }
+            return false;
         }
 
 

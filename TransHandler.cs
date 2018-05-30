@@ -15,7 +15,7 @@ namespace DBZMOD
         public float DamageMulti;
         public float SpeedMulti;
         public float KaioLightValue;
-        public float KiDrainMulti;
+        public float KiDrainBuffMulti;
         public bool IsKaioken;
         public static bool IsTransformation;
         public int HealthDrainRate;
@@ -75,7 +75,7 @@ namespace DBZMOD
         {
             if(!MyPlayer.ModPlayer(player).RealismMode)
             {
-                KiItem.KiDrain = KiItem.KiDrain * KiDrainMulti;
+                MyPlayer.ModPlayer(player).KiDrainMulti = KiDrainBuffMulti;
             }
         }
     }
