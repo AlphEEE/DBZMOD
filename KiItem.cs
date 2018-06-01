@@ -47,9 +47,49 @@ namespace DBZMOD
 
     public abstract class KiItem : ModItem
     {
-        public bool IsFistWeapon;
         private Player player;
-        // make-safe
+        private NPC npc;
+        public bool IsFistWeapon;
+        public bool CanUseHeavyHit;
+        #region Boss bool checks
+        public bool EyeDowned;
+        public bool BeeDowned;
+        public bool WallDowned;
+        public bool PlantDowned;
+        public bool DukeDowned;
+        public bool MoodlordDowned;
+        public override void PostUpdate()
+        {
+            if(NPC.downedBoss1)
+            {
+                EyeDowned = true;
+            }
+            if(NPC.downedQueenBee)
+            {
+                BeeDowned = true;
+            }
+            if(Main.hardMode)
+            {
+                WallDowned = true;
+            }
+            if(NPC.downedPlantBoss)
+            {
+                PlantDowned = true;
+            }
+            if(NPC.downedFishron)
+            {
+                DukeDowned = true;
+            }
+            if(NPC.downedMoonlord)
+            {
+                MoodlordDowned = true;
+            }
+        }
+        #endregion
+        #region FistAdditions 
+
+        #endregion
+
         public override void SetDefaults()
         {
             item.melee = false;
