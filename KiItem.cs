@@ -20,7 +20,13 @@ namespace DBZMOD
         public int ChargeLevel;
         public int ChargeTimer;
         public int KiDrainTimer;
+        public int SizeTimer;
         public bool KiWeapon = true;
+
+        public override void PostAI()
+        {
+            projectile.scale = projectile.scale + ChargeLevel;
+        }
 
         public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
         {

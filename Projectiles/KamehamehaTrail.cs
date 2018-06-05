@@ -45,7 +45,11 @@ namespace DBZMOD.Projectiles
             {
                 projectile.Kill();
             }
-           
+            for(int i = 0; i < 4; i++)
+            {
+                projectile.scale -= 1;
+                i = 0;
+            }
         }
 		
 		public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)

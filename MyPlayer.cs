@@ -24,11 +24,13 @@ namespace DBZMOD
         public int drawX;
         public int drawY;
         public bool RealismMode = false;
+        public bool SSJ1Achieved;
         public bool scouterT2;
         public bool scouterT3;
         public bool scouterT4;
         public bool scouterT5;
         public bool scouterT6;
+        public bool IsTransforming;
         public bool Fragment1;
         public bool Fragment2;
         public bool Fragment3;
@@ -96,39 +98,41 @@ namespace DBZMOD
 
         public override TagCompound Save()
         {
-            var fragment = new List<string>();
-            if (Fragment1) fragment.Add("Fragment1");
-            if (Fragment2) fragment.Add("Fragment2");
-            if (Fragment3) fragment.Add("Fragment3");
-            if (Fragment4) fragment.Add("Fragment4");
-            if (KaioAchieved) fragment.Add("KaioAchieved");
-            if (KaioFragment1) fragment.Add("KaioFragment1");
-            if (KaioFragment2) fragment.Add("KaioFragment2");
-            if (KaioFragment3) fragment.Add("KaioFragment3");
-            if (KaioFragment4) fragment.Add("KaioFragment4");
-            if (RealismMode) fragment.Add("RealismMode");
+            TagCompound tag = new TagCompound();
 
-            return new TagCompound {
-                {"fragment", fragment}
-            };
-            
-            
+            tag.Add("Fragment1", Fragment1);
+            tag.Add("Fragment2", Fragment2);
+            tag.Add("Fragment3", Fragment3);
+            tag.Add("Fragment4", Fragment4);
+            tag.Add("KaioFragment1", KaioFragment1);
+            tag.Add("KaioFragment2", KaioFragment2);
+            tag.Add("KaioFragment3", KaioFragment3);
+            tag.Add("KaioFragment4", KaioFragment4);
+            tag.Add("KaioAchieved", KaioAchieved);
+            tag.Add("RealismMode", RealismMode);
+            tag.Add("SSJ1Achieved", SSJ1Achieved);
+            tag.Add("KiCurrent", KiCurrent);
+
+            return tag;
         }
 
         public override void Load(TagCompound tag)
         {
-            var fragment = tag.GetList<string>("fragment");
-            Fragment1 = fragment.Contains("Fragment1");
-            Fragment2 = fragment.Contains("Fragment2");
-            Fragment3 = fragment.Contains("Fragment3");
-            Fragment4 = fragment.Contains("Fragment4");
-            KaioFragment1 = fragment.Contains("KaioFragment1");
-            KaioFragment2 = fragment.Contains("KaioFragment2");
-            KaioFragment3 = fragment.Contains("KaioFragment3");
-            KaioFragment4 = fragment.Contains("KaioFragment4");
-            KaioAchieved = fragment.Contains("KaioAchieved");
-            RealismMode = fragment.Contains("RealismMode");
+            Fragment1 = tag.Get<bool>("Fragment1");
+            Fragment2 = tag.Get<bool>("Fragment2");
+            Fragment3 = tag.Get<bool>("Fragment3");
+            Fragment4 = tag.Get<bool>("Fragment4");
+            KaioFragment1 = tag.Get<bool>("KaioFragment1");
+            KaioFragment2 = tag.Get<bool>("KaioFragment2");
+            KaioFragment3 = tag.Get<bool>("KaioFragment3");
+            KaioFragment4 = tag.Get<bool>("KaioFragment4");
+            KaioAchieved = tag.Get<bool>("KaioAchieved");
+            RealismMode = tag.Get<bool>("RealismMode");
+            SSJ1Achieved = tag.Get<bool>("SSJ1Achieved");
+            KiCurrent = tag.Get<int>("KiCurrent");
         }
+
+
 
 
         public override void ProcessTriggers(TriggersSet triggersSet)
@@ -155,7 +159,7 @@ namespace DBZMOD
 
             }
                 
-            if (KaiokenKey.JustPressed && (!player.HasBuff(mod.BuffType("KaiokenBuff")) && !player.HasBuff(mod.BuffType("KaiokenBuffX3")) && !player.HasBuff(mod.BuffType("KaiokenBuffX10")) && !player.HasBuff(mod.BuffType("KaiokenBuffX20")) && !player.HasBuff(mod.BuffType("KaiokenBuffX100"))) && !player.HasBuff(mod.BuffType("TiredDebuff")) && KaioAchieved)
+            if (KaiokenKey.JustPressed && (!player.HasBuff(mod.BuffType("KaiokenBuff")) && !player.HasBuff(mod.BuffType("KaiokenBuffX3")) && !player.HasBuff(mod.BuffType("KaiokenBuffX10")) && !player.HasBuff(mod.BuffType("KaiokenBuffX20")) && !player.HasBuff(mod.BuffType("KaiokenBuffX100"))) && !player.HasBuff(mod.BuffType("TiredDebuff")) && KaioAchieved && !player.channel)
             {
                 player.AddBuff(mod.BuffType("KaiokenBuff"), 18000);
                 Projectile.NewProjectile(player.Center.X - 40, player.Center.Y + 90, 0, 0, mod.ProjectileType("KaiokenAuraProj"), 0, 0, player.whoAmI);
@@ -190,7 +194,7 @@ namespace DBZMOD
                 Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/KaioAuraAscend").WithVolume(.8f));
             }
 
-            if (EnergyCharge.Current && (KiCurrent < KiMax))
+            if (EnergyCharge.Current && (KiCurrent < KiMax) && !player.channel)
             {
                 KiCurrent++;
                 player.velocity = new Vector2(0,player.velocity.Y);
@@ -274,12 +278,34 @@ namespace DBZMOD
         }
         public override bool PreKill(double damage, int hitDirection, bool pvp, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource)
         {
-            if (player.statLife < 0 && hasKaioken)
+            if (damageSource.SourceNPCIndex > -1)
             {
-                player.KillMe(PlayerDeathReason.ByCustomReason(" Destroyed Their Body"), damage, hitDirection);
-                //damageSource = PlayerDeathReason.ByCustomReason(" Destroyed Their Body");
+                NPC culprit = Main.npc[damageSource.SourceNPCIndex];
+                if (culprit.boss && !SSJ1Achieved && (Main.rand.Next(9) == 0))
+                {
+                    Main.NewText("The humiliation of failing drives you mad.");
+                    player.statLife = 1;
+                    player.HealEffect(1);
+                    SSJ1Achieved = true;
+                    IsTransforming = true;
+                    SSJTransformation();
+                    return false;
+                }
+            }
+
+            return true;
+        }
+        public override bool PreHurt(bool pvp, bool quiet, ref int damage, ref int hitDirection, ref bool crit, ref bool customDamage, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource)
+        {
+            if(IsTransforming)
+            {
+                return false;
             }
             return true;
+        }
+        public void SSJTransformation()
+        {
+
         }
         public override void SetupStartInventory(IList<Item> items)
         {

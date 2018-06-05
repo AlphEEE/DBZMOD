@@ -15,10 +15,10 @@ namespace DBZMOD.Projectiles
 		public override void SetDefaults()
         {
             projectile.hostile = false;
-            projectile.friendly = true;
+            projectile.friendly = false;
 			projectile.tileCollide = false;
-            projectile.width = 80;
-            projectile.height = 80;
+            projectile.width = 10;
+            projectile.height = 10;
 			projectile.aiStyle = 1;
 			projectile.light = 1f;
             projectile.timeLeft = 10;
@@ -31,7 +31,7 @@ namespace DBZMOD.Projectiles
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("KamehamehaBall");
+            DisplayName.SetDefault("Kamehameha Ball");
         }
    
         public override void AI()
@@ -41,8 +41,8 @@ namespace DBZMOD.Projectiles
                 projectile.timeLeft = 10;
             }
             Player player = Main.player[projectile.owner];
-            projectile.position.X = player.Center.X;
-            projectile.position.Y = player.Center.Y;
+            projectile.position.X = player.Center.X - 13;
+            projectile.position.Y = player.Center.Y - 10;
 
             if (!player.channel && ChargeLevel < 1)
             {
@@ -52,6 +52,7 @@ namespace DBZMOD.Projectiles
             {
                 ChargeTimer++;
                 KiDrainTimer++;
+                player.velocity = new Vector2(player.velocity.X / 3, player.velocity.Y / 3);
             }
             if(ChargeTimer > 60)
             {
@@ -60,11 +61,12 @@ namespace DBZMOD.Projectiles
             }
             if(!player.channel && ChargeLevel > 1)
             {
-                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, projectile.Center.X - Main.MouseWorld.X, projectile.Center.Y - Main.MouseWorld.Y, mod.ProjectileType("KamehamehaBlast"), projectile.damage + (ChargeLevel * 20), 4f, projectile.owner, 0, projectile.rotation);
+                float rot = (float)Math.Atan2((Main.mouseY + Main.screenPosition.Y) - projectile.Center.Y, (Main.mouseX + Main.screenPosition.X) - projectile.Center.X);
+                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)((Math.Cos(rot) * 10)), (float)((Math.Sin(rot) * 10)), mod.ProjectileType("KamehamehaBlast"), projectile.damage + (ChargeLevel * 20), projectile.knockBack, projectile.owner);
                 ChargeLevel = 0;
             }
 
-            if (KiDrainTimer > 3 && MyPlayer.ModPlayer(player).KiCurrent >= 0)
+            if (KiDrainTimer > 1 && MyPlayer.ModPlayer(player).KiCurrent >= 0)
             {
                 MyPlayer.ModPlayer(player).KiCurrent -= 1;
                 KiDrainTimer = 0;

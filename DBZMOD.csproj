@@ -119,6 +119,7 @@
     <Compile Include="Projectiles\EnergyWaveTrail.cs" />
     <Compile Include="Projectiles\EnergyWaveVolleyBlast.cs" />
     <Compile Include="Projectiles\EnergyWaveVolleyTrail.cs" />
+    <Compile Include="Projectiles\Fists\KiFistProj.cs" />
     <Compile Include="Projectiles\GalickGunBlast.cs" />
     <Compile Include="Projectiles\GalickGunTrail.cs" />
     <Compile Include="Projectiles\HellzoneGrenadeProjectile.cs" />
@@ -133,7 +134,6 @@
     <Compile Include="Projectiles\KamehamehaTrail.cs" />
     <Compile Include="Projectiles\KiBeamProjectile.cs" />
     <Compile Include="Projectiles\KiBlastProjectile.cs" />
-    <Compile Include="Projectiles\KiFistProj.cs" />
     <Compile Include="Projectiles\MasenkoBlast.cs" />
     <Compile Include="Projectiles\MasenkoTrail.cs" />
     <Compile Include="Projectiles\RockProjectile.cs" />
@@ -198,6 +198,7 @@
     <Content Include="Items\Consumables\Potions\KiPotion1.png" />
     <Content Include="Npcs\Boss\FriezaShip.png" />
     <Content Include="Npcs\Boss\FriezaShip_Head_Boss.png" />
+    <Content Include="Projectiles\Fists\KiFistProj.png" />
     <Content Include="Sounds\DiskFire.wav" />
     <Content Include="Sounds\EnergyCharge.wav" />
     <Content Include="Sounds\EnergyChargeStart.wav" />

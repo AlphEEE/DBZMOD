@@ -13,8 +13,8 @@ namespace DBZMOD.Items.Weapons
 	{
 		public override void SetDefaults()
 		{
-			item.shoot = mod.ProjectileType("KamehamehaBlast");
-			item.shootSpeed = 70f;
+			item.shoot = mod.ProjectileType("KamehamehaBall");
+			item.shootSpeed = 0f;
 			item.damage = 70;
 			item.knockBack = 2f;
 			item.useStyle = 5;
@@ -36,7 +36,7 @@ namespace DBZMOD.Items.Weapons
 		DisplayName.SetDefault("Kamehameha");
 		}
 
-        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+        /*public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
 		{
 			Vector2 muzzleOffset = Vector2.Normalize(new Vector2(speedX, speedY)) * 20f;
 			if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
@@ -44,7 +44,7 @@ namespace DBZMOD.Items.Weapons
 				position += muzzleOffset;
 			}
 			return true;
-		}
+		}*/
 
 		public override void AddRecipes()
 		{
