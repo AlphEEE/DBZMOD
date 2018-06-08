@@ -21,11 +21,39 @@ namespace DBZMOD
         public int ChargeTimer;
         public int KiDrainTimer;
         public int SizeTimer;
+        public int originalWidth;
+        public int originalHeight;
+        public bool ChargeBall;
         public bool KiWeapon = true;
+        public bool BeamTrail;
+
+        public override bool CloneNewInstances
+        {
+            get
+            {
+                return true;
+            }
+        }
 
         public override void PostAI()
         {
-            projectile.scale = projectile.scale + ChargeLevel;
+            if (!ChargeBall)
+            {
+                projectile.scale = projectile.scale + ChargeLevel;
+            }
+            if (BeamTrail && projectile.scale > 0 && SizeTimer > 0)
+            {
+                SizeTimer = 120;
+                SizeTimer--;
+                projectile.scale = (projectile.scale * SizeTimer / 120f);
+            }
+        }
+
+        public void SetScale(float scale)
+        {
+            projectile.scale = scale;
+            projectile.width = (int)(originalWidth * scale);
+            projectile.height = (int)(originalHeight * scale);
         }
 
         public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
@@ -42,7 +70,7 @@ namespace DBZMOD
             {
                 if(npc.life < 0)
                 {
-                    if(Main.rand.Next(3) == 0)
+                    if(Main.rand.Next(4) == 0)
                     {
                         Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("KiOrb"), 1);
                     }

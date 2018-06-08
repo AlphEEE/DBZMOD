@@ -31,6 +31,7 @@ namespace DBZMOD.Projectiles
 			aiType = 14;
             projectile.ignoreWater = true;
 			projectile.penetrate = -1;
+            BeamTrail = true;
 			ProjectileID.Sets.TrailCacheLength[projectile.type] = 1;
             ProjectileID.Sets.TrailingMode[projectile.type] = 0;
         }

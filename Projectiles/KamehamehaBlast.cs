@@ -14,12 +14,13 @@ namespace DBZMOD.Projectiles
         private Player player;
 		public override void SetDefaults()
         {
-            projectile.CloneDefaults(ProjectileID.SwordBeam);
             projectile.hostile = false;
             projectile.friendly = true;
 			projectile.tileCollide = false;
             projectile.width = 80;
             projectile.height = 80;
+            originalHeight = 80;
+            originalWidth = 80;
 			projectile.aiStyle = 1;
 			projectile.light = 1f;
 			projectile.timeLeft = 150;

@@ -104,6 +104,7 @@ namespace DBZMOD
             tag.Add("Fragment2", Fragment2);
             tag.Add("Fragment3", Fragment3);
             tag.Add("Fragment4", Fragment4);
+            tag.Add("Fragment5", Fragment5);
             tag.Add("KaioFragment1", KaioFragment1);
             tag.Add("KaioFragment2", KaioFragment2);
             tag.Add("KaioFragment3", KaioFragment3);
@@ -122,6 +123,7 @@ namespace DBZMOD
             Fragment2 = tag.Get<bool>("Fragment2");
             Fragment3 = tag.Get<bool>("Fragment3");
             Fragment4 = tag.Get<bool>("Fragment4");
+            Fragment5 = tag.Get<bool>("Fragment5");
             KaioFragment1 = tag.Get<bool>("KaioFragment1");
             KaioFragment2 = tag.Get<bool>("KaioFragment2");
             KaioFragment3 = tag.Get<bool>("KaioFragment3");
@@ -139,16 +141,12 @@ namespace DBZMOD
         {
             if (Transform.JustPressed && player.HasBuff(mod.BuffType("KaiokenBuff")))
             {
-                //if (!player.HasBuff(mod.BuffType("SSJ1Buff")))
-                //{
-                //player.AddBuff(mod.BuffType("SSJ1Buff"), 18000);
-                //Projectile.NewProjectile(player.Center.X - 40, player.Center.Y + 90, 0, 0, mod.ProjectileType("SSJ1AuraProjStart"), 0, 0, player.whoAmI);
-                //Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/AuraStart").WithVolume(.7f));
-                //}
-                Projectile.NewProjectile(player.Center.X - 40, player.Center.Y + 90, 0, 0, mod.ProjectileType("SSJ1AuraProjStart"), 0, 0, player.whoAmI);
-                player.ClearBuff(mod.BuffType("KaiokenBuff"));
-
-
+                if (!player.HasBuff(mod.BuffType("SSJ1Buff")) && SSJ1Achieved && !IsTransforming)
+                {
+                    player.AddBuff(mod.BuffType("SSJ1Buff"), 18000);
+                    Projectile.NewProjectile(player.Center.X - 40, player.Center.Y + 90, 0, 0, mod.ProjectileType("SSJ1AuraProjStartQuick"), 0, 0, player.whoAmI);
+                    Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/AuraStart").WithVolume(.7f));
+                }
             }
             if (SpeedToggle.JustPressed)
             {
@@ -211,7 +209,10 @@ namespace DBZMOD
             }
             if (EnergyCharge.JustPressed)
             {
-                Projectile.NewProjectile(player.Center.X - 40, player.Center.Y + 90, 0, 0, mod.ProjectileType("BaseAuraProj"), 0, 0, player.whoAmI);
+                if(hasKaioken || hasSSJ1)
+                {
+                    Projectile.NewProjectile(player.Center.X - 40, player.Center.Y + 90, 0, 0, mod.ProjectileType("BaseAuraProj"), 0, 0, player.whoAmI);
+                }
                 Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/EnergyChargeStart").WithVolume(.7f));
             }
             if (PowerDown.JustPressed && (player.HasBuff(mod.BuffType("KaiokenBuff")) || player.HasBuff(mod.BuffType("KaiokenBuffX3")) || player.HasBuff(mod.BuffType("KaiokenBuffX10")) || player.HasBuff(mod.BuffType("KaiokenBuffX20")) || player.HasBuff(mod.BuffType("KaiokenBuffX100"))))
@@ -303,9 +304,16 @@ namespace DBZMOD
             }
             return true;
         }
+        float speedX;
+        float speedY;
         public void SSJTransformation()
         {
-
+            Projectile.NewProjectile(player.Center.X - 40, player.Center.Y + 90, 0, 0, mod.ProjectileType("SSJ1AuraProjStart"), 0, 0, player.whoAmI);
+            Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(360));
+            for (int i = 0; i < 8; i++)
+            {
+                Projectile.NewProjectile(player.Center.X - 40, player.Center.Y + 90, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("SSJ1AuraProjBeamHead"), 0, 0, player.whoAmI);
+            }
         }
         public override void SetupStartInventory(IList<Item> items)
         {
@@ -313,6 +321,11 @@ namespace DBZMOD
             item1.SetDefaults(mod.ItemType("KiFist1"));   
             item1.stack = 1;
             items.Add(item1);
+
+            Item item9 = new Item();
+            item9.SetDefaults(mod.ItemType("KiAggravationStone"));
+            item9.stack = 1;
+            items.Add(item9);
         }
         //public override void UpdateBiomes()
 

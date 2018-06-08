@@ -31,6 +31,7 @@ namespace DBZMOD.Projectiles
             projectile.ignoreWater = true;
 			projectile.penetrate = -1;
             projectile.netUpdate = true;
+            BeamTrail = true;
             ProjectileID.Sets.TrailCacheLength[projectile.type] = 1;
             ProjectileID.Sets.TrailingMode[projectile.type] = 0;
         }
@@ -44,11 +45,6 @@ namespace DBZMOD.Projectiles
             if (projectile.localAI[0] > 130f)
             {
                 projectile.Kill();
-            }
-            for(int i = 0; i < 4; i++)
-            {
-                projectile.scale -= 1;
-                i = 0;
             }
         }
 		

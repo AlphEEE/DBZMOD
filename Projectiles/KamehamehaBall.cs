@@ -27,6 +27,7 @@ namespace DBZMOD.Projectiles
 			aiType = 14;
             projectile.ignoreWater = true;
 			projectile.penetrate = -1;
+            ChargeBall = true;
         }
 
         public override void SetStaticDefaults()
@@ -41,8 +42,8 @@ namespace DBZMOD.Projectiles
                 projectile.timeLeft = 10;
             }
             Player player = Main.player[projectile.owner];
-            projectile.position.X = player.Center.X - 13;
-            projectile.position.Y = player.Center.Y - 10;
+            projectile.position.X = player.Center.X - 20;
+            projectile.position.Y = player.Center.Y - 7;
 
             if (!player.channel && ChargeLevel < 1)
             {
@@ -54,16 +55,21 @@ namespace DBZMOD.Projectiles
                 KiDrainTimer++;
                 player.velocity = new Vector2(player.velocity.X / 3, player.velocity.Y / 3);
             }
-            if(ChargeTimer > 60)
+            if(ChargeTimer > 180)
             {
                 ChargeLevel += 1;
                 ChargeTimer = 0;
+                for (int d = 0; d < 70; d++)
+                {
+                    Dust.NewDust(projectile.position, projectile.width, projectile.height, 15, 0f, 0f, 213, default(Color), 1.5f);
+                }
             }
-            if(!player.channel && ChargeLevel > 1)
+            if(!player.channel && ChargeLevel >= 1)
             {
                 float rot = (float)Math.Atan2((Main.mouseY + Main.screenPosition.Y) - projectile.Center.Y, (Main.mouseX + Main.screenPosition.X) - projectile.Center.X);
                 Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)((Math.Cos(rot) * 10)), (float)((Math.Sin(rot) * 10)), mod.ProjectileType("KamehamehaBlast"), projectile.damage + (ChargeLevel * 20), projectile.knockBack, projectile.owner);
                 ChargeLevel = 0;
+
             }
 
             if (KiDrainTimer > 1 && MyPlayer.ModPlayer(player).KiCurrent >= 0)

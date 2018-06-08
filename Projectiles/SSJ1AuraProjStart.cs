@@ -10,17 +10,17 @@ namespace DBZMOD.Projectiles
 {
     public class SSJ1AuraProjStart : ModProjectile
     {
+        private Player player;
         public override void SetStaticDefaults()
         {
             Main.projFrames[projectile.type] = 4;
         }
         public override void SetDefaults()
         {
-            projectile.width = 95;
-            projectile.height = 89;
+            projectile.width = 400;
+            projectile.height = 400;
             projectile.aiStyle = 0;
-            projectile.alpha = 70;
-            projectile.timeLeft = 240;
+            projectile.timeLeft = 600;
             projectile.friendly = true;
             projectile.tileCollide = false;
             projectile.ignoreWater = true;
@@ -35,7 +35,7 @@ namespace DBZMOD.Projectiles
             projectile.position.Y = player.Center.Y;
             projectile.Center = player.Center + new Vector2(0, -25);
 
-            if (MyPlayer.EnergyCharge.JustReleased)
+            if (!MyPlayer.ModPlayer(player).IsTransforming)
             {
                 projectile.Kill();
             }
@@ -49,6 +49,11 @@ namespace DBZMOD.Projectiles
             {
                 projectile.frame = 0;
             }   
+        }
+        public override void Kill(int timeLeft)
+        {
+            player.AddBuff(mod.BuffType("SSJ1Buff"), 18000);
+            MyPlayer.ModPlayer(player).IsTransforming = false;
         }
     }
 }

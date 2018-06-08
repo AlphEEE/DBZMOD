@@ -9,20 +9,20 @@ using Terraria.ModLoader;
 
 namespace DBZMOD.Projectiles
 {
-    public class GalickGunTrail : KiProjectile
+    public class SSJAuraProjBeam : KiProjectile
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("GalickGunTrail");
+            DisplayName.SetDefault("SSJ Aura Beam");
         }
 
         public override void SetDefaults()
         {
             projectile.CloneDefaults(ProjectileID.SwordBeam);
             projectile.hostile = false;
-            projectile.friendly = true;
+            projectile.friendly = false;
             projectile.tileCollide = false;
-            projectile.width = 36;
+            projectile.width = 26;
             projectile.height = 60;
             projectile.aiStyle = 1;
             projectile.light = 1f;
@@ -31,14 +31,13 @@ namespace DBZMOD.Projectiles
             projectile.ignoreWater = true;
             projectile.penetrate = -1;
             projectile.netUpdate = true;
-            BeamTrail = true;
+            projectile.damage = 0;
             ProjectileID.Sets.TrailCacheLength[projectile.type] = 1;
             ProjectileID.Sets.TrailingMode[projectile.type] = 0;
         }
 
         public override void AI()
         {
-            projectile.rotation = projectile.ai[1];
             projectile.localAI[0] += 1f;
             projectile.alpha = (int)projectile.localAI[0] * 2;
 
