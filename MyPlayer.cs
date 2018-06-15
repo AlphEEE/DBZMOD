@@ -15,11 +15,12 @@ namespace DBZMOD
 {
     public class MyPlayer : ModPlayer
     {
+        #region Variables
         public float KiDamage;
         public float KiKbAddition;
         public int KiMax;
         public int KiCurrent;
-        public float KiRegen;
+        public int KiRegenRate = 1;
         public bool ZoneCustomBiome = false;
         public int drawX;
         public int drawY;
@@ -41,11 +42,17 @@ namespace DBZMOD
         public bool KaioFragment3;
         public bool KaioFragment4;
         public bool KaioAchieved;
+        public bool KiEssence1;
+        public bool KiEssence2;
+        public bool KiEssence3;
+        public bool KiEssence4;
         public bool spiritualEmblem;
+        public int SSJAuraBeamTimer;
         public bool hasKaioken;
         public bool hasSSJ1;
         public bool kiLantern;
         public bool speedToggled = true;
+        public bool IsTransformed;
         public float KiDrainMulti;
         public int ChargeSoundTimer;
         public int TransformCooldown;
@@ -55,7 +62,7 @@ namespace DBZMOD
         public static ModHotKey PowerDown;
         public static ModHotKey SpeedToggle;
         public static ModHotKey QuickKi;
-
+        #endregion
 
         public static MyPlayer ModPlayer(Player player)
         {
@@ -82,6 +89,16 @@ namespace DBZMOD
             {
                 player.ClearBuff(mod.BuffType("KiLanternBuff"));
             }
+            if(IsTransforming)
+            {
+                SSJAuraBeamTimer++;
+            }
+            if (SSJAuraBeamTimer > 10 && IsTransforming)
+            {
+                SSJTransformationBeams();
+                SSJAuraBeamTimer = 0;
+            }
+
         }
 
         public bool SSJ1Check()
@@ -113,6 +130,11 @@ namespace DBZMOD
             tag.Add("RealismMode", RealismMode);
             tag.Add("SSJ1Achieved", SSJ1Achieved);
             tag.Add("KiCurrent", KiCurrent);
+            tag.Add("KiRegenRate", KiRegenRate);
+            tag.Add("KiEssence1", KiEssence1);
+            tag.Add("KiEssence2", KiEssence2);
+            tag.Add("KiEssence3", KiEssence3);
+            tag.Add("KiEssence4", KiEssence4);
 
             return tag;
         }
@@ -132,6 +154,11 @@ namespace DBZMOD
             RealismMode = tag.Get<bool>("RealismMode");
             SSJ1Achieved = tag.Get<bool>("SSJ1Achieved");
             KiCurrent = tag.Get<int>("KiCurrent");
+            KiRegenRate = tag.Get<int>("KiRegenRate");
+            KiEssence1 = tag.Get<bool>("KiEssence1");
+            KiEssence2 = tag.Get<bool>("KiEssence2");
+            KiEssence3 = tag.Get<bool>("KiEssence3");
+            KiEssence4 = tag.Get<bool>("KiEssence4");
         }
 
 
@@ -143,7 +170,7 @@ namespace DBZMOD
             {
                 if (!player.HasBuff(mod.BuffType("SSJ1Buff")) && SSJ1Achieved && !IsTransforming)
                 {
-                    player.AddBuff(mod.BuffType("SSJ1Buff"), 18000);
+                    player.AddBuff(mod.BuffType("SSJ1Buff"), 30);
                     Projectile.NewProjectile(player.Center.X - 40, player.Center.Y + 90, 0, 0, mod.ProjectileType("SSJ1AuraProjStartQuick"), 0, 0, player.whoAmI);
                     Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/AuraStart").WithVolume(.7f));
                 }
@@ -154,7 +181,8 @@ namespace DBZMOD
             }
             if(QuickKi.JustPressed)
             {
-
+                SSJTransformation();
+                IsTransforming = true;
             }
                 
             if (KaiokenKey.JustPressed && (!player.HasBuff(mod.BuffType("KaiokenBuff")) && !player.HasBuff(mod.BuffType("KaiokenBuffX3")) && !player.HasBuff(mod.BuffType("KaiokenBuffX10")) && !player.HasBuff(mod.BuffType("KaiokenBuffX20")) && !player.HasBuff(mod.BuffType("KaiokenBuffX100"))) && !player.HasBuff(mod.BuffType("TiredDebuff")) && KaioAchieved && !player.channel)
@@ -194,7 +222,7 @@ namespace DBZMOD
 
             if (EnergyCharge.Current && (KiCurrent < KiMax) && !player.channel)
             {
-                KiCurrent++;
+                KiCurrent += KiRegenRate;
                 player.velocity = new Vector2(0,player.velocity.Y);
                 ChargeSoundTimer++;
                 if (ChargeSoundTimer > 22)
@@ -209,7 +237,7 @@ namespace DBZMOD
             }
             if (EnergyCharge.JustPressed)
             {
-                if(hasKaioken || hasSSJ1)
+                if(!hasKaioken && !hasSSJ1)
                 {
                     Projectile.NewProjectile(player.Center.X - 40, player.Center.Y + 90, 0, 0, mod.ProjectileType("BaseAuraProj"), 0, 0, player.whoAmI);
                 }
@@ -222,9 +250,14 @@ namespace DBZMOD
                 player.ClearBuff(mod.BuffType("KaiokenBuffX10"));
                 player.ClearBuff(mod.BuffType("KaiokenBuffX20"));
                 player.ClearBuff(mod.BuffType("KaiokenBuffX100"));
-                player.ClearBuff(mod.BuffType("SSJ1Buff"));
                 player.AddBuff(mod.BuffType("TiredDebuff"), 3600);
                 Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/PowerDown").WithVolume(.3f));
+            }
+            if (PowerDown.JustPressed && (player.HasBuff(mod.BuffType("SSJ1Buff"))))
+            {
+                player.ClearBuff(mod.BuffType("SSJ1Buff"));
+                Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/PowerDown").WithVolume(.3f));
+                IsTransformed = false;
             }
 
         }        
@@ -263,12 +296,6 @@ namespace DBZMOD
             {
                 KiMax = 1000;
             }
-            
-            
-            
-           
-            
-            KiRegen = 2f;
             scouterT2 = false;
             scouterT3 = false;
             scouterT4 = false;
@@ -282,7 +309,7 @@ namespace DBZMOD
             if (damageSource.SourceNPCIndex > -1)
             {
                 NPC culprit = Main.npc[damageSource.SourceNPCIndex];
-                if (culprit.boss && !SSJ1Achieved && (Main.rand.Next(9) == 0))
+                if (culprit.boss && !SSJ1Achieved && (Main.rand.Next(9) == 0) && player.whoAmI == Main.myPlayer)
                 {
                     Main.NewText("The humiliation of failing drives you mad.");
                     player.statLife = 1;
@@ -304,16 +331,17 @@ namespace DBZMOD
             }
             return true;
         }
-        float speedX;
-        float speedY;
+
         public void SSJTransformation()
         {
-            Projectile.NewProjectile(player.Center.X - 40, player.Center.Y + 90, 0, 0, mod.ProjectileType("SSJ1AuraProjStart"), 0, 0, player.whoAmI);
-            Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(360));
-            for (int i = 0; i < 8; i++)
-            {
-                Projectile.NewProjectile(player.Center.X - 40, player.Center.Y + 90, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("SSJ1AuraProjBeamHead"), 0, 0, player.whoAmI);
-            }
+            Projectile.NewProjectile(player.Center.X - 40, player.Center.Y + 70, 0, 0, mod.ProjectileType("SSJ1AuraProjStart"), 0, 0, player.whoAmI);
+            Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Awakening").WithVolume(1.5f));
+        }
+
+        public void SSJTransformationBeams()
+        {
+            Vector2 velocity = Vector2.UnitY.RotateRandom(MathHelper.TwoPi) * 12;
+            Projectile.NewProjectile(player.Center.X, player.Center.Y, velocity.X, velocity.Y, mod.ProjectileType("SSJ1AuraProjBeamHead"), 0, 0, player.whoAmI);
         }
         public override void SetupStartInventory(IList<Item> items)
         {
@@ -338,38 +366,44 @@ namespace DBZMOD
         {
             return player.GetModPlayer<SSJHairDraw>();
         }
-        public override void ModifyDrawLayers(List<PlayerLayer> layers)
-        {
-            int head = layers.FindIndex(l => l == PlayerLayer.Hair);
-            if (head < 0)
-                return;
-
-            layers[head] = new PlayerLayer(mod.Name, "TransHair",
-                delegate (PlayerDrawInfo draw)
-               {
-                   Player player = draw.drawPlayer;
-                   if (TransBuff.IsTransformation)
-                       return;
-
-                   Color alpha = draw.drawPlayer.GetImmuneAlpha(Lighting.GetColor((int)(draw.position.X + draw.drawPlayer.width * 0.5) / 16, (int)((draw.position.Y + draw.drawPlayer.height * 0.25) / 16.0), Color.White), draw.shadow);
-                   DrawData data = new DrawData(Hair, new Vector2((float)((int)(draw.position.X - Main.screenPosition.X - (float)(player.bodyFrame.Width / 2) + (float)(player.width / 2))), (float)((int)(draw.position.Y - Main.screenPosition.Y + (float)player.height - (float)player.bodyFrame.Height + 4f))) + player.headPosition + draw.headOrigin, player.bodyFrame, alpha, player.headRotation, draw.headOrigin, 1f, draw.spriteEffects, 0);
-                   data.shader = draw.hairShader;
-                   Main.playerDrawData.Add(data);
-               });
-        }
-        public void HairSelect(Player player)
+        public override void PreUpdate()
         {
             if (player.HasBuff(mod.BuffType("SSJ1Buff")))
             {
                 Hair = mod.GetTexture("Hairs/SSJ/SSJ1Hair");
             }
-            if (player.HasBuff(mod.BuffType("SSJ2Buff")))
+            else if (player.HasBuff(mod.BuffType("SSJ2Buff")))
             {
                 Hair = mod.GetTexture("Hairs/SSJ/SSJ2Hair");
             }
             else
             {
                 Hair = null;
+            }
+        }
+        public override void ModifyDrawLayers(List<PlayerLayer> layers)
+        {
+            int hair = layers.FindIndex(l => l == PlayerLayer.Hair);
+            if (hair < 0)
+                return;
+            if (Hair != null)
+            {
+                layers[hair] = new PlayerLayer(mod.Name, "TransHair",
+                    delegate (PlayerDrawInfo draw)
+                   {
+                       Player player = draw.drawPlayer;
+                   //if (!MyPlayer.ModPlayer(player).IsTransformed)
+                   // return;
+
+                   Color alpha = draw.drawPlayer.GetImmuneAlpha(Lighting.GetColor((int)(draw.position.X + draw.drawPlayer.width * 0.5) / 16, (int)((draw.position.Y + draw.drawPlayer.height * 0.25) / 16.0), Color.White), draw.shadow);
+                       DrawData data = new DrawData(Hair, new Vector2((float)((int)(draw.position.X - Main.screenPosition.X - (float)(player.bodyFrame.Width / 2) + (float)(player.width / 2))), (float)((int)(draw.position.Y - Main.screenPosition.Y + (float)player.height - (float)player.bodyFrame.Height + 4f))) + player.headPosition + draw.headOrigin, player.bodyFrame, alpha, player.headRotation, draw.headOrigin, 1f, draw.spriteEffects, 0);
+                       data.shader = draw.hairShader;
+                       Main.playerDrawData.Add(data);
+                   });
+            }
+            if (Hair != null)
+            {
+                PlayerLayer.Head.visible = false;
             }
         }
     }

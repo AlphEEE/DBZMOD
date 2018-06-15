@@ -17,11 +17,22 @@ namespace DBZMOD
         public float KaioLightValue;
         public float KiDrainBuffMulti;
         public bool IsKaioken;
-        public static bool IsTransformation;
+        public float SSJLightValue;
+        public bool IsSSJ;
         public int HealthDrainRate;
         public int KiDrainRate;
+        private int KiDrainTimer;
+        public bool RealismModeOn;
         public override void Update(Player player, ref int buffIndex)
         {
+            if(MyPlayer.ModPlayer(player).RealismMode)
+            {
+                RealismModeOn = true;
+            }
+            else
+            {
+                RealismModeOn = false;
+            }
             if(IsKaioken)
             {
                 MyPlayer.ModPlayer(player).hasKaioken = true;
@@ -32,6 +43,16 @@ namespace DBZMOD
                 }
                 player.lifeRegenTime = 0;
                 player.lifeRegen -= HealthDrainRate;
+            }
+            if(IsSSJ)
+            {
+                MyPlayer.ModPlayer(player).IsTransformed = true;
+                KiDrainTimer++;
+                if(KiDrainTimer > 1)
+                {
+                    MyPlayer.ModPlayer(player).KiCurrent -= KiDrainRate;
+                    KiDrainTimer = 0;
+                }
             }
             if (MyPlayer.ModPlayer(player).speedToggled)
             {
@@ -59,8 +80,16 @@ namespace DBZMOD
             {
                 TremorEffects(player);
             }
-            
-            
+            if (DBZMOD.instance.enigmaLoaded)
+            {
+                EnigmaEffects(player);
+            }
+            if (DBZMOD.instance.battlerodsLoaded)
+            {
+                BattleRodEffects(player);
+            }
+
+
         }
         public void ThoriumEffects(Player player)
         {
@@ -70,6 +99,14 @@ namespace DBZMOD
         public void TremorEffects(Player player)
         {
             //player.GetModPlayer<Tremor.MPlayer>(ModLoader.GetMod("Tremor")).alchemicalDamage *= DamageMulti;
+        }
+        public void EnigmaEffects(Player player)
+        {
+            //player.GetModPlayer<Laugicality.LaugicalityPlayer>(ModLoader.GetMod("Laugicality")).mysticDamage *= DamageMulti;
+        }
+        public void BattleRodEffects(Player player)
+        {
+            //player.GetModPlayer<UnuBattleRods.FishPlayer>(ModLoader.GetMod("UnuBattleRods")).bobberDamage *= DamageMulti;
         }
         private void KiDrainAdd(Player player)
         {

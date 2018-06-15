@@ -1,37 +1,36 @@
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
 
 namespace DBZMOD.Buffs
 {
-    public class KaiokenBuffX20 : TransBuff
+    public class SSJ1Buff : TransBuff
     {
-        private Player player;
         public override void SetDefaults()
         {
-            DisplayName.SetDefault("Kaioken x20");
-            Main.buffNoTimeDisplay[Type] = true;
+            DisplayName.SetDefault("Super Saiyan");
+            Main.buffNoTimeDisplay[Type] = false;
             Main.buffNoSave[Type] = true;
             Main.debuff[Type] = true;
-            IsKaioken = true;
-            KaioLightValue = 12f;
-            Description.SetDefault("{0}x Damage, {0}x Speed, Rapidly Drains Life.");
+            IsKaioken = false;
+            IsSSJ = true;
+            Description.SetDefault("{0}x Damage, {0}x Speed, Drains Ki.");
         }
         public override void Update(Player player, ref int buffIndex)
         {
             if (MyPlayer.ModPlayer(player).RealismMode)
             {
-                DamageMulti = 20;
-                SpeedMulti = 20;
-                HealthDrainRate = 120;
+                DamageMulti = 5f;
+                SpeedMulti = 5f;
+                KiDrainRate = 2;
                 KiDrainBuffMulti = 1f;
             }
             else if (!MyPlayer.ModPlayer(player).RealismMode)
             {
-                DamageMulti = 4f;
-                SpeedMulti = 4f;
-                HealthDrainRate = 140;
-                KiDrainBuffMulti = 3f;
+                DamageMulti = 2f;
+                SpeedMulti = 2f;
+                KiDrainRate = 3;
+                KiDrainBuffMulti = 1f;
             }
             base.Update(player, ref buffIndex);
         }
@@ -39,11 +38,11 @@ namespace DBZMOD.Buffs
         {
             if (RealismModeOn)
             {
-                tip = string.Format(tip, "20");
+                tip = string.Format(tip, "5");
             }
             else
             {
-                tip = string.Format(tip, "4");
+                tip = string.Format(tip, "2");
             }
 
         }

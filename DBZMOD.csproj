@@ -41,6 +41,7 @@
     <Compile Include="Buffs\KiLanternBuff.cs" />
     <Compile Include="Buffs\NimbusBuff.cs" />
     <Compile Include="Buffs\SenzuCooldown.cs" />
+    <Compile Include="Buffs\SSJ1Buff.cs" />
     <Compile Include="Buffs\TiredDebuff.cs" />
     <Compile Include="DBZMOD.cs" />
     <Compile Include="DBZMODItem.cs" />
@@ -63,6 +64,11 @@
     <Compile Include="Items\Consumables\KaioFragment4.cs" />
     <Compile Include="Items\Consumables\KaioFragmentFirst.cs" />
     <Compile Include="Items\Consumables\KiAggravationStone.cs" />
+    <Compile Include="Items\Consumables\KiCalmingStone.cs" />
+    <Compile Include="Items\Consumables\KiEssence1.cs" />
+    <Compile Include="Items\Consumables\KiEssence2.cs" />
+    <Compile Include="Items\Consumables\KiEssence3.cs" />
+    <Compile Include="Items\Consumables\KiEssence4.cs" />
     <Compile Include="Items\Consumables\KiFragment1.cs" />
     <Compile Include="Items\Consumables\KiFragment2.cs" />
     <Compile Include="Items\Consumables\KiFragment3.cs" />
@@ -74,7 +80,6 @@
     <Compile Include="Items\Consumables\Potions\KiPotion4.cs" />
     <Compile Include="Items\Consumables\SenzuBean.cs" />
     <Compile Include="Items\HonorKiCrystal.cs" />
-    <Compile Include="Items\KiCalmingStone.cs" />
     <Compile Include="Items\KiLanternItem.cs" />
     <Compile Include="Items\KiManipulatorItem.cs" />
     <Compile Include="Items\KiOrb.cs" />
@@ -142,6 +147,7 @@
     <Compile Include="Projectiles\RockProjectile.cs" />
     <Compile Include="Projectiles\SpiritBallProjectile.cs" />
     <Compile Include="Projectiles\SpiritBombProjectile.cs" />
+    <Compile Include="Projectiles\SSJ1AuraProj.cs" />
     <Compile Include="Projectiles\SSJ1AuraProjBeam.cs" />
     <Compile Include="Projectiles\SSJ1AuraProjBeamHead.cs" />
     <Compile Include="Projectiles\SSJ1AuraProjStart.cs" />
@@ -187,6 +193,8 @@
     <Content Include="Auras\KaiokenAura.png" />
     <Content Include="Auras\TransformObjects\New Text Document.txt" />
     <Content Include="Backgrounds\New Text Document.txt" />
+    <Content Include="build.txt" />
+    <Content Include="description.txt" />
     <Content Include="Dusts\MetalDust.png" />
     <Content Include="Dusts\New Text Document.txt" />
     <Content Include="Extra Sprites\New Piskel %2844%29.png" />
@@ -198,6 +206,8 @@
     <Content Include="Extra Sprites\TrunksSword.png" />
     <Content Include="Extra Sprites\zzzswrd.png" />
     <Content Include="Gores\New Text Document.txt" />
+    <Content Include="Hairs\SSJ\SSJ1Hair.png" />
+    <Content Include="Hairs\SSJ\SSJ2Hair.png" />
     <Content Include="Items\Consumables\KiFragment1.png" />
     <Content Include="Items\Consumables\KiFragment2.png" />
     <Content Include="Items\Consumables\Potions\KiPotion1.png" />
@@ -216,9 +226,7 @@
     <Content Include="Sounds\PowerDown.wav" />
     <Content Include="Sounds\SwordSlash.wav" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Hairs\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>"C:\Program Files (x86)\Steam\steamapps\common\terraria\Terraria.exe" -build "$(ProjectDir)\" -eac "$(TargetPath)"

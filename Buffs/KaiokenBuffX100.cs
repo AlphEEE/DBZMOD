@@ -37,7 +37,7 @@ namespace DBZMOD.Buffs
         }
         public override void ModifyBuffTip(ref string tip, ref int rare)
         {
-            if (MyPlayer.ModPlayer(player).RealismMode)
+            if (RealismModeOn)
             {
                 tip = string.Format(tip, "100");
             }

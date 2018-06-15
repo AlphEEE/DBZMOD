@@ -6,7 +6,6 @@ namespace DBZMOD.Buffs
 {
     public class KaiokenBuff : TransBuff
     {
-        private Player player;
         public override void SetDefaults()
         {
             DisplayName.SetDefault("Kaioken");
@@ -37,7 +36,7 @@ namespace DBZMOD.Buffs
         }
         public override void ModifyBuffTip(ref string tip, ref int rare)
         {
-            if (MyPlayer.ModPlayer(player).RealismMode)
+            if (RealismModeOn)
             {
                 tip = string.Format(tip, "2");
             }

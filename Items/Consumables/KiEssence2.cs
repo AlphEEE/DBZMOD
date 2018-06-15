@@ -6,12 +6,12 @@ using Terraria.ModLoader;
 
 namespace DBZMOD.Items.Consumables
 {
-    public class KaioFragmentFirst : ModItem
+    public class KiEssence2 : ModItem
     {
         public override void SetDefaults()
         {
-            item.width = 32;
-            item.height = 32;
+            item.width = 18;
+            item.height = 18;
             item.consumable = true;
             item.maxStack = 1;
             item.UseSound = SoundID.Item3;
@@ -20,30 +20,27 @@ namespace DBZMOD.Items.Consumables
             item.useAnimation = 17;
             item.useTime = 17;
             item.value = 0;
-            item.rare = 2;
+            item.rare = 3;
             item.potion = false;
         }
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Kaio Fragment");
-            Tooltip.SetDefault("Unlocks an ancient technique.");
+            DisplayName.SetDefault("Noble Ki Essence");
+            Tooltip.SetDefault("Increases your ki charge rate.");
         }
 
 
         public override bool UseItem(Player player)
         {
-            if (player.whoAmI == Main.myPlayer)
-            {
-                Main.NewText("You feel your power surge.");
-            }
-            MyPlayer.ModPlayer(player).KaioAchieved = true;
+            MyPlayer.ModPlayer(player).KiRegenRate += 1;
+            MyPlayer.ModPlayer(player).KiEssence2 = true;
             return true;
 
         }
         public override bool CanUseItem(Player player)
         {
-            if (MyPlayer.ModPlayer(player).KaioAchieved)
+            if (MyPlayer.ModPlayer(player).KiEssence2)
             {
                 return false;
             }
@@ -51,6 +48,16 @@ namespace DBZMOD.Items.Consumables
             {
                 return true;
             }
+        }
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(null, "HonorKiCrystal", 30);
+            recipe.AddIngredient(null, "CalmKiCrystal", 20);
+            recipe.AddIngredient(ItemID.Bunny);
+            recipe.AddTile(null, "KiManipulator");
+            recipe.SetResult(this);
+            recipe.AddRecipe();
         }
     }
 }

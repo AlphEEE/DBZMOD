@@ -14,6 +14,8 @@ namespace DBZMOD
         private DBZMOD mod;
         public bool thoriumLoaded;
         public bool tremorLoaded;
+        public bool enigmaLoaded;
+        public bool battlerodsLoaded;
         public static DBZMOD instance;
 
         public DBZMOD()
@@ -29,6 +31,7 @@ namespace DBZMOD
         {
             GFX.UnloadGFX();
             KiBar.visible = false;
+            SSJHairDraw.Hair = null;
             instance = null;
         }
         public override void Load()
@@ -36,7 +39,9 @@ namespace DBZMOD
             instance = this;
             tremorLoaded = ModLoader.GetMod("Tremor") != null;
             thoriumLoaded = ModLoader.GetMod("ThoriumMod") != null;
-            MyPlayer.KaiokenKey = RegisterHotKey("Kaioken Toggle", "J");
+            enigmaLoaded = ModLoader.GetMod("Laugicality") != null;
+            battlerodsLoaded = ModLoader.GetMod("UnuBattleRods") != null;
+            MyPlayer.KaiokenKey = RegisterHotKey("Kaioken", "J");
             MyPlayer.EnergyCharge = RegisterHotKey("Energy Charge", "C");
             MyPlayer.Transform = RegisterHotKey("Transform", "X");
             MyPlayer.PowerDown = RegisterHotKey("Power Down", "V");

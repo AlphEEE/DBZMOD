@@ -9,7 +9,7 @@ using Terraria.ModLoader;
 
 namespace DBZMOD.Projectiles
 {
-    public class SSJAuraProjBeam : KiProjectile
+    public class SSJ1AuraProjBeam : KiProjectile
     {
         public override void SetStaticDefaults()
         {
@@ -38,6 +38,7 @@ namespace DBZMOD.Projectiles
 
         public override void AI()
         {
+            projectile.rotation = projectile.ai[1];
             projectile.localAI[0] += 1f;
             projectile.alpha = (int)projectile.localAI[0] * 2;
 

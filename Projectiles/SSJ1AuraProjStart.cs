@@ -10,7 +10,7 @@ namespace DBZMOD.Projectiles
 {
     public class SSJ1AuraProjStart : ModProjectile
     {
-        private Player player;
+        private float SizeTimer;
         public override void SetStaticDefaults()
         {
             Main.projFrames[projectile.type] = 4;
@@ -20,13 +20,14 @@ namespace DBZMOD.Projectiles
             projectile.width = 400;
             projectile.height = 400;
             projectile.aiStyle = 0;
-            projectile.timeLeft = 600;
+            projectile.timeLeft = 300;
             projectile.friendly = true;
             projectile.tileCollide = false;
             projectile.ignoreWater = true;
             projectile.penetrate = -1;
             projectile.damage = 0;
             projectile.netUpdate = true;
+            SizeTimer = 0f;
         }
         public override void AI()
         {
@@ -38,6 +39,15 @@ namespace DBZMOD.Projectiles
             if (!MyPlayer.ModPlayer(player).IsTransforming)
             {
                 projectile.Kill();
+            }
+            if (SizeTimer < 300)
+            {
+                projectile.scale = SizeTimer / 300f * 2;
+                SizeTimer++;
+            }
+            else
+            {
+                projectile.scale = 1f;
             }
             projectile.frameCounter++;
             if (projectile.frameCounter > 8)
@@ -52,8 +62,11 @@ namespace DBZMOD.Projectiles
         }
         public override void Kill(int timeLeft)
         {
-            player.AddBuff(mod.BuffType("SSJ1Buff"), 18000);
+            Player player = Main.player[projectile.owner];
+            player.AddBuff(mod.BuffType("SSJ1Buff"), 3600);
+            Projectile.NewProjectile(player.Center.X - 40, player.Center.Y + 90, 0, 0, mod.ProjectileType("SSJ1AuraProj"), 0, 0, player.whoAmI);
             MyPlayer.ModPlayer(player).IsTransforming = false;
+            Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/SSJAscension"));
         }
     }
 }
