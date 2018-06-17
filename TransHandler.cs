@@ -25,7 +25,7 @@ namespace DBZMOD
         public bool RealismModeOn;
         public override void Update(Player player, ref int buffIndex)
         {
-            if(MyPlayer.ModPlayer(player).RealismMode)
+            if(DBZWorld.RealismMode)
             {
                 RealismModeOn = true;
             }
@@ -88,29 +88,36 @@ namespace DBZMOD
             {
                 BattleRodEffects(player);
             }
+            if(IsSSJ)
+            {
+                if(MyPlayer.ModPlayer(player).KiCurrent <= 0)
+                {
+                    player.ClearBuff(mod.BuffType("SSJ1Buff"));
+                }
+            }
 
 
         }
         public void ThoriumEffects(Player player)
         {
-           // player.GetModPlayer<ThoriumMod.ThoriumPlayer>(ModLoader.GetMod("ThoriumMod")).symphonicDamage *= DamageMulti;
-            //player.GetModPlayer<ThoriumMod.ThoriumPlayer>(ModLoader.GetMod("ThoriumMod")).radiantBoost *= DamageMulti;
+            player.GetModPlayer<ThoriumMod.ThoriumPlayer>(ModLoader.GetMod("ThoriumMod")).symphonicDamage *= DamageMulti;
+            player.GetModPlayer<ThoriumMod.ThoriumPlayer>(ModLoader.GetMod("ThoriumMod")).radiantBoost *= DamageMulti;
         }
         public void TremorEffects(Player player)
         {
-            //player.GetModPlayer<Tremor.MPlayer>(ModLoader.GetMod("Tremor")).alchemicalDamage *= DamageMulti;
+            player.GetModPlayer<Tremor.MPlayer>(ModLoader.GetMod("Tremor")).alchemicalDamage *= DamageMulti;
         }
         public void EnigmaEffects(Player player)
         {
-            //player.GetModPlayer<Laugicality.LaugicalityPlayer>(ModLoader.GetMod("Laugicality")).mysticDamage *= DamageMulti;
+            player.GetModPlayer<Laugicality.LaugicalityPlayer>(ModLoader.GetMod("Laugicality")).mysticDamage *= DamageMulti;
         }
         public void BattleRodEffects(Player player)
         {
-            //player.GetModPlayer<UnuBattleRods.FishPlayer>(ModLoader.GetMod("UnuBattleRods")).bobberDamage *= DamageMulti;
+            player.GetModPlayer<UnuBattleRods.FishPlayer>(ModLoader.GetMod("UnuBattleRods")).bobberDamage *= DamageMulti;
         }
         private void KiDrainAdd(Player player)
         {
-            if(!MyPlayer.ModPlayer(player).RealismMode)
+            if(!DBZWorld.RealismMode)
             {
                 MyPlayer.ModPlayer(player).KiDrainMulti = KiDrainBuffMulti;
             }

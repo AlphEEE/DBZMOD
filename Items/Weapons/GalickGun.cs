@@ -13,8 +13,8 @@ namespace DBZMOD.Items.Weapons
     {
         public override void SetDefaults()
         {
-            item.shoot = mod.ProjectileType("GalickGunBlast");
-            item.shootSpeed = 70f;
+            item.shoot = mod.ProjectileType("GalickGunBall");
+            item.shootSpeed = 0f;
             item.damage = 67;
             item.knockBack = 2f;
             item.useStyle = 5;
@@ -29,6 +29,7 @@ namespace DBZMOD.Items.Weapons
             item.value = Item.sellPrice(0, 0, 5, 0);
             item.rare = 3;
             KiDrain = 80;
+            item.channel = true;
         }
         public override void SetStaticDefaults()
         {

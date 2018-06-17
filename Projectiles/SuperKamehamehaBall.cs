@@ -9,7 +9,7 @@ using Terraria.ModLoader;
 
 namespace DBZMOD.Projectiles
 {
-	public class KamehamehaBall : KiProjectile
+	public class SuperKamehamehaBall : KiProjectile
 	{
         private Player player;
 		public override void SetDefaults()
@@ -17,8 +17,8 @@ namespace DBZMOD.Projectiles
             projectile.hostile = false;
             projectile.friendly = false;
 			projectile.tileCollide = false;
-            projectile.width = 10;
-            projectile.height = 10;
+            projectile.width = 20;
+            projectile.height = 20;
 			projectile.aiStyle = 1;
 			projectile.light = 1f;
             projectile.timeLeft = 10;
@@ -32,7 +32,7 @@ namespace DBZMOD.Projectiles
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Kamehameha Ball");
+            DisplayName.SetDefault("Super Kamehameha Ball");
         }
    
         public override void AI()
@@ -67,14 +67,14 @@ namespace DBZMOD.Projectiles
             if(!player.channel && ChargeLevel >= 1)
             {
                 float rot = (float)Math.Atan2((Main.mouseY + Main.screenPosition.Y) - projectile.Center.Y, (Main.mouseX + Main.screenPosition.X) - projectile.Center.X);
-                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)((Math.Cos(rot) * 10)), (float)((Math.Sin(rot) * 10)), mod.ProjectileType("KamehamehaBlast"), projectile.damage + (ChargeLevel * 50), projectile.knockBack, projectile.owner, (projectile.scale = projectile.scale * ChargeLevel));
+                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)((Math.Cos(rot) * 10)), (float)((Math.Sin(rot) * 10)), mod.ProjectileType("SuperKamehamehaBlast"), projectile.damage + (ChargeLevel * 80), projectile.knockBack, projectile.owner, (projectile.scale = projectile.scale * ChargeLevel));
                 ChargeLevel = 0;
 
             }
 
             if (KiDrainTimer > 1 && MyPlayer.ModPlayer(player).KiCurrent >= 0)
             {
-                MyPlayer.ModPlayer(player).KiCurrent -= 1;
+                MyPlayer.ModPlayer(player).KiCurrent -= 3;
                 KiDrainTimer = 0;
             }
         }

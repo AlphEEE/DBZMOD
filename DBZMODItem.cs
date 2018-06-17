@@ -30,6 +30,29 @@ namespace DBZMOD
                 {
                     player.QuickSpawnItem(mod.ItemType("KaioFragment4"));
                 }
+                if (context == "bossBag" && arg == ItemID.EyeOfCthulhuBossBag)
+                {
+                    player.QuickSpawnItem(mod.ItemType("KiFragment1"));
+                }
+                if (context == "bossBag" && arg == ItemID.SkeletronBossBag)
+                {
+                    player.QuickSpawnItem(mod.ItemType("KiFragment2"));
+                }
+                if (context == "bossBag" && arg == ItemID.TwinsBossBag)
+                {
+                    player.QuickSpawnItem(mod.ItemType("KiFragment3"));
+                }
+                if (context == "bossBag" && arg == ItemID.GolemBossBag)
+                {
+                    player.QuickSpawnItem(mod.ItemType("KaioFragment4"));
+                }
+            }
+            if (Main.rand.Next(3) == 0)
+            {
+                if (context == "bossBag" && arg == ItemID.WallOfFleshBossBag)
+                {
+                    player.QuickSpawnItem(mod.ItemType("SpiritualEmblem"));
+                }
             }
         }
     }

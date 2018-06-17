@@ -14,9 +14,9 @@ namespace DBZMOD.Items.Weapons
 		public override void SetDefaults()
 		{
 			// Alter any of these values as you see fit, but you should probably keep useStyle on 1, as well as the noUseGraphic and noMelee bools
-			item.shoot = mod.ProjectileType("MasenkoBlast");
-			item.shootSpeed = 70f;
-			item.damage = 26;
+			item.shoot = mod.ProjectileType("MasenkoBall");
+			item.shootSpeed = 0f;
+			item.damage = 34;
 			item.knockBack = 2f;
 			item.useStyle = 5;
 			item.UseSound = SoundID.Item12;
@@ -28,6 +28,7 @@ namespace DBZMOD.Items.Weapons
 			item.autoReuse = false;
 			item.value = Item.sellPrice(0, 0, 5, 0);
 			item.rare = 1;
+            item.channel = true;
             KiDrain = 80;
 	    }
 	    public override void SetStaticDefaults()

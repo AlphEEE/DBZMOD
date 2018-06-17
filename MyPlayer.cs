@@ -24,7 +24,6 @@ namespace DBZMOD
         public bool ZoneCustomBiome = false;
         public int drawX;
         public int drawY;
-        public bool RealismMode = false;
         public bool SSJ1Achieved;
         public bool scouterT2;
         public bool scouterT3;
@@ -98,6 +97,10 @@ namespace DBZMOD
                 SSJTransformationBeams();
                 SSJAuraBeamTimer = 0;
             }
+            if(KiCurrent < 0)
+            {
+                KiCurrent = 0;
+            }
 
         }
 
@@ -127,7 +130,6 @@ namespace DBZMOD
             tag.Add("KaioFragment3", KaioFragment3);
             tag.Add("KaioFragment4", KaioFragment4);
             tag.Add("KaioAchieved", KaioAchieved);
-            tag.Add("RealismMode", RealismMode);
             tag.Add("SSJ1Achieved", SSJ1Achieved);
             tag.Add("KiCurrent", KiCurrent);
             tag.Add("KiRegenRate", KiRegenRate);
@@ -151,7 +153,6 @@ namespace DBZMOD
             KaioFragment3 = tag.Get<bool>("KaioFragment3");
             KaioFragment4 = tag.Get<bool>("KaioFragment4");
             KaioAchieved = tag.Get<bool>("KaioAchieved");
-            RealismMode = tag.Get<bool>("RealismMode");
             SSJ1Achieved = tag.Get<bool>("SSJ1Achieved");
             KiCurrent = tag.Get<int>("KiCurrent");
             KiRegenRate = tag.Get<int>("KiRegenRate");
@@ -166,12 +167,12 @@ namespace DBZMOD
 
         public override void ProcessTriggers(TriggersSet triggersSet)
         {
-            if (Transform.JustPressed && player.HasBuff(mod.BuffType("KaiokenBuff")))
+            if (Transform.JustPressed)
             {
                 if (!player.HasBuff(mod.BuffType("SSJ1Buff")) && SSJ1Achieved && !IsTransforming)
                 {
-                    player.AddBuff(mod.BuffType("SSJ1Buff"), 30);
-                    Projectile.NewProjectile(player.Center.X - 40, player.Center.Y + 90, 0, 0, mod.ProjectileType("SSJ1AuraProjStartQuick"), 0, 0, player.whoAmI);
+                    player.AddBuff(mod.BuffType("SSJ1Buff"), 1800);
+                    Projectile.NewProjectile(player.Center.X - 40, player.Center.Y + 90, 0, 0, mod.ProjectileType("SSJ1AuraProjStart"), 0, 0, player.whoAmI);
                     Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/AuraStart").WithVolume(.7f));
                 }
             }
@@ -181,11 +182,9 @@ namespace DBZMOD
             }
             if(QuickKi.JustPressed)
             {
-                SSJTransformation();
-                IsTransforming = true;
             }
                 
-            if (KaiokenKey.JustPressed && (!player.HasBuff(mod.BuffType("KaiokenBuff")) && !player.HasBuff(mod.BuffType("KaiokenBuffX3")) && !player.HasBuff(mod.BuffType("KaiokenBuffX10")) && !player.HasBuff(mod.BuffType("KaiokenBuffX20")) && !player.HasBuff(mod.BuffType("KaiokenBuffX100"))) && !player.HasBuff(mod.BuffType("TiredDebuff")) && KaioAchieved && !player.channel)
+            if (KaiokenKey.JustPressed && (!player.HasBuff(mod.BuffType("KaiokenBuff")) && !player.HasBuff(mod.BuffType("KaiokenBuffX3")) && !player.HasBuff(mod.BuffType("KaiokenBuffX10")) && !player.HasBuff(mod.BuffType("KaiokenBuffX20")) && !player.HasBuff(mod.BuffType("KaiokenBuffX100"))) && !player.HasBuff(mod.BuffType("TiredDebuff")) && !player.HasBuff(mod.BuffType("SSJ1Buff")) && KaioAchieved && !player.channel)
             {
                 player.AddBuff(mod.BuffType("KaiokenBuff"), 18000);
                 Projectile.NewProjectile(player.Center.X - 40, player.Center.Y + 90, 0, 0, mod.ProjectileType("KaiokenAuraProj"), 0, 0, player.whoAmI);
@@ -217,6 +216,16 @@ namespace DBZMOD
                 player.ClearBuff(mod.BuffType("KaiokenBuffX20"));
                 player.AddBuff(mod.BuffType("KaiokenBuffX100"), 18000);
                 Projectile.NewProjectile(player.Center.X - 40, player.Center.Y + 90, 0, 0, mod.ProjectileType("KaiokenAuraProjx100"), 0, 0, player.whoAmI);
+                Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/KaioAuraAscend").WithVolume(.8f));
+            }
+
+            else if (KaiokenKey.JustPressed && (player.HasBuff(mod.BuffType("SSJ1Buff"))) && !player.HasBuff(mod.BuffType("SSJ1KaiokenBuff")))
+            {
+                player.ClearBuff(mod.BuffType("KaiokenBuff"));
+                player.ClearBuff(mod.BuffType("SSJ1Buff"));
+                player.AddBuff(mod.BuffType("SSJ1KaiokenBuff"), 1800);
+                Projectile.NewProjectile(player.Center.X - 40, player.Center.Y + 90, 0, 0, mod.ProjectileType("KaiokenAuraProj"), 0, 0, player.whoAmI);
+                Projectile.NewProjectile(player.Center.X - 40, player.Center.Y + 90, 0, 0, mod.ProjectileType("SSJ1AuraProj"), 0, 0, player.whoAmI);
                 Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/KaioAuraAscend").WithVolume(.8f));
             }
 
@@ -296,6 +305,29 @@ namespace DBZMOD
             {
                 KiMax = 1000;
             }
+            if (KiEssence1)
+            {
+                KiRegenRate = 2;
+
+                if (KiEssence2)
+                {
+                    KiRegenRate = 3;
+
+                    if (KiEssence3)
+                    {
+                        KiRegenRate = 5;
+
+                        if (KiEssence4)
+                        {
+                            KiRegenRate = 7;
+                        }
+                    }
+                }
+            }
+            if (!KiEssence1 && !KiEssence2 && !KiEssence3 && !KiEssence4)
+            {
+                KiRegenRate = 1;
+            }
             scouterT2 = false;
             scouterT3 = false;
             scouterT4 = false;
@@ -309,15 +341,18 @@ namespace DBZMOD
             if (damageSource.SourceNPCIndex > -1)
             {
                 NPC culprit = Main.npc[damageSource.SourceNPCIndex];
-                if (culprit.boss && !SSJ1Achieved && (Main.rand.Next(9) == 0) && player.whoAmI == Main.myPlayer)
+                if (culprit.boss && !SSJ1Achieved && player.whoAmI == Main.myPlayer)
                 {
-                    Main.NewText("The humiliation of failing drives you mad.");
-                    player.statLife = 1;
-                    player.HealEffect(1);
-                    SSJ1Achieved = true;
-                    IsTransforming = true;
-                    SSJTransformation();
-                    return false;
+                    if ((Main.rand.Next(9) == 0))
+                    {
+                        Main.NewText("The humiliation of failing drives you mad.");
+                        player.statLife = 1;
+                        player.HealEffect(1);
+                        SSJ1Achieved = true;
+                        IsTransforming = true;
+                        SSJTransformation();
+                        return false;
+                    }
                 }
             }
 

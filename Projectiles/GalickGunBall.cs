@@ -9,7 +9,7 @@ using Terraria.ModLoader;
 
 namespace DBZMOD.Projectiles
 {
-	public class KamehamehaBall : KiProjectile
+	public class GalickGunBall : KiProjectile
 	{
         private Player player;
 		public override void SetDefaults()
@@ -32,7 +32,7 @@ namespace DBZMOD.Projectiles
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Kamehameha Ball");
+            DisplayName.SetDefault("Galick Gun Ball");
         }
    
         public override void AI()
@@ -61,13 +61,13 @@ namespace DBZMOD.Projectiles
                 ChargeTimer = 0;
                 for (int d = 0; d < 70; d++)
                 {
-                    Dust.NewDust(projectile.position, projectile.width, projectile.height, 15, 0f, 0f, 213, default(Color), 1.5f);
+                    Dust.NewDust(projectile.position, projectile.width, projectile.height, 15, 0f, 0f, 62, default(Color), 1.5f);
                 }
             }
             if(!player.channel && ChargeLevel >= 1)
             {
                 float rot = (float)Math.Atan2((Main.mouseY + Main.screenPosition.Y) - projectile.Center.Y, (Main.mouseX + Main.screenPosition.X) - projectile.Center.X);
-                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)((Math.Cos(rot) * 10)), (float)((Math.Sin(rot) * 10)), mod.ProjectileType("KamehamehaBlast"), projectile.damage + (ChargeLevel * 50), projectile.knockBack, projectile.owner, (projectile.scale = projectile.scale * ChargeLevel));
+                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)((Math.Cos(rot) * 10)), (float)((Math.Sin(rot) * 10)), mod.ProjectileType("GalickGunBlast"), projectile.damage + (ChargeLevel * 60), projectile.knockBack, projectile.owner, (projectile.scale = projectile.scale * ChargeLevel));
                 ChargeLevel = 0;
 
             }

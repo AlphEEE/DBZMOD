@@ -4,33 +4,36 @@ using Terraria.ModLoader;
 
 namespace DBZMOD.Buffs
 {
-    public class KaiokenBuff : TransBuff
+    public class SSJ1KaiokenBuff : TransBuff
     {
         public override void SetDefaults()
         {
-            DisplayName.SetDefault("Kaioken");
+            DisplayName.SetDefault("Super Saiyan Kaioken");
             Main.buffNoTimeDisplay[Type] = true;
             Main.buffNoSave[Type] = true;
             Main.debuff[Type] = true;
             IsKaioken = true;
-            KaioLightValue = 5f;
-            Description.SetDefault("{0}x Damage, {0}x Speed, Slowly Drains Life.");
+            IsSSJ = true;
+            KaioLightValue = 10f;
+            Description.SetDefault("{0}x Damage, {0}x Speed, Quickly Drains Life and Ki.");
         }
         public override void Update(Player player, ref int buffIndex)
         {
             if (DBZWorld.RealismMode)
             {
-                DamageMulti = 2;
-                SpeedMulti = 2;
-                HealthDrainRate = 24;
+                DamageMulti = 10;
+                SpeedMulti = 10;
+                HealthDrainRate = 200;
+                KiDrainRate = 4;
                 KiDrainBuffMulti = 1f;
             }
             else if (!DBZWorld.RealismMode)
             {
-                DamageMulti = 2f;
-                SpeedMulti = 2f;
-                HealthDrainRate = 24;
-                KiDrainBuffMulti = 1f;
+                DamageMulti = 4f;
+                SpeedMulti = 4f;
+                HealthDrainRate = 240;
+                KiDrainRate = 8;
+                KiDrainBuffMulti = 4f;
             }
             base.Update(player, ref buffIndex);
         }
@@ -38,11 +41,11 @@ namespace DBZMOD.Buffs
         {
             if (RealismModeOn)
             {
-                tip = string.Format(tip, "2");
+                tip = string.Format(tip, "10");
             }
             else
             {
-                tip = string.Format(tip, "2");
+                tip = string.Format(tip, "4");
             }
 
         }

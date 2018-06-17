@@ -26,7 +26,10 @@ namespace DBZMOD.Items.Weapons
             item.knockBack = 17;
             item.value = 140000;
             item.rare = 4;
-            item.UseSound = mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/SwordSlash").WithPitchVariance(.3f);
+            if(!Main.dedServ)
+            {
+                item.UseSound = mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/SwordSlash").WithPitchVariance(.3f);
+            }
             item.autoReuse = true;
             item.useAnimation = 16;
             item.useTime = 16;

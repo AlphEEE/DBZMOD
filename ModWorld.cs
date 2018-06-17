@@ -6,9 +6,30 @@ using Terraria.ModLoader;
 using Terraria.World.Generation;
 using Microsoft.Xna.Framework;
 using Terraria.GameContent.Generation;
+using Terraria.ModLoader.IO;
 
 namespace DBZMOD
 {
+    public class DBZWorld : ModWorld
+    {
+        public static bool RealismMode = false;
+
+        public override TagCompound Save()
+        {
+            TagCompound tag = new TagCompound();
+            tag.Add("RealismMode", RealismMode);
+
+            return tag;
+        }
+
+        public override void Load(TagCompound tag)
+        {
+            RealismMode = tag.Get<bool>("RealismMode");
+        }
+
+
+
+    }
     /*public class ModWord : ModWorld
     {
         private const int saveVersion = 0;

@@ -10,3 +10,14 @@ C:\Users\Logan\Documents\My Games\Terraria\ModLoader\Mod Sources\DBZMOD\obj\Debu
 C:\Users\Logan\Documents\My Games\Terraria\ModLoader\Mod Sources\DBZMOD\obj\Debug\DBZMOD.csproj.CoreCompileInputs.cache
 C:\Users\Logan\Documents\My Games\Terraria\ModLoader\Mod Sources\DBZMOD\obj\Debug\DBZMOD.dll
 C:\Users\Logan\Documents\My Games\Terraria\ModLoader\Mod Sources\DBZMOD\obj\Debug\DBZMOD.pdb
+C:\Users\ronsh\Documents\My Games\Terraria\ModLoader\Mod Sources\DBZMOD\bin\Debug\DBZMOD.dll
+C:\Users\ronsh\Documents\My Games\Terraria\ModLoader\Mod Sources\DBZMOD\bin\Debug\DBZMOD.pdb
+C:\Users\ronsh\Documents\My Games\Terraria\ModLoader\Mod Sources\DBZMOD\bin\Debug\Microsoft.Xna.Framework.dll
+C:\Users\ronsh\Documents\My Games\Terraria\ModLoader\Mod Sources\DBZMOD\bin\Debug\Microsoft.Xna.Framework.Game.dll
+C:\Users\ronsh\Documents\My Games\Terraria\ModLoader\Mod Sources\DBZMOD\bin\Debug\Microsoft.Xna.Framework.Graphics.dll
+C:\Users\ronsh\Documents\My Games\Terraria\ModLoader\Mod Sources\DBZMOD\bin\Debug\Microsoft.Xna.Framework.Xact.dll
+C:\Users\ronsh\Documents\My Games\Terraria\ModLoader\Mod Sources\DBZMOD\bin\Debug\Terraria.exe
+C:\Users\ronsh\Documents\My Games\Terraria\ModLoader\Mod Sources\DBZMOD\obj\Debug\DBZMOD.csprojResolveAssemblyReference.cache
+C:\Users\ronsh\Documents\My Games\Terraria\ModLoader\Mod Sources\DBZMOD\obj\Debug\DBZMOD.csproj.CoreCompileInputs.cache
+C:\Users\ronsh\Documents\My Games\Terraria\ModLoader\Mod Sources\DBZMOD\obj\Debug\DBZMOD.dll
+C:\Users\ronsh\Documents\My Games\Terraria\ModLoader\Mod Sources\DBZMOD\obj\Debug\DBZMOD.pdb

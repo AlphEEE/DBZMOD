@@ -112,68 +112,49 @@ namespace DBZMOD
             }
             if (npc.type == NPCID.EyeofCthulhu)   //this is where you choose the npc you want
             {
-                if ((Main.rand.Next(4) == 0) && NPC.downedBoss1) //this is the item rarity, so 4 is 1 in 5 chance that the npc will drop the item.
+                if ((Main.rand.Next(3) == 0)) //this is the item rarity, so 4 is 1 in 5 chance that the npc will drop the item.
                 {
                     {
                         Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("KiFragment1"), 1); //this is where you set what item to drop, mod.ItemType("CustomSword") is an example of how to add your custom item. and 1 is the amount
                     }
                 }
-                else if (!NPC.downedBoss1)
-                {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("KiFragment1"), 1);
-                }
+ 
             }
             
             if (npc.type == NPCID.SkeletronHead)   //this is where you choose the npc you want
             {
-                if ((Main.rand.Next(4) == 0) && NPC.downedBoss3) //this is the item rarity, so 4 is 1 in 5 chance that the npc will drop the item.
+                if ((Main.rand.Next(3) == 0)) //this is the item rarity, so 4 is 1 in 5 chance that the npc will drop the item.
                 {
                     {
                         Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("KiFragment2"), 1); //this is where you set what item to drop, mod.ItemType("CustomSword") is an example of how to add your custom item. and 1 is the amount
                     }
                 }
-                else if (!NPC.downedBoss3)
-                {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("KiFragment2"), 1);
-                }
             }
             if (npc.type == NPCID.Spazmatism)   //this is where you choose the npc you want
             {
-                if ((Main.rand.Next(4) == 0) && NPC.downedMechBoss2) //this is the item rarity, so 4 is 1 in 5 chance that the npc will drop the item.
+                if ((Main.rand.Next(3) == 0)) //this is the item rarity, so 4 is 1 in 5 chance that the npc will drop the item.
                 {
                     {
                         Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("KiFragment3"), 1); //this is where you set what item to drop, mod.ItemType("CustomSword") is an example of how to add your custom item. and 1 is the amount
                     }
                 }
-                else if(!NPC.downedMechBoss2)
-                {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("KiFragment3"), 1);
-                }
             }
             if (npc.type == NPCID.Plantera)   //this is where you choose the npc you want
             {
-                if ((Main.rand.Next(4) == 0) && NPC.downedPlantBoss) //this is the item rarity, so 4 is 1 in 5 chance that the npc will drop the item.
+                if ((Main.rand.Next(3) == 0)) //this is the item rarity, so 4 is 1 in 5 chance that the npc will drop the item.
                 {
                     {
                         Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("KiFragment4"), 1); //this is where you set what item to drop, mod.ItemType("CustomSword") is an example of how to add your custom item. and 1 is the amount
                     }
                 }
-                else if (!NPC.downedPlantBoss)
-                {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("KiFragment4"), 1);
-                }
             }
             if (npc.type == NPCID.CultistBoss)   //this is where you choose the npc you want
             {
-                if ((Main.rand.Next(4) == 0) && NPC.downedAncientCultist) //this is the item rarity, so 4 is 1 in 5 chance that the npc will drop the item.
+                if ((Main.rand.Next(4) == 0)) //this is the item rarity, so 4 is 1 in 5 chance that the npc will drop the item.
                 {
                     {
                         Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("KiFragment5"), 1); //this is where you set what item to drop, mod.ItemType("CustomSword") is an example of how to add your custom item. and 1 is the amount
                     }
-                }
-                else if (!NPC.downedAncientCultist)
-                {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("KiFragment5"), 1);
                 }
             }
             if (!Main.expertMode)

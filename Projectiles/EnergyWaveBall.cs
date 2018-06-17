@@ -9,7 +9,7 @@ using Terraria.ModLoader;
 
 namespace DBZMOD.Projectiles
 {
-	public class KamehamehaBall : KiProjectile
+	public class EnergyWaveBall : KiProjectile
 	{
         private Player player;
 		public override void SetDefaults()
@@ -32,7 +32,7 @@ namespace DBZMOD.Projectiles
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Kamehameha Ball");
+            DisplayName.SetDefault("Energy Wave Ball");
         }
    
         public override void AI()
@@ -67,7 +67,7 @@ namespace DBZMOD.Projectiles
             if(!player.channel && ChargeLevel >= 1)
             {
                 float rot = (float)Math.Atan2((Main.mouseY + Main.screenPosition.Y) - projectile.Center.Y, (Main.mouseX + Main.screenPosition.X) - projectile.Center.X);
-                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)((Math.Cos(rot) * 10)), (float)((Math.Sin(rot) * 10)), mod.ProjectileType("KamehamehaBlast"), projectile.damage + (ChargeLevel * 50), projectile.knockBack, projectile.owner, (projectile.scale = projectile.scale * ChargeLevel));
+                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)((Math.Cos(rot) * 10)), (float)((Math.Sin(rot) * 10)), mod.ProjectileType("EnergyWaveBlast"), projectile.damage + (ChargeLevel * 40), projectile.knockBack, projectile.owner, (projectile.scale = projectile.scale * ChargeLevel));
                 ChargeLevel = 0;
 
             }

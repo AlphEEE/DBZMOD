@@ -79,8 +79,8 @@ namespace DBZMOD.Projectiles
 				num486 = num483 / num486;
 				num484 *= num486;
 				num485 *= num486;
-				projectile.velocity.X = (projectile.velocity.X * 20f + num484) / 21f;
-				projectile.velocity.Y = (projectile.velocity.Y * 20f + num485) / 21f;
+				//projectile.velocity.X = (projectile.velocity.X * 20f + num484) / 21f;
+				//projectile.velocity.Y = (projectile.velocity.Y * 20f + num485) / 21f;
 				return;
 			}
             if (Main.rand.Next(6) == 0)

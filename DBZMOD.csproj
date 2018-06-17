@@ -34,6 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Buffs\KaiokenBuff.cs" />
+    <Compile Include="Buffs\SSJ1KaiokenBuff.cs" />
     <Compile Include="Buffs\KaiokenBuffX10.cs" />
     <Compile Include="Buffs\KaiokenBuffX100.cs" />
     <Compile Include="Buffs\KaiokenBuffX20.cs" />
@@ -151,6 +152,7 @@
     <Compile Include="Projectiles\SSJ1AuraProjBeam.cs" />
     <Compile Include="Projectiles\SSJ1AuraProjBeamHead.cs" />
     <Compile Include="Projectiles\SSJ1AuraProjStart.cs" />
+    <Compile Include="Projectiles\SuperKamehamehaBall.cs" />
     <Compile Include="Projectiles\SuperKamehamehaBlast.cs" />
     <Compile Include="Projectiles\SuperKamehamehaTrail.cs" />
     <Compile Include="Projectiles\TrapShooterExplosion.cs" />
@@ -229,7 +231,7 @@
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>"C:\Program Files (x86)\Steam\steamapps\common\terraria\Terraria.exe" -build "$(ProjectDir)\" -eac "$(TargetPath)"
-"C:\Program Files (x86)\Steam\steamapps\common\Terraria\tModLoaderServer.exe" -build "$(ProjectDir)\"</PostBuildEvent>
+    <PostBuildEvent>"E:\Steam\steamapps\common\Terraria\Terraria.exe" -build "$(ProjectDir)\" -eac "$(TargetPath)"
+"E:\Steam\steamapps\common\Terraria\tModLoaderServer.exe" -build "$(ProjectDir)\"</PostBuildEvent>
   </PropertyGroup>
 </Project>

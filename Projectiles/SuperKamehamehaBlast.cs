@@ -132,7 +132,7 @@ namespace DBZMOD.Projectiles
 			 projectile.ai[1]++;
             if(projectile.ai[1] == 2)
             {
-                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y - 0, 0, 0, mod.ProjectileType("SuperKamehamehaTrail"), projectile.damage, 4f, projectile.owner, 0, projectile.rotation);
+                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y - 0, 0, 0, mod.ProjectileType("SuperKamehamehaTrail"), projectile.damage / 3, 4f, projectile.owner, 0, projectile.rotation);
                 projectile.ai[1] = 0;
             }
         }
